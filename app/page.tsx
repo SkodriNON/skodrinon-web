@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-black text-white bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_45%)]">
 
       {/* NAVBAR */}
       <nav className="sticky top-0 z-50 backdrop-blur-xl border-b border-blue-500/10 bg-black/60 shadow-[0_0_25px_rgba(59,130,246,0.08)] px-8 py-5 flex items-center justify-between">
