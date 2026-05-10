@@ -1,11 +1,23 @@
 "use client";
 import { useConnect, useAccount, useDisconnect } from "wagmi";
+import { useReadContract } from "wagmi";
+import { erc20Abi } from "@/lib/erc20";
 export default function Dashboard() {
   const { address, isConnected } = useAccount();
 
   const { connect, connectors } = useConnect();
 
   const { disconnect } = useDisconnect();
+  const { data: tokenBalance } = useReadContract({
+  address: "0xE9380E2C0DFaA2b77691f4824AaCe6E4ca0132e5",
+  abi: erc20Abi,
+  functionName: "balanceOf",
+  args: [address!],
+  query: {
+    enabled: !!address,
+  },
+});
+
   return (
     <main className="min-h-screen bg-[#020617] text-white flex overflow-hidden">
       {/* SIDEBAR */}
