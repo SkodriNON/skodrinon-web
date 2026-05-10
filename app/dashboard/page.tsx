@@ -1,134 +1,202 @@
 export default function Dashboard() {
   return (
-    <main className="min-h-screen bg-black text-white flex">
+    <main className="min-h-screen bg-[#020617] text-white flex overflow-hidden">
       {/* SIDEBAR */}
-      <aside className="w-72 border-r border-blue-500/10 bg-zinc-950 p-6 flex flex-col justify-between">
+      <aside className="w-[260px] min-h-screen border-r border-blue-500/10 bg-[#040816] px-5 py-6 flex flex-col justify-between">
         <div>
-          <h1 className="text-3xl font-bold mb-10 text-blue-400">
-            SkodriNΩN
-          </h1>
+          <div className="flex items-center gap-3 mb-10">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-[0_0_25px_rgba(59,130,246,0.5)]">
+              △
+            </div>
 
-          <nav className="flex flex-col gap-3 text-gray-300">
+            <h1 className="text-4xl font-bold tracking-wide">
+              SkodriNΩN
+            </h1>
+          </div>
+
+          <div className="flex flex-col gap-3 text-gray-300">
             {[
-              "Dashboard",
-              "Portfolio",
-              "Governance",
-              "Staking",
-              "AI Insights",
-              "Treasury",
-              "Contracts",
-              "Security",
-              "Analytics",
-              "Settings",
-            ].map((item) => (
+              'Dashboard',
+              'Portfolio',
+              'Governance',
+              'Staking',
+              'DAO Proposals',
+              'AI Insights',
+              'Treasury',
+              'Swap',
+              'Bridge',
+              'Contracts',
+              'Security',
+              'Audit',
+              'Analytics',
+              'Settings',
+            ].map((item, index) => (
               <button
                 key={item}
-                className="text-left px-5 py-4 rounded-2xl bg-zinc-900/40 hover:bg-blue-500/10 hover:border hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.25)] transition duration-300"
+                className={`text-left px-5 py-4 rounded-2xl transition duration-300 border ${
+                  index === 0
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 border-blue-500/40 shadow-[0_0_25px_rgba(59,130,246,0.4)] text-white'
+                    : 'border-transparent hover:border-blue-500/20 hover:bg-blue-500/5'
+                }`}
               >
                 {item}
               </button>
             ))}
-          </nav>
+          </div>
         </div>
 
-        <div className="border border-blue-500/20 rounded-3xl p-6 bg-blue-500/10 shadow-[0_0_35px_rgba(59,130,246,0.2)]">
-          <h3 className="text-xl font-semibold mb-2">
+        <div className="rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-6 shadow-[0_0_35px_rgba(59,130,246,0.25)]">
+          <h3 className="text-2xl font-bold mb-2 text-blue-400">
             SkodriNΩN AI
           </h3>
 
-          <p className="text-sm text-gray-400 mb-5">
-            AI governance assistant connected to Ethereum.
+          <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+            AI governance assistant connected to Ethereum ecosystem.
           </p>
 
-          <button className="w-full py-3 rounded-2xl bg-blue-500 hover:bg-blue-400 transition font-semibold shadow-[0_0_30px_rgba(59,130,246,0.5)]">
-            Launch AI
+          <button className="w-full rounded-2xl py-4 bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-[1.02] transition duration-300 font-semibold shadow-[0_0_35px_rgba(59,130,246,0.45)]">
+            Ask SkodriNΩN AI
           </button>
         </div>
       </aside>
 
-      {/* MAIN CONTENT */}
-      <section className="flex-1 p-8 overflow-y-auto bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_35%)]">
-
-        {/* TOP BAR */}
+      {/* MAIN */}
+      <section className="flex-1 overflow-y-auto bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_30%)] px-8 py-7">
+        {/* TOPBAR */}
         <div className="flex items-center justify-between mb-10">
           <div>
-            <h2 className="text-5xl font-bold mb-3">
-              Welcome back
+            <h2 className="text-5xl font-bold mb-4">
+              Welcome back, SkodriNΩN 👋
             </h2>
 
             <p className="text-gray-400 text-lg">
-              Governance-first AI & Web3 ecosystem dashboard.
+              Here's what's happening in your ecosystem today.
             </p>
           </div>
 
-          <button className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-105 transition duration-300 font-semibold shadow-[0_0_40px_rgba(59,130,246,0.5)]">
-            Connect Wallet
-          </button>
+          <div className="flex items-center gap-5">
+            <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
+              🔍
+            </button>
+
+            <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
+              🔔
+            </button>
+
+            <button className="px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:scale-105 transition duration-300">
+              Launch App 🚀
+            </button>
+          </div>
         </div>
 
-        {/* STATS */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+        {/* MINI STATS */}
+        <div className="grid grid-cols-5 gap-6 mb-8">
           {[
-            ["$12.4M", "Market Cap"],
-            ["24M", "LP Lock"],
-            ["100%", "Verified"],
-            ["12,458", "Holders"],
+            ['0.01245', '$SKNON Price'],
+            ['$12.45M', 'Market Cap'],
+            ['$8.72M', 'TVL'],
+            ['12,458', 'Holders'],
+            ['Ethereum', 'Network'],
           ].map(([value, label]) => (
-            <div
-              key={label}
-              className="border border-blue-500/10 rounded-3xl p-8 bg-zinc-900/50 hover:border-blue-500/40 hover:shadow-[0_0_35px_rgba(59,130,246,0.25)] transition duration-300"
-            >
-              <h3 className="text-4xl font-bold text-blue-400 mb-3">
-                {value}
-              </h3>
-
-              <p className="text-gray-400 text-lg">
-                {label}
-              </p>
+            <div key={label}>
+              <p className="text-gray-500 mb-2">{label}</p>
+              <h4 className="text-2xl font-bold">{value}</h4>
             </div>
           ))}
         </div>
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-
+        {/* MAIN GRID */}
+        <div className="grid grid-cols-12 gap-7">
           {/* LEFT */}
-          <div className="xl:col-span-2 flex flex-col gap-8">
+          <div className="col-span-9 flex flex-col gap-7">
+            {/* TOP CARDS */}
+            <div className="grid grid-cols-4 gap-6">
+              {[
+                ['12,543.78', 'Total Portfolio'],
+                ['42,420.69', 'Staked $SKNON'],
+                ['25,678.90', 'Voting Power'],
+                ['$2.45M', 'Treasury Balance'],
+              ].map(([value, label]) => (
+                <div
+                  key={label}
+                  className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6 hover:border-blue-500/30 hover:shadow-[0_0_35px_rgba(59,130,246,0.18)] transition duration-300"
+                >
+                  <p className="text-gray-400 mb-4">{label}</p>
 
-            {/* PORTFOLIO */}
-            <div className="border border-blue-500/10 rounded-3xl p-8 bg-zinc-900/50">
-              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-3xl font-bold">
-                  Portfolio Overview
-                </h3>
+                  <h3 className="text-4xl font-bold mb-3">{value}</h3>
 
-                <div className="text-green-400 font-semibold text-lg">
-                  +14.2%
+                  <p className="text-green-400 font-semibold">
+                    +12.45%
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* CHART + DONUT */}
+            <div className="grid grid-cols-3 gap-7">
+              <div className="col-span-2 rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8">
+                <div className="flex items-center justify-between mb-8">
+                  <h3 className="text-3xl font-bold">
+                    Portfolio Performance
+                  </h3>
+
+                  <button className="px-5 py-2 rounded-xl border border-blue-500/20 bg-blue-500/5">
+                    30D
+                  </button>
+                </div>
+
+                <div className="h-[350px] rounded-3xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-blue-500/10 flex items-center justify-center text-gray-500 text-2xl">
+                  Advanced Analytics Chart
                 </div>
               </div>
 
-              <div className="h-72 rounded-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/10 flex items-center justify-center text-gray-500 text-xl">
-                Live Analytics Chart
+              <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8">
+                <h3 className="text-3xl font-bold mb-10">
+                  Portfolio Allocation
+                </h3>
+
+                <div className="w-56 h-56 mx-auto rounded-full border-[18px] border-blue-500/20 flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.15)] mb-10">
+                  <div className="text-center">
+                    <p className="text-gray-400 mb-2">Total</p>
+                    <h4 className="text-3xl font-bold">$12,543</h4>
+                  </div>
+                </div>
+
+                <div className="space-y-5 text-lg">
+                  <div className="flex justify-between">
+                    <span>$SKNON</span>
+                    <span>60.2%</span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span>ETH</span>
+                    <span>20.1%</span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span>USDC</span>
+                    <span>10.4%</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* AI + STAKING */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-              <div className="border border-blue-500/10 rounded-3xl p-8 bg-zinc-900/50 hover:border-blue-500/40 transition duration-300">
-                <h3 className="text-2xl font-bold mb-6 text-blue-400">
+            {/* LOWER GRID */}
+            <div className="grid grid-cols-3 gap-7">
+              <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
+                <h3 className="text-3xl font-bold mb-8 text-blue-400">
                   AI Insights
                 </h3>
 
-                <div className="space-y-4 text-gray-300">
+                <div className="space-y-6 text-lg">
                   <div className="flex justify-between">
                     <span>Market Sentiment</span>
                     <span className="text-green-400">Bullish</span>
                   </div>
 
                   <div className="flex justify-between">
-                    <span>Risk Level</span>
-                    <span className="text-yellow-400">Medium</span>
+                    <span>Risk Alert</span>
+                    <span className="text-yellow-400">Medium Risk</span>
                   </div>
 
                   <div className="flex justify-between">
@@ -137,158 +205,140 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <button className="mt-8 w-full py-4 rounded-2xl bg-blue-500 hover:bg-blue-400 transition font-semibold shadow-[0_0_30px_rgba(59,130,246,0.45)]">
+                <button className="mt-10 w-full rounded-2xl py-4 border border-purple-500/40 hover:bg-purple-500/10 transition duration-300 font-semibold">
                   Ask AI Assistant
                 </button>
               </div>
 
-              <div className="border border-blue-500/10 rounded-3xl p-8 bg-zinc-900/50 hover:border-blue-500/40 transition duration-300">
-                <h3 className="text-2xl font-bold mb-6 text-blue-400">
-                  Staking
+              <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
+                <h3 className="text-3xl font-bold mb-8">
+                  Staking Overview
                 </h3>
 
-                <div className="space-y-5">
+                <div className="space-y-6 mb-8">
                   <div>
-                    <p className="text-gray-400 mb-2">
-                      Total Staked
-                    </p>
-
-                    <h4 className="text-4xl font-bold">
-                      42,420 NΩN
-                    </h4>
+                    <p className="text-gray-400 mb-2">Total Staked</p>
+                    <h4 className="text-4xl font-bold">42,420.69</h4>
                   </div>
 
                   <div>
-                    <p className="text-gray-400 mb-2">
-                      Current APY
-                    </p>
-
-                    <h4 className="text-3xl font-bold text-green-400">
-                      8.2%
-                    </h4>
+                    <p className="text-gray-400 mb-2">Current APY</p>
+                    <h4 className="text-4xl font-bold text-green-400">8.21%</h4>
                   </div>
                 </div>
 
-                <button className="mt-8 w-full py-4 rounded-2xl border border-blue-500/30 hover:bg-blue-500/10 transition font-semibold">
-                  Stake Tokens
+                <div className="flex gap-4">
+                  <button className="flex-1 rounded-2xl py-4 bg-blue-500 hover:bg-blue-400 transition font-semibold">
+                    Stake More
+                  </button>
+
+                  <button className="flex-1 rounded-2xl py-4 border border-blue-500/30 hover:bg-blue-500/10 transition font-semibold">
+                    Manage
+                  </button>
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
+                <h3 className="text-3xl font-bold mb-8">
+                  Activity Feed
+                </h3>
+
+                <div className="space-y-6 text-gray-300">
+                  <div>Staked 1,000 $SKNON</div>
+                  <div>Voted on Proposal #12</div>
+                  <div>Claimed rewards</div>
+                  <div>Delegated votes</div>
+                </div>
+
+                <button className="mt-10 w-full rounded-2xl py-4 border border-purple-500/30 hover:bg-purple-500/10 transition duration-300 font-semibold">
+                  View All Activity
                 </button>
               </div>
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="flex flex-col gap-8">
-
-            {/* WALLET */}
-            <div className="border border-blue-500/10 rounded-3xl p-8 bg-zinc-900/50 hover:border-blue-500/40 transition duration-300">
+          {/* RIGHT SIDEBAR */}
+          <div className="col-span-3 flex flex-col gap-7">
+            <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-2xl font-bold">
-                  Wallet
-                </h3>
+                <h3 className="text-3xl font-bold">Wallet</h3>
+                <span className="text-blue-400">View on Etherscan ↗</span>
+              </div>
 
-                <div className="text-sm text-green-400">
-                  Connected
+              <div className="rounded-2xl border border-blue-500/10 bg-[#081222] p-5 mb-8">
+                <p className="text-gray-400 mb-2">Connected Wallet</p>
+                <h4 className="text-2xl font-bold">0x3f...A7bC</h4>
+              </div>
+
+              <div className="space-y-7 mb-8">
+                <div>
+                  <p className="text-gray-400 mb-2">Balance</p>
+                  <h4 className="text-4xl font-bold">2.45 ETH</h4>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 mb-2">$SKNON Balance</p>
+                  <h4 className="text-4xl font-bold text-blue-400">25,678</h4>
                 </div>
               </div>
 
-              <div className="space-y-5">
-                <div>
-                  <p className="text-gray-400 mb-2">
-                    Address
-                  </p>
+              <div className="grid grid-cols-3 gap-4">
+                <button className="rounded-2xl py-3 border border-blue-500/30 hover:bg-blue-500/10 transition">
+                  Send
+                </button>
 
-                  <p className="break-all text-blue-400">
-                    0x3F...A7bC
-                  </p>
-                </div>
+                <button className="rounded-2xl py-3 border border-blue-500/30 hover:bg-blue-500/10 transition">
+                  Receive
+                </button>
 
-                <div>
-                  <p className="text-gray-400 mb-2">
-                    ETH Balance
-                  </p>
-
-                  <h4 className="text-3xl font-bold">
-                    2.45 ETH
-                  </h4>
-                </div>
-
-                <div>
-                  <p className="text-gray-400 mb-2">
-                    NΩN Balance
-                  </p>
-
-                  <h4 className="text-3xl font-bold text-blue-400">
-                    25,678
-                  </h4>
-                </div>
+                <button className="rounded-2xl py-3 border border-blue-500/30 hover:bg-blue-500/10 transition">
+                  Buy
+                </button>
               </div>
             </div>
 
-            {/* GOVERNANCE */}
-            <div className="border border-blue-500/10 rounded-3xl p-8 bg-zinc-900/50 hover:border-blue-500/40 transition duration-300">
-              <h3 className="text-2xl font-bold mb-8">
-                Governance
+            <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
+              <h3 className="text-3xl font-bold mb-10">
+                Governance Power
               </h3>
 
-              <div className="space-y-5 text-gray-300">
-                <div className="flex justify-between">
-                  <span>Voting Power</span>
-                  <span className="text-blue-400">25,678</span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span>Active Proposals</span>
-                  <span className="text-green-400">4</span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span>Treasury Status</span>
-                  <span className="text-green-400">Secure</span>
+              <div className="w-56 h-56 rounded-full border-[18px] border-purple-500/30 mx-auto flex items-center justify-center mb-10">
+                <div className="text-center">
+                  <h4 className="text-4xl font-bold mb-2">25,678</h4>
+                  <p className="text-green-400">+15.32%</p>
                 </div>
               </div>
 
-              <button className="mt-8 w-full py-4 rounded-2xl bg-purple-500 hover:bg-purple-400 transition font-semibold shadow-[0_0_30px_rgba(168,85,247,0.45)]">
-                View Proposals
+              <button className="w-full rounded-2xl py-4 bg-purple-600 hover:bg-purple-500 transition duration-300 font-semibold shadow-[0_0_30px_rgba(168,85,247,0.35)]">
+                Delegate Votes
               </button>
             </div>
 
-            {/* CONTRACTS */}
-            <div className="border border-blue-500/10 rounded-3xl p-8 bg-zinc-900/50 hover:border-blue-500/40 transition duration-300">
-              <h3 className="text-2xl font-bold mb-8">
-                Smart Contracts
+            <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
+              <h3 className="text-3xl font-bold mb-8">
+                Recent Proposals
               </h3>
 
-              <div className="space-y-6 text-sm">
-                <div>
-                  <p className="text-gray-400 mb-2">
-                    Token Contract
-                  </p>
-
-                  <p className="text-blue-400 break-all">
-                    0xE9380E2C0DFaA2b77691f4824AaCe6E4ca0132e5
-                  </p>
+              <div className="space-y-6 text-lg">
+                <div className="flex justify-between">
+                  <span>Treasury Fund Allocation</span>
+                  <span className="text-green-400">Active</span>
                 </div>
 
-                <div>
-                  <p className="text-gray-400 mb-2">
-                    LP Timelock
-                  </p>
-
-                  <p className="text-blue-400 break-all">
-                    0x7818AD63a64771e3c8fD2e5CEd0A5d0Ca199BFDe
-                  </p>
+                <div className="flex justify-between">
+                  <span>Staking Rewards Update</span>
+                  <span className="text-green-400">Active</span>
                 </div>
 
-                <div>
-                  <p className="text-gray-400 mb-2">
-                    Multisig
-                  </p>
-
-                  <p className="text-blue-400 break-all">
-                    0x83a962B986aB12a6316a4E7Dccf8261221A7C068
-                  </p>
+                <div className="flex justify-between">
+                  <span>ChainLink Partnership</span>
+                  <span className="text-blue-400">Passed</span>
                 </div>
               </div>
+
+              <button className="mt-10 w-full rounded-2xl py-4 border border-blue-500/30 hover:bg-blue-500/10 transition duration-300 font-semibold">
+                View All Proposals
+              </button>
             </div>
           </div>
         </div>
