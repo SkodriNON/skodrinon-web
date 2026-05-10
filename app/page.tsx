@@ -3,7 +3,7 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white">
 
       {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 backdrop-blur border-b border-gray-800 bg-black/70 px-8 py-5 flex items-center justify-between">
+      <nav className="sticky top-0 z-50 backdrop-blur-xl border-b border-blue-500/10 bg-black/60 shadow-[0_0_25px_rgba(59,130,246,0.08)] px-8 py-5 flex items-center justify-between">
 
         <h1 className="text-2xl font-bold text-white">
           SkodriNΩN
