@@ -296,29 +296,14 @@ export default function Dashboard() {
               </div>
 
               <div className="rounded-2xl border border-blue-500/10 bg-[#081222] p-5 mb-8">
-                <p className="text-gray-400 mb-2">Connected Wallet</p>
-                <h4 className="text-2xl font-bold">
-  {address
-    ? `${address.slice(0, 6)}...${address.slice(-4)}`
-    : "Not Connected"}
-</h4>
-              </div>
+  <p className="text-gray-400 mb-2">Connected Wallet</p>
 
-              <div className="space-y-7 mb-8">
-                <div>
-                  <p className="text-gray-400 mb-2">Balance</p>
-                  <h4 className="text-4xl font-bold">2.45 ETH</h4>
-                </div>
-
-                <div>
-                  <p className="text-gray-400 mb-2">$SKNON Balance</p>
-                  <h4 className="text-4xl font-bold text-blue-400">
-  {tokenBalance
-    ? Number(tokenBalance) / 1e18
-    : 0}
-</h4>
-                </div>
-              </div>
+  <h4 className="text-2xl font-bold">
+    {address
+      ? `${address.slice(0, 6)}...${address.slice(-4)}`
+      : "Not Connected"}
+  </h4>
+</div>
 
               <div className="grid grid-cols-3 gap-4">
                 <button className="rounded-2xl py-3 border border-blue-500/30 hover:bg-blue-500/10 transition">
