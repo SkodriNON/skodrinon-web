@@ -60,7 +60,28 @@ export default function Home() {
           Built on Ethereum with focus on transparency,
           liquidity security and long-term decentralized governance.
         </p>
+        <div className="flex flex-wrap justify-center gap-6 mb-14">
 
+          <a
+            href="https://x.com/SkodriNON_AI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-10 py-4 rounded-2xl bg-blue-500 hover:bg-blue-400 hover:scale-105 transition duration-300 font-semibold shadow-[0_0_35px_rgba(59,130,246,0.5)]"
+          >
+            Join Community
+          </a>
+
+          <a
+            href="https://t.me/SkodriNON_Official"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-10 py-4 rounded-2xl border border-gray-700 hover:border-blue-400 hover:bg-blue-500/10 hover:scale-105 transition duration-300 font-semibold"
+          >
+            Telegram
+          </a>
+
+        </div>
+        
         <div className="grid grid-cols-2 gap-4 max-w-2xl w-full">
 
           <div className="border border-gray-800 p-8 rounded-2xl bg-zinc-900/40 hover:border-blue-500/40 transition">
