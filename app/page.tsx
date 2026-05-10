@@ -316,7 +316,7 @@ export default function Home() {
         <div className="flex flex-wrap justify-center gap-6">
 
           <a
-            href="https://x.com"
+            href="https://x.com/SkodriNON_AI"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500/40 transition bg-zinc-900/40"
@@ -325,7 +325,7 @@ export default function Home() {
           </a>
 
           <a
-            href="https://github.com"
+            href="https://github.com/SkodriNON"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500/40 transition bg-zinc-900/40"
@@ -334,7 +334,7 @@ export default function Home() {
           </a>
 
           <a
-            href="https://t.me"
+            href="https://t.me/SkodriNON_Official"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500/40 transition bg-zinc-900/40"
