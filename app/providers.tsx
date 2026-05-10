@@ -2,10 +2,19 @@
 
 import { WagmiProvider, createConfig, http } from "wagmi";
 import { sepolia } from "wagmi/chains";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { injected } from "wagmi/connectors";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
 const config = createConfig({
   chains: [sepolia],
+
+  connectors: [
+    injected(),
+  ],
+
   transports: {
     [sepolia.id]: http(),
   },
