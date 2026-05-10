@@ -297,7 +297,11 @@ export default function Dashboard() {
 
               <div className="rounded-2xl border border-blue-500/10 bg-[#081222] p-5 mb-8">
                 <p className="text-gray-400 mb-2">Connected Wallet</p>
-                <h4 className="text-2xl font-bold">0x3f...A7bC</h4>
+                <h4 className="text-2xl font-bold">
+  {address
+    ? `${address.slice(0, 6)}...${address.slice(-4)}`
+    : "Not Connected"}
+</h4>
               </div>
 
               <div className="space-y-7 mb-8">
@@ -308,7 +312,11 @@ export default function Dashboard() {
 
                 <div>
                   <p className="text-gray-400 mb-2">$SKNON Balance</p>
-                  <h4 className="text-4xl font-bold text-blue-400">25,678</h4>
+                  <h4 className="text-4xl font-bold text-blue-400">
+  {tokenBalance
+    ? Number(tokenBalance) / 1e18
+    : 0}
+</h4>
                 </div>
               </div>
 
