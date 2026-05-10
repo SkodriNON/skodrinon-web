@@ -301,6 +301,70 @@ export default function Home() {
         </div>
 
       </section>
+       {/* ECOSYSTEM STATS */}
+
+      <section
+        id="stats"
+        className="px-8 py-24 border-t border-gray-900"
+      >
+
+        <h3 className="text-4xl font-bold mb-12 text-center">
+          Ecosystem Stats
+        </h3>
+
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+
+          <div className="border border-gray-800 rounded-2xl p-8 text-center bg-zinc-900/40 hover:border-blue-500 hover:shadow-[0_0_35px_rgba(59,130,246,0.4)] transition duration-300">
+
+            <h4 className="text-4xl font-bold text-blue-400 mb-2">
+              1B
+            </h4>
+
+            <p className="text-gray-400">
+              Total Supply
+            </p>
+
+          </div>
+
+          <div className="border border-gray-800 rounded-2xl p-8 text-center bg-zinc-900/40 hover:border-blue-500 hover:shadow-[0_0_35px_rgba(59,130,246,0.4)] transition duration-300">
+
+            <h4 className="text-4xl font-bold text-blue-400 mb-2">
+              24M
+            </h4>
+
+            <p className="text-gray-400">
+              LP Lock
+            </p>
+
+          </div>
+
+          <div className="border border-gray-800 rounded-2xl p-8 text-center bg-zinc-900/40 hover:border-blue-500 hover:shadow-[0_0_35px_rgba(59,130,246,0.4)] transition duration-300">
+
+            <h4 className="text-4xl font-bold text-blue-400 mb-2">
+              100%
+            </h4>
+
+            <p className="text-gray-400">
+              On-chain Verified
+            </p>
+
+          </div>
+
+          <div className="border border-gray-800 rounded-2xl p-8 text-center bg-zinc-900/40 hover:border-blue-500 hover:shadow-[0_0_35px_rgba(59,130,246,0.4)] transition duration-300">
+
+            <h4 className="text-4xl font-bold text-blue-400 mb-2">
+              ETH
+            </h4>
+
+            <p className="text-gray-400">
+              Ethereum Native
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>     
        {/* AI INFRASTRUCTURE */}
 
       <section
