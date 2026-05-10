@@ -89,6 +89,7 @@ export default function Dashboard() {
 
             <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
               🔔
+              
               <button
   onClick={() =>
     isConnected
