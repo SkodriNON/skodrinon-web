@@ -301,7 +301,74 @@ export default function Home() {
         </div>
 
       </section>
+      {/* ROADMAP */}
 
+      <section
+        id="roadmap"
+        className="px-8 py-24 border-t border-gray-900"
+      >
+
+        <h3 className="text-4xl font-bold mb-12 text-center">
+          Roadmap
+        </h3>
+
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <div className="border border-gray-800 p-8 rounded-2xl bg-zinc-900/40 hover:border-blue-500/40 transition">
+
+            <h4 className="text-2xl font-semibold mb-4">
+              Phase 1
+            </h4>
+
+            <p className="text-gray-400">
+              Brand identity, ecosystem architecture,
+              GitHub infrastructure and website deployment.
+            </p>
+
+          </div>
+
+          <div className="border border-gray-800 p-8 rounded-2xl bg-zinc-900/40 hover:border-blue-500/40 transition">
+
+            <h4 className="text-2xl font-semibold mb-4">
+              Phase 2
+            </h4>
+
+            <p className="text-gray-400">
+              Community expansion, governance system
+              and Ethereum ecosystem integration.
+            </p>
+
+          </div>
+
+          <div className="border border-gray-800 p-8 rounded-2xl bg-zinc-900/40 hover:border-blue-500/40 transition">
+
+            <h4 className="text-2xl font-semibold mb-4">
+              Phase 3
+            </h4>
+
+            <p className="text-gray-400">
+              AI infrastructure tools, decentralized
+              utilities and smart ecosystem scaling.
+            </p>
+
+          </div>
+
+          <div className="border border-gray-800 p-8 rounded-2xl bg-zinc-900/40 hover:border-blue-500/40 transition">
+
+            <h4 className="text-2xl font-semibold mb-4">
+              Phase 4
+            </h4>
+
+            <p className="text-gray-400">
+              Global ecosystem growth, partnerships
+              and advanced Web3 integrations.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
       {/* COMMUNITY */}
 
       <section
