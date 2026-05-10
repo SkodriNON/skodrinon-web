@@ -38,6 +38,12 @@ export default function Home() {
           >
             Community
           </a>
+          <a
+           href="/dashboard"
+           className="hover:text-blue-400 transition"
+           >
+            Dashboard
+            </a>
 
         </div>
 
