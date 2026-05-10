@@ -89,9 +89,6 @@ export default function Dashboard() {
 
             <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
               🔔
-            </button>
-
-            <button className="px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:scale-105 transition duration-300">
               <button
   onClick={() =>
     isConnected
