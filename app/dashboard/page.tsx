@@ -1,10 +1,9 @@
 "use client";
 import { useConnect, useAccount, useDisconnect } from "wagmi";
-import { injected } from "wagmi/connectors";
 export default function Dashboard() {
   const { address, isConnected } = useAccount();
 
-  const { connect } = useConnect();
+  const { connect, connectors } = useConnect();
 
   const { disconnect } = useDisconnect();
   return (
@@ -96,7 +95,7 @@ export default function Dashboard() {
     onClick={() =>
       isConnected
         ? disconnect()
-        : connect({ connector: injected() })
+        : connect({ connector: connectors[0] })
     }
     className="px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:scale-105 transition duration-300"
   >
