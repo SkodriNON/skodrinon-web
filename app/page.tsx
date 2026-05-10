@@ -301,6 +301,61 @@ export default function Home() {
         </div>
 
       </section>
+       {/* AI INFRASTRUCTURE */}
+
+      <section
+        id="ai"
+        className="px-8 py-24 border-t border-gray-900"
+      >
+
+        <h3 className="text-4xl font-bold mb-12 text-center">
+          AI Infrastructure
+        </h3>
+
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <div className="border border-gray-800 p-8 rounded-2xl bg-zinc-900/40 hover:border-blue-500/40 transition">
+
+            <h4 className="text-2xl font-semibold mb-4">
+              AI Governance
+            </h4>
+
+            <p className="text-gray-400">
+              Intelligent governance architecture
+              designed for transparent decentralized ecosystems.
+            </p>
+
+          </div>
+
+          <div className="border border-gray-800 p-8 rounded-2xl bg-zinc-900/40 hover:border-blue-500/40 transition">
+
+            <h4 className="text-2xl font-semibold mb-4">
+              Secure Infrastructure
+            </h4>
+
+            <p className="text-gray-400">
+              Advanced smart contract security,
+              multisig systems and Ethereum-native protection.
+            </p>
+
+          </div>
+
+          <div className="border border-gray-800 p-8 rounded-2xl bg-zinc-900/40 hover:border-blue-500/40 transition">
+
+            <h4 className="text-2xl font-semibold mb-4">
+              Web3 Intelligence
+            </h4>
+
+            <p className="text-gray-400">
+              AI-powered ecosystem scaling,
+              analytics and decentralized infrastructure tools.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>     
       {/* ROADMAP */}
 
       <section
