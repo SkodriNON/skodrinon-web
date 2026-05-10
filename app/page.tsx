@@ -441,7 +441,7 @@ export default function Home() {
             href="https://x.com/SkodriNON_AI"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500/40 transition bg-zinc-900/40"
+            cclassName="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)] hover:-translate-y-1 transition duration-300 bg-zinc-900/40"
           >
             X / Twitter
           </a>
@@ -450,7 +450,7 @@ export default function Home() {
             href="https://github.com/SkodriNON"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500/40 transition bg-zinc-900/40"
+            className="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)] hover:-translate-y-1 transition duration-300 bg-zinc-900/40"
           >
             GitHub
           </a>
@@ -459,7 +459,7 @@ export default function Home() {
             href="https://t.me/SkodriNON_Official"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500/40 transition bg-zinc-900/40"
+            className="border border-gray-800 px-8 py-4 rounded-2xl hover:border-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)] hover:-translate-y-1 transition duration-300 bg-zinc-900/40"
           >
             Telegram
           </a>
