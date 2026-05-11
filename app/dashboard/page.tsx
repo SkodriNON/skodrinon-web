@@ -31,6 +31,11 @@ export default function Dashboard() {
 });
 const [ethPrice, setEthPrice] = useState(0);
 const [transactions, setTransactions] = useState<string[]>([]);
+const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
 
 useEffect(() => {
   const fetchPrice = async () => {
@@ -50,24 +55,31 @@ useEffect(() => {
     if (!address) return;
 
     const res = await fetch(
-  `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=4&sort=desc&apikey=API_KEY_JOTE`
-);
+  `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=4&sort=desc&apikey=${process.env.NEXT_PUBLIC_ETHERSCAN_API}`
+
     );
 
     const data = await res.json();
 
-    if (data.result) {
+    if (Array.isArray(data.result)) {
+      console.log(data.result);
       const txs = data.result.map(
         (tx: any) =>
           `TX: ${tx.hash.slice(0, 10)}...`
       );
 
       setTransactions(txs);
+      setTransactions([
+  "TX: TEST123",
+  "TX: TEST456",
+]);
     }
   };
 
   fetchTransactions();
 }, [address]);
+
+if (!mounted) return null;
 
   return (
     <main className="min-h-screen bg-[#020617] text-white flex overflow-hidden">
@@ -327,14 +339,14 @@ useEffect(() => {
                 </h3>
 
                 <div className="space-y-6 text-gray-300">
-                  {transactions.length > 0 ? (
-                   transactions.map((tx, index) => (
-                    <div key={index}>{tx}</div>
-                   ))
+                    {transactions.length > 0 ? (
+                     transactions.map((tx, index) => (
+                <div key={index}>{tx}</div>
+                    ))
                  ) : (
-                   <div>No recent transactions</div>
-                 )}
-               </div>
+                <div>No recent transactions</div>
+                  )}
+                </div>
 
                 <button className="mt-10 w-full rounded-2xl py-4 border border-purple-500/30 hover:bg-purple-500/10 transition duration-300 font-semibold">
                   View All Activity
