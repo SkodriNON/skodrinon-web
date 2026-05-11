@@ -30,6 +30,7 @@ export default function Dashboard() {
   },
 });
 const [ethPrice, setEthPrice] = useState(0);
+const [transactions, setTransactions] = useState<string[]>([]);
 
 useEffect(() => {
   const fetchPrice = async () => {
@@ -44,6 +45,28 @@ useEffect(() => {
 
   fetchPrice();
 }, []);
+useEffect(() => {
+  const fetchTransactions = async () => {
+    if (!address) return;
+
+    const res = await fetch(
+      `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=4&sort=desc`
+    );
+
+    const data = await res.json();
+
+    if (data.result) {
+      const txs = data.result.map(
+        (tx: any) =>
+          `TX: ${tx.hash.slice(0, 10)}...`
+      );
+
+      setTransactions(txs);
+    }
+  };
+
+  fetchTransactions();
+}, [address]);
 
   return (
     <main className="min-h-screen bg-[#020617] text-white flex overflow-hidden">
@@ -303,11 +326,14 @@ useEffect(() => {
                 </h3>
 
                 <div className="space-y-6 text-gray-300">
-                  <div>Staked 1,000 $SKNON</div>
-                  <div>Voted on Proposal #12</div>
-                  <div>Claimed rewards</div>
-                  <div>Delegated votes</div>
-                </div>
+                  {transactions.length > 0 ? (
+                   transactions.map((tx, index) => (
+                    <div key={index}>{tx}</div>
+                   ))
+                 ) : (
+                   <div>No recent transactions</div>
+                 )}
+               </div>
 
                 <button className="mt-10 w-full rounded-2xl py-4 border border-purple-500/30 hover:bg-purple-500/10 transition duration-300 font-semibold">
                   View All Activity
