@@ -1,4 +1,12 @@
 "use client";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import { useEffect, useState } from "react";
 import {
   useConnect,
@@ -30,6 +38,7 @@ export default function Dashboard() {
   },
 });
 const [ethPrice, setEthPrice] = useState(0);
+const [chartData, setChartData] = useState([]);
 const [transactions, setTransactions] = useState<string[]>([]);
 const [mounted, setMounted] = useState(false);
 
@@ -50,6 +59,25 @@ useEffect(() => {
 
   fetchPrice();
 }, []);
+
+useEffect(() => {
+  const fetchChart = async () => {
+    const res = await fetch(
+      "https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=7"
+    );
+
+    const data = await res.json();
+
+    const formatted = data.prices.map((item: any) => ({
+      price: item[1],
+    }));
+
+    setChartData(formatted);
+  };
+
+  fetchChart();
+}, []);
+
 useEffect(() => {
   const fetchTransactions = async () => {
     if (!address) return;
@@ -238,10 +266,23 @@ if (!mounted) return null;
                   </button>
                 </div>
 
-                <div className="h-[350px] rounded-3xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-blue-500/10 flex items-center justify-center text-gray-500 text-2xl">
-                  Advanced Analytics Chart
-                </div>
-              </div>
+                <div className="h-[350px] rounded-3xl bg-[#081222] border border-blue-500/10 p-4">
+                <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={chartData}>
+                 <XAxis dataKey="price" hide />
+                <YAxis hide domain={["auto", "auto"]} />
+              <Tooltip />
+
+              <Line
+                 type="monotone"
+                  dataKey="price"
+                  stroke="#3b82f6"
+                  strokeWidth={3}
+                  dot={false}
+              />
+            </LineChart>
+            </ResponsiveContainer>
+             </div>
 
               <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8">
                 <h3 className="text-3xl font-bold mb-10">
