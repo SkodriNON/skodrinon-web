@@ -317,7 +317,9 @@ export default function Dashboard() {
     <p className="text-gray-400 mb-2">Balance</p>
 
     <h4 className="text-4xl font-bold">
-      2.45 ETH
+      {ethBalance
+  ? Number(ethBalance.formatted).toFixed(4)
+  : "0"} ETH
     </h4>
   </div>
 
