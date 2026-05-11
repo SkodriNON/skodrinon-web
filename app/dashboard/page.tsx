@@ -1,11 +1,15 @@
 "use client";
+import { useEffect, useState } from "react";
 import {
   useConnect,
   useAccount,
   useDisconnect,
   useBalance,
 } from "wagmi";
-import { useReadContract } from "wagmi";
+import {
+  useReadContract,
+  useWriteContract,
+} from "wagmi";
 import { erc20Abi } from "@/lib/erc20";
 export default function Dashboard() {
   const { address, isConnected } = useAccount();
@@ -25,7 +29,34 @@ export default function Dashboard() {
     enabled: !!address,
   },
 });
+const [ethPrice, setEthPrice] = useState(0);
 
+useEffect(() => {
+  const fetchPrice = async () => {
+    const res = await fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+    );
+
+    const data = await res.json();
+
+    setEthPrice(data.ethereum.usd);
+  };
+
+  fetchPrice();
+}, []);
+const { writeContract } = useWriteContract();
+
+const handleStake = async () => {
+  writeContract({
+    address: "0xE9380E2C0DFaA2b77691f4824AaCe6E4ca0132e5",
+    abi: erc20Abi,
+    functionName: "approve",
+    args: [
+      "KONTRATA_STAKING",
+      BigInt(1000000000000000000),
+    ],
+  });
+};
   return (
     <main className="min-h-screen bg-[#020617] text-white flex overflow-hidden">
       {/* SIDEBAR */}
@@ -130,7 +161,7 @@ export default function Dashboard() {
         {/* MINI STATS */}
         <div className="grid grid-cols-5 gap-6 mb-8">
           {[
-            ['0.01245', '$SKNON Price'],
+            [`${ethPrice}`, 'ETH Price'],
             ['$12.45M', 'Market Cap'],
             ['$8.72M', 'TVL'],
             ['12,458', 'Holders'],
@@ -266,7 +297,10 @@ export default function Dashboard() {
                 </div>
 
                 <div className="flex gap-4">
-                  <button className="flex-1 rounded-2xl py-4 bg-blue-500 hover:bg-blue-400 transition font-semibold">
+                  <button
+  onClick={handleStake}
+  className="flex-1 rounded-2xl py-4 bg-blue-500 hover:bg-blue-400 transition font-semibold"
+>
                     Stake More
                   </button>
 
@@ -300,7 +334,13 @@ export default function Dashboard() {
             <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
               <div className="flex items-center justify-between mb-8">
                 <h3 className="text-3xl font-bold">Wallet</h3>
-                <span className="text-blue-400">View on Etherscan ↗</span>
+                <a
+  href={`https://sepolia.etherscan.io/address/${address}`}
+  target="_blank"
+  className="text-blue-400"
+>
+  View on Etherscan ↗
+</a>
               </div>
 
               <div className="rounded-2xl border border-blue-500/10 bg-[#081222] p-5 mb-8">
