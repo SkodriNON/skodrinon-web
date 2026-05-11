@@ -90,7 +90,10 @@ export default function Dashboard() {
         const data = await res.json();
 
         const formatted = data.prices.map((item: any) => ({
-          time: new Date(item[0]).toLocaleDateString(),
+          time: new Date(item[0]).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
           price: item[1],
         }));
 
@@ -133,16 +136,16 @@ export default function Dashboard() {
   if (!mounted) return null;
 
   return (
-    <main className="min-h-screen bg-[#020617] text-white flex overflow-hidden">
-      {/* SIDEBAR */}
-      <aside className="w-[260px] min-h-screen border-r border-blue-500/10 bg-[#040816] px-5 py-6 flex flex-col justify-between">
+    <main className="min-h-screen bg-[#020617] text-white flex flex-col lg:flex-row overflow-hidden">
+      {/* SIDEBAR DESKTOP */}
+      <aside className="hidden lg:flex w-[260px] min-h-screen border-r border-blue-500/10 bg-[#040816] px-5 py-6 flex-col justify-between">
         <div>
           <div className="flex items-center gap-3 mb-10">
             <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-[0_0_25px_rgba(59,130,246,0.5)]">
               △
             </div>
 
-            <h1 className="text-4xl font-bold tracking-wide">
+            <h1 className="text-3xl font-bold tracking-wide">
               SkodriNΩN
             </h1>
           </div>
@@ -194,20 +197,38 @@ export default function Dashboard() {
       </aside>
 
       {/* MAIN */}
-      <section className="flex-1 overflow-y-auto bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_30%)] px-8 py-7">
+      <section className="flex-1 overflow-y-auto bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_30%)] px-4 sm:px-6 lg:px-8 py-5 lg:py-7">
+        {/* MOBILE HEADER */}
+        <div className="flex items-center justify-between mb-8 lg:hidden">
+          <h1 className="text-2xl font-bold">SkodriNΩN</h1>
+
+          <button
+            onClick={() =>
+              isConnected
+                ? disconnect()
+                : connect({ connector: connectors[0] })
+            }
+            className="px-4 py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-sm font-semibold"
+          >
+            {isConnected
+              ? `${address?.slice(0, 6)}...${address?.slice(-4)}`
+              : "Connect"}
+          </button>
+        </div>
+
         {/* TOPBAR */}
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
           <div>
-            <h2 className="text-5xl font-bold mb-4">
-              Welcome back, SkodriNΩN 👋
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              Welcome back 👋
             </h2>
 
-            <p className="text-gray-400 text-lg">
+            <p className="text-gray-400 text-base sm:text-lg">
               Here's what's happening in your ecosystem today.
             </p>
           </div>
 
-          <div className="flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-5">
             <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
               🔍
             </button>
@@ -222,7 +243,7 @@ export default function Dashboard() {
                   ? disconnect()
                   : connect({ connector: connectors[0] })
               }
-              className="px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:scale-105 transition duration-300"
+              className="px-4 sm:px-7 py-3 sm:py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:scale-105 transition duration-300"
             >
               {isConnected
                 ? `${address?.slice(0, 6)}...${address?.slice(-4)}`
@@ -232,7 +253,7 @@ export default function Dashboard() {
         </div>
 
         {/* MINI STATS */}
-        <div className="grid grid-cols-5 gap-6 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-8">
           {[
             [`$${ethPrice}`, "ETH Price"],
             ["$12.45M", "Market Cap"],
@@ -240,19 +261,24 @@ export default function Dashboard() {
             ["12,458", "Holders"],
             ["Ethereum", "Network"],
           ].map(([value, label]) => (
-            <div key={label}>
-              <p className="text-gray-500 mb-2">{label}</p>
-              <h4 className="text-2xl font-bold">{value}</h4>
+            <div
+              key={label}
+              className="rounded-2xl border border-blue-500/10 bg-[#07101f]/70 p-4"
+            >
+              <p className="text-gray-500 mb-2 text-sm">{label}</p>
+              <h4 className="text-lg sm:text-2xl font-bold">
+                {value}
+              </h4>
             </div>
           ))}
         </div>
 
         {/* MAIN GRID */}
-        <div className="grid grid-cols-12 gap-7">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7">
           {/* LEFT */}
-          <div className="col-span-9 flex flex-col gap-7">
+          <div className="lg:col-span-9 flex flex-col gap-7">
             {/* TOP CARDS */}
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
               {[
                 ["12,543.78", "Total Portfolio"],
                 ["42,420.69", "Staked $SKNON"],
@@ -265,7 +291,9 @@ export default function Dashboard() {
                 >
                   <p className="text-gray-400 mb-4">{label}</p>
 
-                  <h3 className="text-4xl font-bold mb-3">{value}</h3>
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
+                    {value}
+                  </h3>
 
                   <p className="text-green-400 font-semibold">
                     +12.45%
@@ -275,11 +303,11 @@ export default function Dashboard() {
             </div>
 
             {/* CHART + DONUT */}
-            <div className="grid grid-cols-3 gap-7">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-7">
               {/* CHART */}
-              <div className="col-span-2 rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8">
+              <div className="xl:col-span-2 rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-4 sm:p-6 lg:p-8">
                 <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-3xl font-bold">
+                  <h3 className="text-2xl sm:text-3xl font-bold">
                     Portfolio Performance
                   </h3>
 
@@ -288,7 +316,7 @@ export default function Dashboard() {
                   </button>
                 </div>
 
-                <div className="h-[350px] rounded-3xl bg-[#081222] border border-blue-500/10 p-4">
+                <div className="h-[300px] sm:h-[350px] rounded-3xl bg-[#081222] border border-blue-500/10 p-4">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={chartData}>
                       <CartesianGrid
@@ -329,19 +357,22 @@ export default function Dashboard() {
               </div>
 
               {/* DONUT */}
-              <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8">
-                <h3 className="text-3xl font-bold mb-10">
+              <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6 sm:p-8">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-10">
                   Portfolio Allocation
                 </h3>
 
-                <div className="w-56 h-56 mx-auto rounded-full border-[18px] border-blue-500/20 flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.15)] mb-10">
+                <div className="w-40 h-40 sm:w-56 sm:h-56 mx-auto rounded-full border-[18px] border-blue-500/20 flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.15)] mb-10">
                   <div className="text-center">
                     <p className="text-gray-400 mb-2">Total</p>
-                    <h4 className="text-3xl font-bold">$12,543</h4>
+
+                    <h4 className="text-2xl sm:text-3xl font-bold">
+                      $12,543
+                    </h4>
                   </div>
                 </div>
 
-                <div className="space-y-5 text-lg">
+                <div className="space-y-5 text-base sm:text-lg">
                   <div className="flex justify-between">
                     <span>$SKNON</span>
                     <span>60.2%</span>
@@ -361,13 +392,14 @@ export default function Dashboard() {
             </div>
 
             {/* LOWER GRID */}
-            <div className="grid grid-cols-3 gap-7">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
+              {/* AI */}
               <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
-                <h3 className="text-3xl font-bold mb-8 text-blue-400">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-blue-400">
                   AI Insights
                 </h3>
 
-                <div className="space-y-6 text-lg">
+                <div className="space-y-6 text-base sm:text-lg">
                   <div className="flex justify-between">
                     <span>Market Sentiment</span>
                     <span className="text-green-400">Bullish</span>
@@ -375,7 +407,9 @@ export default function Dashboard() {
 
                   <div className="flex justify-between">
                     <span>Risk Alert</span>
-                    <span className="text-yellow-400">Medium Risk</span>
+                    <span className="text-yellow-400">
+                      Medium Risk
+                    </span>
                   </div>
 
                   <div className="flex justify-between">
@@ -385,12 +419,13 @@ export default function Dashboard() {
                 </div>
               </div>
 
+              {/* ACTIVITY */}
               <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
-                <h3 className="text-3xl font-bold mb-8">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-8">
                   Activity Feed
                 </h3>
 
-                <div className="space-y-6 text-gray-300">
+                <div className="space-y-6 text-gray-300 break-all">
                   {transactions.length > 0 ? (
                     transactions.map((tx, index) => (
                       <div key={index}>{tx}</div>
@@ -401,8 +436,9 @@ export default function Dashboard() {
                 </div>
               </div>
 
+              {/* WALLET */}
               <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
-                <h3 className="text-3xl font-bold mb-8">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-8">
                   Wallet
                 </h3>
 
@@ -412,7 +448,7 @@ export default function Dashboard() {
                       ETH Balance
                     </p>
 
-                    <h4 className="text-3xl font-bold">
+                    <h4 className="text-2xl sm:text-3xl font-bold">
                       {ethBalance
                         ? (
                             Number(ethBalance.value) / 1e18
@@ -427,7 +463,7 @@ export default function Dashboard() {
                       $SKNON Balance
                     </p>
 
-                    <h4 className="text-3xl font-bold text-blue-400">
+                    <h4 className="text-2xl sm:text-3xl font-bold text-blue-400">
                       {tokenBalance
                         ? (
                             Number(tokenBalance) / 1e18
@@ -439,7 +475,7 @@ export default function Dashboard() {
                   <a
                     href={`https://sepolia.etherscan.io/address/${address}`}
                     target="_blank"
-                    className="block text-blue-400 hover:text-blue-300 transition"
+                    className="block text-blue-400 hover:text-blue-300 transition break-all"
                   >
                     View on Etherscan ↗
                   </a>
@@ -449,15 +485,15 @@ export default function Dashboard() {
           </div>
 
           {/* RIGHT SIDEBAR */}
-          <div className="col-span-3 flex flex-col gap-7">
+          <div className="lg:col-span-3 flex flex-col gap-7">
             <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
-              <h3 className="text-3xl font-bold mb-10">
+              <h3 className="text-2xl sm:text-3xl font-bold mb-10">
                 Governance Power
               </h3>
 
-              <div className="w-56 h-56 rounded-full border-[18px] border-purple-500/30 mx-auto flex items-center justify-center mb-10">
+              <div className="w-40 h-40 sm:w-56 sm:h-56 rounded-full border-[18px] border-purple-500/30 mx-auto flex items-center justify-center mb-10">
                 <div className="text-center">
-                  <h4 className="text-4xl font-bold mb-2">
+                  <h4 className="text-3xl sm:text-4xl font-bold mb-2">
                     25,678
                   </h4>
 
