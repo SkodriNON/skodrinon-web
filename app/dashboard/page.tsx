@@ -1,5 +1,10 @@
 "use client";
-import { useConnect, useAccount, useDisconnect } from "wagmi";
+import {
+  useConnect,
+  useAccount,
+  useDisconnect,
+  useBalance,
+} from "wagmi";
 import { useReadContract } from "wagmi";
 import { erc20Abi } from "@/lib/erc20";
 export default function Dashboard() {
