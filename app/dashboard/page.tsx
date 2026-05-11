@@ -50,7 +50,7 @@ useEffect(() => {
     if (!address) return;
 
     const res = await fetch(
-  `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=4&sort=desc&apikey=1NP77G24DPQSFQ7CGZAP695N6Q26JBIJSN`
+  `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=4&sort=desc&apikey=API_KEY_JOTE`
 );
     );
 
