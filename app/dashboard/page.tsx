@@ -318,7 +318,7 @@ export default function Dashboard() {
 
     <h4 className="text-4xl font-bold">
       {ethBalance
-  ? Number(ethBalance.formatted).toFixed(4)
+  ? Number(ethBalance.value) / 1e18
   : "0"} ETH
     </h4>
   </div>
