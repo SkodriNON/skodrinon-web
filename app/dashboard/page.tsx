@@ -44,19 +44,7 @@ useEffect(() => {
 
   fetchPrice();
 }, []);
-const { writeContract } = useWriteContract();
 
-const handleStake = async () => {
-  writeContract({
-    address: "0xE9380E2C0DFaA2b77691f4824AaCe6E4ca0132e5",
-    abi: erc20Abi,
-    functionName: "approve",
-    args: [
-      "KONTRATA_STAKING",
-      BigInt(1000000000000000000),
-    ],
-  });
-};
   return (
     <main className="min-h-screen bg-[#020617] text-white flex overflow-hidden">
       {/* SIDEBAR */}
