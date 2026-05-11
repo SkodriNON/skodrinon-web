@@ -323,7 +323,7 @@ export default function Dashboard() {
 
     <h4 className="text-4xl font-bold text-blue-400">
       {tokenBalance
-        ? tokenBalance.toString()
+        (Number(tokenBalance) / 1e18).toLocaleString()
         : "0"}
     </h4>
   </div>
