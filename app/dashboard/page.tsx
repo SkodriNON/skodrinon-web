@@ -267,22 +267,22 @@ if (!mounted) return null;
                 </div>
 
                 <div className="h-[350px] rounded-3xl bg-[#081222] border border-blue-500/10 p-4">
-                <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData}>
-                 <XAxis dataKey="price" hide />
-                <YAxis hide domain={["auto", "auto"]} />
-              <Tooltip />
+                  <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={chartData}>
+                  <XAxis dataKey="price" hide />
+                  <YAxis hide domain={["auto", "auto"]} />
+                  <Tooltip />
 
-              <Line
-                 type="monotone"
-                  dataKey="price"
-                  stroke="#3b82f6"
-                  strokeWidth={3}
-                  dot={false}
-              />
-            </LineChart>
-            </ResponsiveContainer>
-             </div>
+                  <Line
+                    type="monotone"
+                    dataKey="price"
+                    stroke="#3b82f6"
+                    strokeWidth={3}
+                    dot={false}
+                />
+                </LineChart>
+              </ResponsiveContainer>
+              </div>
 
               <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8">
                 <h3 className="text-3xl font-bold mb-10">
