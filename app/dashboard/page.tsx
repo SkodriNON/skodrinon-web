@@ -1,4 +1,7 @@
 "use client";
+
+import { useEffect, useState } from "react";
+
 import {
   LineChart,
   Line,
@@ -6,108 +9,128 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  CartesianGrid,
 } from "recharts";
-import { useEffect, useState } from "react";
+
 import {
   useConnect,
   useAccount,
   useDisconnect,
   useBalance,
-} from "wagmi";
-import {
   useReadContract,
-  useWriteContract,
 } from "wagmi";
+
 import { erc20Abi } from "@/lib/erc20";
+
+type ChartPoint = {
+  time: string;
+  price: number;
+};
+
 export default function Dashboard() {
   const { address, isConnected } = useAccount();
 
   const { connect, connectors } = useConnect();
 
   const { disconnect } = useDisconnect();
+
   const { data: ethBalance } = useBalance({
-  address,
-});
+    address,
+  });
+
   const { data: tokenBalance } = useReadContract({
-  address: "0xE9380E2C0DFaA2b77691f4824AaCe6E4ca0132e5",
-  abi: erc20Abi,
-  functionName: "balanceOf",
-  args: [address!],
-  query: {
-    enabled: !!address,
-  },
-});
-const [ethPrice, setEthPrice] = useState(0);
-const [chartData, setChartData] = useState([]);
-const [transactions, setTransactions] = useState<string[]>([]);
-const [mounted, setMounted] = useState(false);
+    address: "0xE9380E2C0DFaA2b77691f4824AaCe6E4ca0132e5",
+    abi: erc20Abi,
+    functionName: "balanceOf",
+    args: [address!],
+    query: {
+      enabled: !!address,
+    },
+  });
 
-useEffect(() => {
-  setMounted(true);
-}, []);
+  const [ethPrice, setEthPrice] = useState(0);
 
-useEffect(() => {
-  const fetchPrice = async () => {
-    const res = await fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
-    );
+  const [chartData, setChartData] = useState<ChartPoint[]>([]);
 
-    const data = await res.json();
+  const [transactions, setTransactions] = useState<string[]>([]);
 
-    setEthPrice(data.ethereum.usd);
-  };
+  const [mounted, setMounted] = useState(false);
 
-  fetchPrice();
-}, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-useEffect(() => {
-  const fetchChart = async () => {
-    const res = await fetch(
-      "https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=7"
-    );
+  // ETH PRICE
+  useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        const res = await fetch(
+          "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+        );
 
-    const data = await res.json();
+        const data = await res.json();
 
-    const formatted = data.prices.map((item: any) => ({
-      price: item[1],
-    }));
+        setEthPrice(data.ethereum.usd);
+      } catch (error) {
+        console.error("ETH price fetch error:", error);
+      }
+    };
 
-    setChartData(formatted);
-  };
+    fetchPrice();
+  }, []);
 
-  fetchChart();
-}, []);
+  // CHART DATA
+  useEffect(() => {
+    const fetchChart = async () => {
+      try {
+        const res = await fetch(
+          "https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=7"
+        );
 
-useEffect(() => {
-  const fetchTransactions = async () => {
-    if (!address) return;
+        const data = await res.json();
 
-    const res = await fetch(
-  `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=4&sort=desc&apikey=${process.env.NEXT_PUBLIC_ETHERSCAN_API}`
+        const formatted = data.prices.map((item: any) => ({
+          time: new Date(item[0]).toLocaleDateString(),
+          price: item[1],
+        }));
 
-    );
+        setChartData(formatted);
+      } catch (error) {
+        console.error("Chart fetch error:", error);
+      }
+    };
 
-    const data = await res.json();
+    fetchChart();
+  }, []);
 
-    if (Array.isArray(data.result)) {
-      console.log(data.result);
-      const txs = data.result.map(
-        (tx: any) =>
-          `TX: ${tx.hash.slice(0, 10)}...`
-      );
+  // TRANSACTIONS
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      if (!address) return;
 
-      setTransactions(txs);
-      setTransactions([
-  "TX: TEST123",
-  "TX: TEST456",
-]);
-    }
-  };
+      try {
+        const res = await fetch(
+          `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=4&sort=desc&apikey=${process.env.NEXT_PUBLIC_ETHERSCAN_API}`
+        );
 
-  fetchTransactions();
-}, [address]);
+        const data = await res.json();
 
-if (!mounted) return null;
+        if (Array.isArray(data.result)) {
+          const txs = data.result.map(
+            (tx: any) => `TX: ${tx.hash.slice(0, 10)}...`
+          );
+
+          setTransactions(txs);
+        }
+      } catch (error) {
+        console.error("Transaction fetch error:", error);
+      }
+    };
+
+    fetchTransactions();
+  }, [address]);
+
+  if (!mounted) return null;
 
   return (
     <main className="min-h-screen bg-[#020617] text-white flex overflow-hidden">
@@ -126,27 +149,27 @@ if (!mounted) return null;
 
           <div className="flex flex-col gap-3 text-gray-300">
             {[
-              'Dashboard',
-              'Portfolio',
-              'Governance',
-              'Staking',
-              'DAO Proposals',
-              'AI Insights',
-              'Treasury',
-              'Swap',
-              'Bridge',
-              'Contracts',
-              'Security',
-              'Audit',
-              'Analytics',
-              'Settings',
+              "Dashboard",
+              "Portfolio",
+              "Governance",
+              "Staking",
+              "DAO Proposals",
+              "AI Insights",
+              "Treasury",
+              "Swap",
+              "Bridge",
+              "Contracts",
+              "Security",
+              "Audit",
+              "Analytics",
+              "Settings",
             ].map((item, index) => (
               <button
                 key={item}
                 className={`text-left px-5 py-4 rounded-2xl transition duration-300 border ${
                   index === 0
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 border-blue-500/40 shadow-[0_0_25px_rgba(59,130,246,0.4)] text-white'
-                    : 'border-transparent hover:border-blue-500/20 hover:bg-blue-500/5'
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 border-blue-500/40 shadow-[0_0_25px_rgba(59,130,246,0.4)] text-white"
+                    : "border-transparent hover:border-blue-500/20 hover:bg-blue-500/5"
                 }`}
               >
                 {item}
@@ -185,39 +208,37 @@ if (!mounted) return null;
           </div>
 
           <div className="flex items-center gap-5">
+            <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
+              🔍
+            </button>
 
-  <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
-    🔍
-  </button>
+            <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
+              🔔
+            </button>
 
-  <button className="w-11 h-11 rounded-2xl border border-blue-500/10 bg-[#081020] hover:border-blue-500/30 transition">
-    🔔
-  </button>
-
-  <button
-    onClick={() =>
-      isConnected
-        ? disconnect()
-        : connect({ connector: connectors[0] })
-    }
-    className="px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:scale-105 transition duration-300"
-  >
-    {isConnected
-      ? `${address?.slice(0, 6)}...${address?.slice(-4)}`
-      : "Connect Wallet"}
-  </button>
-
-</div>
+            <button
+              onClick={() =>
+                isConnected
+                  ? disconnect()
+                  : connect({ connector: connectors[0] })
+              }
+              className="px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:scale-105 transition duration-300"
+            >
+              {isConnected
+                ? `${address?.slice(0, 6)}...${address?.slice(-4)}`
+                : "Connect Wallet"}
+            </button>
+          </div>
         </div>
 
         {/* MINI STATS */}
         <div className="grid grid-cols-5 gap-6 mb-8">
           {[
-            [`${ethPrice}`, 'ETH Price'],
-            ['$12.45M', 'Market Cap'],
-            ['$8.72M', 'TVL'],
-            ['12,458', 'Holders'],
-            ['Ethereum', 'Network'],
+            [`$${ethPrice}`, "ETH Price"],
+            ["$12.45M", "Market Cap"],
+            ["$8.72M", "TVL"],
+            ["12,458", "Holders"],
+            ["Ethereum", "Network"],
           ].map(([value, label]) => (
             <div key={label}>
               <p className="text-gray-500 mb-2">{label}</p>
@@ -233,10 +254,10 @@ if (!mounted) return null;
             {/* TOP CARDS */}
             <div className="grid grid-cols-4 gap-6">
               {[
-                ['12,543.78', 'Total Portfolio'],
-                ['42,420.69', 'Staked $SKNON'],
-                ['25,678.90', 'Voting Power'],
-                ['$2.45M', 'Treasury Balance'],
+                ["12,543.78", "Total Portfolio"],
+                ["42,420.69", "Staked $SKNON"],
+                ["25,678.90", "Voting Power"],
+                ["$2.45M", "Treasury Balance"],
               ].map(([value, label]) => (
                 <div
                   key={label}
@@ -255,6 +276,7 @@ if (!mounted) return null;
 
             {/* CHART + DONUT */}
             <div className="grid grid-cols-3 gap-7">
+              {/* CHART */}
               <div className="col-span-2 rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8">
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="text-3xl font-bold">
@@ -268,22 +290,45 @@ if (!mounted) return null;
 
                 <div className="h-[350px] rounded-3xl bg-[#081222] border border-blue-500/10 p-4">
                   <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={chartData}>
-                  <XAxis dataKey="price" hide />
-                  <YAxis hide domain={["auto", "auto"]} />
-                  <Tooltip />
+                    <LineChart data={chartData}>
+                      <CartesianGrid
+                        strokeDasharray="3 3"
+                        stroke="#1e293b"
+                      />
 
-                  <Line
-                    type="monotone"
-                    dataKey="price"
-                    stroke="#3b82f6"
-                    strokeWidth={3}
-                    dot={false}
-                />
-                </LineChart>
-              </ResponsiveContainer>
+                      <XAxis
+                        dataKey="time"
+                        tick={{ fill: "#94a3b8" }}
+                      />
+
+                      <YAxis
+                        tick={{ fill: "#94a3b8" }}
+                        domain={["auto", "auto"]}
+                      />
+
+                      <Tooltip
+                        contentStyle={{
+                          background: "#020617",
+                          border: "1px solid #3b82f6",
+                          borderRadius: "12px",
+                          color: "white",
+                        }}
+                      />
+
+                      <Line
+                        type="monotone"
+                        dataKey="price"
+                        stroke="#3b82f6"
+                        strokeWidth={3}
+                        dot={false}
+                        activeDot={{ r: 6 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
 
+              {/* DONUT */}
               <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8">
                 <h3 className="text-3xl font-bold mb-10">
                   Portfolio Allocation
@@ -338,40 +383,6 @@ if (!mounted) return null;
                     <span className="text-blue-400">Active</span>
                   </div>
                 </div>
-
-                <button className="mt-10 w-full rounded-2xl py-4 border border-purple-500/40 hover:bg-purple-500/10 transition duration-300 font-semibold">
-                  Ask AI Assistant
-                </button>
-              </div>
-
-              <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
-                <h3 className="text-3xl font-bold mb-8">
-                  Staking Overview
-                </h3>
-
-                <div className="space-y-6 mb-8">
-                  <div>
-                    <p className="text-gray-400 mb-2">Total Staked</p>
-                    <h4 className="text-4xl font-bold">42,420.69</h4>
-                  </div>
-
-                  <div>
-                    <p className="text-gray-400 mb-2">Current APY</p>
-                    <h4 className="text-4xl font-bold text-green-400">8.21%</h4>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <button
-                    className="flex-1 rounded-2xl py-4 bg-blue-500 hover:bg-blue-400 transition font-semibold"
-                >
-                    Stake More
-                  </button>
-
-                  <button className="flex-1 rounded-2xl py-4 border border-blue-500/30 hover:bg-blue-500/10 transition font-semibold">
-                    Manage
-                  </button>
-                </div>
               </div>
 
               <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
@@ -380,18 +391,59 @@ if (!mounted) return null;
                 </h3>
 
                 <div className="space-y-6 text-gray-300">
-                    {transactions.length > 0 ? (
-                     transactions.map((tx, index) => (
-                <div key={index}>{tx}</div>
+                  {transactions.length > 0 ? (
+                    transactions.map((tx, index) => (
+                      <div key={index}>{tx}</div>
                     ))
-                 ) : (
-                <div>No recent transactions</div>
+                  ) : (
+                    <div>No recent transactions</div>
                   )}
                 </div>
+              </div>
 
-                <button className="mt-10 w-full rounded-2xl py-4 border border-purple-500/30 hover:bg-purple-500/10 transition duration-300 font-semibold">
-                  View All Activity
-                </button>
+              <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
+                <h3 className="text-3xl font-bold mb-8">
+                  Wallet
+                </h3>
+
+                <div className="space-y-6">
+                  <div>
+                    <p className="text-gray-400 mb-2">
+                      ETH Balance
+                    </p>
+
+                    <h4 className="text-3xl font-bold">
+                      {ethBalance
+                        ? (
+                            Number(ethBalance.value) / 1e18
+                          ).toFixed(4)
+                        : "0"}{" "}
+                      ETH
+                    </h4>
+                  </div>
+
+                  <div>
+                    <p className="text-gray-400 mb-2">
+                      $SKNON Balance
+                    </p>
+
+                    <h4 className="text-3xl font-bold text-blue-400">
+                      {tokenBalance
+                        ? (
+                            Number(tokenBalance) / 1e18
+                          ).toLocaleString()
+                        : "0"}
+                    </h4>
+                  </div>
+
+                  <a
+                    href={`https://sepolia.etherscan.io/address/${address}`}
+                    target="_blank"
+                    className="block text-blue-400 hover:text-blue-300 transition"
+                  >
+                    View on Etherscan ↗
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -399,71 +451,19 @@ if (!mounted) return null;
           {/* RIGHT SIDEBAR */}
           <div className="col-span-3 flex flex-col gap-7">
             <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
-              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-3xl font-bold">Wallet</h3>
-                <a
-  href={`https://sepolia.etherscan.io/address/${address}`}
-  target="_blank"
-  className="text-blue-400"
->
-  View on Etherscan ↗
-</a>
-              </div>
-
-              <div className="rounded-2xl border border-blue-500/10 bg-[#081222] p-5 mb-8">
-  <p className="text-gray-400 mb-2">Connected Wallet</p>
-
-  <h4 className="text-2xl font-bold">
-    {address
-      ? `${address.slice(0, 6)}...${address.slice(-4)}`
-      : "Not Connected"}
-  </h4>
-</div>
-<div className="space-y-7 mb-8">
-  <div>
-    <p className="text-gray-400 mb-2">Balance</p>
-
-    <h4 className="text-4xl font-bold">
-      {ethBalance
-  ? Number(ethBalance.value) / 1e18
-  : "0"} ETH
-    </h4>
-  </div>
-
-  <div>
-    <p className="text-gray-400 mb-2">$SKNON Balance</p>
-
-    <h4 className="text-4xl font-bold text-blue-400">
-      {tokenBalance
-        ? (Number(tokenBalance) / 1e18).toLocaleString()
-        : "0"}
-    </h4>
-  </div>
-</div>
-              <div className="grid grid-cols-3 gap-4">
-                <button className="rounded-2xl py-3 border border-blue-500/30 hover:bg-blue-500/10 transition">
-                  Send
-                </button>
-
-                <button className="rounded-2xl py-3 border border-blue-500/30 hover:bg-blue-500/10 transition">
-                  Receive
-                </button>
-
-                <button className="rounded-2xl py-3 border border-blue-500/30 hover:bg-blue-500/10 transition">
-                  Buy
-                </button>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
               <h3 className="text-3xl font-bold mb-10">
                 Governance Power
               </h3>
 
               <div className="w-56 h-56 rounded-full border-[18px] border-purple-500/30 mx-auto flex items-center justify-center mb-10">
                 <div className="text-center">
-                  <h4 className="text-4xl font-bold mb-2">25,678</h4>
-                  <p className="text-green-400">+15.32%</p>
+                  <h4 className="text-4xl font-bold mb-2">
+                    25,678
+                  </h4>
+
+                  <p className="text-green-400">
+                    +15.32%
+                  </p>
                 </div>
               </div>
 
@@ -471,36 +471,9 @@ if (!mounted) return null;
                 Delegate Votes
               </button>
             </div>
-
-            <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-7">
-              <h3 className="text-3xl font-bold mb-8">
-                Recent Proposals
-              </h3>
-
-              <div className="space-y-6 text-lg">
-                <div className="flex justify-between">
-                  <span>Treasury Fund Allocation</span>
-                  <span className="text-green-400">Active</span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span>Staking Rewards Update</span>
-                  <span className="text-green-400">Active</span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span>ChainLink Partnership</span>
-                  <span className="text-blue-400">Passed</span>
-                </div>
-              </div>
-
-              <button className="mt-10 w-full rounded-2xl py-4 border border-blue-500/30 hover:bg-blue-500/10 transition duration-300 font-semibold">
-                View All Proposals
-              </button>
-            </div>
           </div>
         </div>
       </section>
     </main>
-  )
+  );
 }
