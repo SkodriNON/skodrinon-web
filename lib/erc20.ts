@@ -14,46 +14,46 @@ export const erc20Abi = [
         type: "uint256",
       },
     ],
-    type: "function",
     stateMutability: "view",
+    type: "function",
   },
 
   {
     constant: true,
     inputs: [],
     name: "totalSupply",
-    ,
-{
-  inputs: [
-    {
-      internalType: "address",
-      name: "spender",
-      type: "address",
-    },
-    {
-      internalType: "uint256",
-      name: "amount",
-      type: "uint256",
-    },
-  ],
-  name: "approve",
-  outputs: [
-    {
-      internalType: "bool",
-      name: "",
-      type: "bool",
-    },
-  ],
-  stateMutability: "nonpayable",
-  type: "function",
-}
     outputs: [
       {
         name: "",
         type: "uint256",
       },
     ],
-    type: "function",
     stateMutability: "view",
+    type: "function",
+  },
+
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "approve",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
   },
 ] as const;

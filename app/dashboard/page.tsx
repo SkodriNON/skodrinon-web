@@ -286,9 +286,8 @@ useEffect(() => {
 
                 <div className="flex gap-4">
                   <button
-  onClick={handleStake}
-  className="flex-1 rounded-2xl py-4 bg-blue-500 hover:bg-blue-400 transition font-semibold"
->
+                    className="flex-1 rounded-2xl py-4 bg-blue-500 hover:bg-blue-400 transition font-semibold"
+                >
                     Stake More
                   </button>
 
