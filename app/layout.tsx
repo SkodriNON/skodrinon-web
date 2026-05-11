@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -18,6 +19,12 @@ export const metadata: Metadata = {
   description: "Governance-first AI & Web3 ecosystem",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,11 +33,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-full flex flex-col bg-black text-white">
+      <body className="min-h-screen w-full overflow-x-hidden bg-black text-white antialiased">
         <Providers>
-          {children}
+          <div className="w-full overflow-x-hidden">
+            {children}
+          </div>
         </Providers>
       </body>
     </html>
