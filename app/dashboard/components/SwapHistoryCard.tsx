@@ -8,84 +8,126 @@ export default function SwapHistoryCard() {
 
   return (
 
-    <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6">
+    <div className="rounded-xl border border-blue-500/10 bg-[#07101f]/80 p-4">
 
-      <h3 className="text-2xl font-bold mb-6">
+      <div className="flex items-center justify-between mb-4">
 
-        Swap History
+        <h3 className="text-lg font-semibold">
 
-      </h3>
+          Swap History
 
-      <div className="space-y-4">
+        </h3>
 
-        {mockSwapHistory.map(
-          (swap) => (
+        <span className="text-xs text-gray-500">
 
-            <div
+          {mockSwapHistory.length} Trades
 
-              key={swap.id}
+        </span>
 
-              className="rounded-2xl border border-blue-500/10 bg-[#081222] p-4"
+      </div>
 
-            >
+      <div className="overflow-hidden rounded-lg border border-blue-500/10">
 
-              <div className="flex items-center justify-between mb-2">
+        <table className="w-full text-sm">
 
-                <p className="font-semibold">
+          <thead>
 
-                  {swap.tokenIn}
-                  {" → "}
-                  {swap.tokenOut}
+            <tr className="border-b border-blue-500/10 bg-[#081222]">
 
-                </p>
+              <th className="px-3 py-2 text-left text-gray-400 font-medium">
 
-                <p className={`text-xs ${
-                  swap.status ===
-                  "Completed"
+                Pair
 
-                    ? "text-green-400"
+              </th>
 
-                    : "text-yellow-400"
-                }`}>
+              <th className="px-3 py-2 text-left text-gray-400 font-medium">
 
-                  {swap.status}
+                Amount
 
-                </p>
+              </th>
 
-              </div>
+              <th className="px-3 py-2 text-left text-gray-400 font-medium">
 
-              <div className="flex items-center justify-between text-sm text-gray-400">
+                Received
 
-                <p>
+              </th>
+
+              <th className="px-3 py-2 text-left text-gray-400 font-medium">
+
+                Status
+
+              </th>
+
+              <th className="px-3 py-2 text-right text-gray-400 font-medium">
+
+                Time
+
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            {mockSwapHistory.map((swap) => (
+
+              <tr
+                key={swap.id}
+                className="border-b border-blue-500/5 hover:bg-[#081222]/60 transition"
+              >
+
+                <td className="px-3 py-2 font-medium">
+
+                  {swap.tokenIn} → {swap.tokenOut}
+
+                </td>
+
+                <td className="px-3 py-2 text-gray-300">
 
                   {swap.amountIn}
-                  {" "}
-                  {swap.tokenIn}
 
-                </p>
+                </td>
 
-                <p>
+                <td className="px-3 py-2 text-gray-300">
 
                   {swap.amountOut}
-                  {" "}
-                  {swap.tokenOut}
 
-                </p>
+                </td>
 
-              </div>
+                <td className="px-3 py-2">
 
-              <p className="text-xs text-gray-500 mt-3">
+                  <span
+                    className={`text-xs font-medium ${
+                      swap.status === "Completed"
+                        ? "text-green-400"
+                        : "text-yellow-400"
+                    }`}
+                  >
 
-                {swap.time}
+                    {swap.status}
 
-              </p>
+                  </span>
 
-            </div>
-          )
-        )}
+                </td>
+
+                <td className="px-3 py-2 text-right text-gray-500 text-xs">
+
+                  {swap.time}
+
+                </td>
+
+              </tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
 
       </div>
 
     </div>
+
   );
 }

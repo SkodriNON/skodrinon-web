@@ -54,7 +54,7 @@ export default function TreasuryCard({
 
   return (
 
-    <div className="rounded-[32px] border border-blue-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-6 lg:p-7 overflow-hidden relative">
+    <div className="rounded-xl border border-blue-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-6 lg:p-7 overflow-hidden relative">
 
       {/* BACKGROUND */}
 
@@ -76,7 +76,7 @@ export default function TreasuryCard({
 
             </p>
 
-            <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+            <h3 className="text-xlsm:text-xl font-black bg-gradient-to-r from-white via-cyan-300 to-blue-400 bg-clip-text text-transparent">
 
               ${totalPortfolio.toFixed(2)}
 
@@ -102,7 +102,7 @@ export default function TreasuryCard({
 
               </p>
 
-              <h4 className="text-3xl font-black text-green-400">
+              <h4 className="text-xlfont-black text-green-400">
 
                 {roi.toFixed(2)}%
 

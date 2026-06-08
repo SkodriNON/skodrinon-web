@@ -1,298 +1,70 @@
 "use client";
 
-import InstitutionalLayout
-from "./layouts/InstitutionalLayout";
-
-import {
-  useState,
-  useMemo,
-  useEffect,
-} from "react";
+import InstitutionalLayout from "./layouts/InstitutionalLayout";
+import { useState, useMemo, useEffect } from "react";
 
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
-import StatsCards from "./components/StatsCards";
 
-import AIInsights from "./components/AIInsights";
-import WalletCard from "./components/WalletCard";
-import GovernanceCard from "./components/GovernanceCard";
-
-import TreasuryCard from "./components/TreasuryCard";
-
-import AnalyticsCard from "./components/AnalyticsCard";
-
-import DAOCard from "./components/DAOCard";
-
-import HoldingsCard from "./components/HoldingsCard";
-
-import AllocationCard from "./components/AllocationCard";
-import PortfolioChart from "./components/PortfolioChart";
-
-import TransactionsCard from "./components/TransactionsCard";
 import GovernanceModule from "./modules/GovernanceModule";
 import AnalyticsModule from "./modules/AnalyticsModule";
 import TreasuryModule from "./modules/TreasuryModule";
 import DAOmodule from "./modules/DAOmodule";
 import PortfolioContent from "./components/PortfolioContent";
 
-import TreasuryControlCard
-from "./components/TreasuryControlCard";
+import StakingPanel from "./components/StakingPanel";
+import AdminControls from "./components/AdminControls";
 
-import SecurityAlertsCard
-from "./components/SecurityAlertsCard";
+import ProtocolStatus from "./components/ProtocolStatus";
+import NetworkSwitcher from "./components/NetworkSwitcher";
 
-import PerformanceAnalyticsCard
-from "./components/PerformanceAnalyticsCard";
+import ProtocolMetricsBar from "./components/ProtocolMetricsBar";
+import TreasuryHealthCard from "./components/TreasuryHealthCard";
+import TreasuryRiskCard from "./components/TreasuryRiskCard";
+import GovernanceInsightCard from "./components/GovernanceInsightCard";
+import PortfolioAnalyticsCard from "./components/PortfolioAnalyticsCard";
 
-import RiskManagementCard
-from "./components/RiskManagementCard";
-
-import YieldAnalyticsCard
-from "./components/YieldAnalyticsCard";
-
-import LiquidityPositionsCard
-from "./components/LiquidityPositionsCard";
-
-import ProtocolEventFeedCard
-from "./components/ProtocolEventFeedCard";
-
-import PortfolioOverviewCard
-from "./components/PortfolioOverviewCard";
-
-import AllowanceStatusCard
-from "./components/AllowanceStatusCard";
-
-import WalletBalanceCard
-from "./components/WalletBalanceCard";
-
-import TransactionMonitorCard
-from "./components/TransactionMonitorCard";
-
-import TokenApprovalCard
-from "./components/TokenApprovalCard";
-
-import SwapExecutionCard
-from "./components/SwapExecutionCard";
-
-import TreasuryBalanceCard
-from "./components/TreasuryBalanceCard";
-
-import LiveReserveStatusCard
-from "./components/LiveReserveStatusCard";
-
-import ContractRegistryCard
-from "./components/ContractRegistryCard";
-
-import ProtocolStatusCard
-from "./components/ProtocolStatusCard";
-
-import AITreasuryIntelligenceCard
-from "./components/AITreasuryIntelligenceCard";
-
-import AIExecutionOptimizerCard
-from "./components/AIExecutionOptimizerCard";
-
-import AILiquidityStressCard
-from "./components/AILiquidityStressCard";
-
-import AIVolatilityCard
-from "./components/AIVolatilityCard";
-
-import AIMarketSentimentCard
-from "./components/AIMarketSentimentCard";
-
-import LiquidityHeatmapCard
-from "./components/LiquidityHeatmapCard";
-
-import MarketDepthCard
-from "./components/MarketDepthCard";
-
-import LiveActivityCard
-from "./components/LiveActivityCard";
-
-import VolumeAnalyticsCard
-from "./components/VolumeAnalyticsCard";
-
-import PoolAnalyticsCard
-from "./components/PoolAnalyticsCard";
-
-import TreasuryRevenueCard
-from "./components/TreasuryRevenueCard";
-
-import LPPositionCard
-from "./components/LPPositionCard";
-
-import LiquidityCard
-from "./components/LiquidityCard";
-
-import {
-  useAMMQuote,
-} from "./hooks/useAMMQuote";
-
-import AISystemStatus
-from "./components/AISystemStatus";
-
-import WhaleRiskCard
-from "./components/WhaleRiskCard";
-
-import ProtocolActivityFeed
-from "./components/ProtocolActivityFeed";
-
-import MarketSentimentCard
-from "./components/MarketSentimentCard";
-
-import ProtocolMetricsBar
-from "./components/ProtocolMetricsBar";
-
-import GovernanceInsightCard
-from "./components/GovernanceInsightCard";
-
-import WhaleActivityCard
-from "./components/WhaleActivityCard";
-
-import TreasuryRiskCard
-from "./components/TreasuryRiskCard";
-
-import TreasuryHealthCard
-from "./components/TreasuryHealthCard";
-
-import ProtocolAlertsCard
-from "./components/ProtocolAlertsCard";
-
-import AIInsightsCard
-from "./components/AIInsightsCard";
-
-import AIChatCard
-from "./components/AIChatCard";
-
+import AICommandCenter from "./components/AICommandCenter";
+import AISystemStatus from "./components/AISystemStatus";
+import AIInsightsCard from "./components/AIInsightsCard";
+import AIChatCard from "./components/AIChatCard";
 import AIChat from "./components/AIChat";
-
-import NeuralCore from "./components/NeuralCore";
-
-import SatelliteArray from "./components/SatelliteArray";
-
-import MetaverseGrid from "./components/MetaverseGrid";
-
-import WarRoom from "./components/WarRoom";
-
-import LiquidityMatrix from "./components/LiquidityMatrix";
-
-import AgentNetwork from "./components/AgentNetwork";
-
 import AIPredictions from "./components/AIPredictions";
 
+import TreasuryRadar from "./components/TreasuryRadar";
+import CrosschainCenter from "./components/CrosschainCenter";
+import QuantEngine from "./components/QuantEngine";
+import GovernanceTerminal from "./components/GovernanceTerminal";
+import MarketTerminal from "./components/MarketTerminal";
 import EcosystemOverview from "./components/EcosystemOverview";
 
-import GovernanceTerminal from "./components/GovernanceTerminal";
+import MarketDepthCard from "./components/MarketDepthCard";
+import LiquidityHeatmapCard from "./components/LiquidityHeatmapCard";
+import VolumeAnalyticsCard from "./components/VolumeAnalyticsCard";
 
-import MarketTerminal from "./components/MarketTerminal";
+import SwapCard from "./components/SwapCard";
+import SwapExecutionCard from "./components/SwapExecutionCard";
+import SwapHistoryCard from "./components/SwapHistoryCard";
+import LiquidityCard from "./components/LiquidityCard";
+import LiquidityMatrix from "./components/LiquidityMatrix";
 
-import QuantEngine from "./components/QuantEngine";
+import { useStaking } from "./hooks/useStaking";
+import { useDashboardMetrics } from "./hooks/useDashboardMetrics";
+import { calculatePortfolio } from "./utils/portfolio";
+import { useStakingActions } from "./hooks/useStakingActions";
+import { usePortfolioHistory } from "./hooks/usePortfolioHistory";
+import { useSnapshot } from "./hooks/useSnapshot";
+import { useTokenPrice } from "./hooks/useTokenPrice";
+import { useEthPrice } from "./hooks/useEthPrice";
 
-import CrosschainCenter from "./components/CrosschainCenter";
-
-import TreasuryRadar from "./components/TreasuryRadar";
-
-import SecurityCenter from "./components/SecurityCenter";
-
-import AICommandCenter
-from "./components/AICommandCenter";
-
-
-
-import ProtocolStatus
-from "./components/ProtocolStatus";
-
-import NetworkSwitcher
-from "./components/NetworkSwitcher";
-
-import PortfolioAnalyticsCard
-from "./components/PortfolioAnalyticsCard";
-
-import SwapHistoryCard
-from "./components/SwapHistoryCard";
-
-import SwapCard
-from "./components/SwapCard";
-
-import AdminControls
-from "./components/AdminControls";
-
-import {
-  useStaking,
-} from "./hooks/useStaking";
-
-import {
-  useDashboardMetrics,
-} from "./hooks/useDashboardMetrics";
-
-import {
-  parseEther,
-} from "viem";
-
-import {
-  calculatePortfolio,
-} from "./utils/portfolio";
-
-import DashboardStats from "./components/DashboardStats";
-
-import StakingPanel
-from "./components/StakingPanel";
-
-import {
-  useStakingActions,
-} from "./hooks/useStakingActions";
-
-import {
-  usePortfolioHistory,
-} from "./hooks/usePortfolioHistory";
-
-import {
-  useActivity,
-} from "./hooks/useActivity";
-
-import {
-  useWalletScore,
-} from "./hooks/useWalletScore";
-
-import {
-  useSwapQuote,
-} from "./hooks/useSwapQuote";
-
-import {
-  useSnapshot,
-} from "./hooks/useSnapshot";
-
-import {
-  useVotingPower,
-} from "./hooks/useVotingPower";
-
-import {
-  useTokenPrice,
-} from "./hooks/useTokenPrice";
-
-import {
-  PortfolioProvider,
-} from "./context/PortfolioContext";
-
-import {
-  AuthProvider,
-  useAuth,
-} from "./context/AuthContext";
-
+import { PortfolioProvider } from "./context/PortfolioContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 import {
   NotificationProvider,
   useNotifications,
 } from "./context/NotificationContext";
 
-import { useEthPrice }
-from "./hooks/useEthPrice";
-
-import { useTransactions }
-from "./hooks/useTransactions";
-
-import { CONTRACTS }
-from "../lib/contracts";
+import { CONTRACTS } from "../lib/contracts";
 
 import {
   useConnect,
@@ -308,67 +80,53 @@ function DashboardContent() {
   const { address, isConnected } = useAccount();
 
   const {
-  isPending:
-    walletLoading,
-} = useConnect();
-
-const safeAddress = useMemo(() => {
-
-  return (
-    address &&
-    address.startsWith("0x")
-  )
-    ? address
-    : undefined;
-
-}, [address]);
-
-const stakingAddress = useMemo(
-  () =>
-    process.env
-      .NEXT_PUBLIC_STAKING_ADDRESS as `0x${string}`,
-  []
-);
-
-  const {
-  authenticated,
-  login,
-} = useAuth();
-
-const {
-  notifications,
-  addNotification,
-} = useNotifications();
-
-const {
-
-  txLoading,
-
-  handleStake,
-  handleUnstake,
-
-  handleClaimRewards,
-  handleCompoundRewards,
-
-  txConfirming,
-  txConfirmed,
-
-} = useStakingActions(
-  stakingAddress,
-  addNotification
-);
-
-const txStatus = txConfirming
-  ? "confirming"
-  : txConfirmed
-  ? "success"
-  : txLoading
-  ? "wallet"
-  : "idle";
-
-  const { connect, connectors } = useConnect();
+    isPending: walletLoading,
+    connect,
+    connectors,
+  } = useConnect();
 
   const { disconnect } = useDisconnect();
+
+  const safeAddress = useMemo(() => {
+    return address && address.startsWith("0x")
+      ? address
+      : undefined;
+  }, [address]);
+
+  const stakingAddress = useMemo(
+    () =>
+      process.env
+        .NEXT_PUBLIC_STAKING_ADDRESS as `0x${string}`,
+    []
+  );
+
+  const { authenticated, login } = useAuth();
+
+  const {
+    notifications,
+    addNotification,
+  } = useNotifications();
+
+  const {
+    txLoading,
+    handleStake,
+    handleUnstake,
+    handleClaimRewards,
+    handleCompoundRewards,
+    txConfirming,
+    txConfirmed,
+  } = useStakingActions(
+    stakingAddress,
+    addNotification
+  );
+
+  const txStatus = txConfirming
+    ? "confirming"
+    : txConfirmed
+    ? "success"
+    : txLoading
+    ? "wallet"
+    : "idle";
 
   const { data: ethBalance } = useBalance({
     address,
@@ -378,65 +136,38 @@ const txStatus = txConfirming
     address: CONTRACTS.ethereum.TOKEN,
     abi: erc20Abi,
     functionName: "balanceOf",
-    args:
-  safeAddress
-    ? [safeAddress]
-    : undefined,
+    args: safeAddress ? [safeAddress] : undefined,
     query: {
       enabled: !!safeAddress,
       refetchInterval: 3000,
     },
   });
 
-  const {
-
-  ethPrice,
-  loading:
-    ethPriceLoading,
-
-} = useEthPrice();
-
-const {
-
-  tokenPrice,
-  loading:
-    tokenPriceLoading,
-
-} = useTokenPrice();
-
-  const { votingPower } =
-  useVotingPower(
-    tokenBalance
-  );
-
-  const { transactions } =
-  useTransactions(safeAddress);
+  const { ethPrice } = useEthPrice();
+  const { tokenPrice } = useTokenPrice();
 
   const [activeTab, setActiveTab] =
-  useState("Dashboard");
+    useState("Dashboard");
 
   const [stakeAmount, setStakeAmount] =
-  useState("");
+    useState("");
 
-const [aprInput, setAprInput] =
-  useState(12);
+  const [aprInput, setAprInput] = useState(() => {
 
-useEffect(() => {
+  if (typeof window === "undefined") {
+    return 12;
+  }
 
   const savedApr =
     localStorage.getItem(
       "skodrinon-apr"
     );
 
-  if (savedApr) {
+  return savedApr
+    ? Number(savedApr)
+    : 12;
 
-    setAprInput(
-      Number(savedApr)
-    );
-
-  }
-
-}, []);
+});
 
 useEffect(() => {
 
@@ -445,766 +176,566 @@ useEffect(() => {
     aprInput.toString()
   );
 
-}, [aprInput]);  
+}, [aprInput]);
 
   const {
-
-  stakedTokens,
-  rewards,
-
-  rewardPerSecond,
-
-  totalStaked:
-    protocolTotalStaked,
-
-} = useStaking(
-  tokenBalance
-);
-
-const {
-
-  totalPortfolio,
-
-  stakingValue,
-
-  initialPortfolio,
-
-} = calculatePortfolio({
-
-  ethBalance,
-  ethPrice,
-
-  tokenBalance,
-  tokenPrice,
-
-  stakedTokens,
-  rewards,
-});
-
-const {
-
-  pnl,
-  pnlPercent,
-  apr,
-
-  treasuryValue,
-
-  totalLiquidity,
-
-  totalValueLocked,
-  protocolHealth,
-
-  roi,
-  growthMultiplier,
-
-} = useDashboardMetrics({
-
-  totalPortfolio,
-  initialPortfolio,
-
-  stakedTokens,
-  rewards,
-
-  rewardPerSecond,
-
-protocolTotalStaked,
-
-  stakingValue,
-});
-
-const {
-  proposals,
-} = useSnapshot();
-
-const {
-  amountsOut,
-} = useSwapQuote(
-  parseEther("1"),
-  [
-    CONTRACTS.ethereum.TOKEN,
-    CONTRACTS.ethereum.LIQUIDITY,
-  ]
-);
-
-  const { walletScore } =
-  useWalletScore(
-    transactions.length
-  );
+    stakedTokens,
+    rewards,
+    rewardPerSecond,
+    totalStaked: protocolTotalStaked,
+  } = useStaking(tokenBalance);
 
   const {
-  categorizedTransactions,
-} = useActivity(
-  transactions
-);
+    totalPortfolio,
+    stakingValue,
+    initialPortfolio,
+  } = calculatePortfolio({
+    ethBalance,
+    ethPrice,
+    tokenBalance,
+    tokenPrice,
+    stakedTokens,
+    rewards,
+  });
 
-const { history } =
-  usePortfolioHistory(
-    totalPortfolio
-  );
+  const { treasuryValue } =
+    useDashboardMetrics({
+      totalPortfolio,
+      initialPortfolio,
+      stakedTokens,
+      rewards,
+      rewardPerSecond,
+      protocolTotalStaked,
+      stakingValue,
+    });
 
-const dashboardLoading =
+  const { proposals } = useSnapshot();
 
-  ethPriceLoading ||
+  const { history } =
+    usePortfolioHistory(totalPortfolio);
 
-  tokenPriceLoading;
+  const quickActions = [
+    ["Swap", "⇄", "Exchange tokens"],
+    ["Staking", "◎", "Manage rewards"],
+    ["Governance", "⬢", "DAO voting"],
+    ["Bridge", "⤴", "Crosschain"],
+  ];
+
+  const recentActivity = [
+    ["Treasury sync", "Reserve status updated", "2m ago"],
+    ["Governance", "DAO proposal index refreshed", "8m ago"],
+    ["Staking", "APR configuration active", "15m ago"],
+    ["Protocol", "Dashboard metrics synced", "22m ago"],
+  ];
+
+  const systemNotes = [
+    ["Network", "Sepolia connected"],
+    ["Wallet", isConnected ? "Connected" : "Not connected"],
+    ["Price Feed", tokenPrice ? "Token feed active" : "Fallback active"],
+    ["ETH Feed", ethPrice ? "ETH feed active" : "Fallback active"],
+  ];
 
   if (!authenticated) {
-
-  return (
-
-    <main className="relative w-screen h-screen overflow-hidden bg-black flex items-center justify-center">
-
-      <div
-        className="absolute inset-0 bg-center bg-no-repeat bg-contain"
-        style={{
-          backgroundImage:
-            "url('/dashboard-access.png')",
-        }}
-      />
-
-      <div className="absolute bottom-[7vh] left-1/2 -translate-x-1/2 z-30 flex flex-row items-center gap-2 sm:gap-3 md:gap-4 scale-[0.42] sm:scale-[0.55] md:scale-[0.72]">
-
-        <button
-          className="w-[220px] h-[88px] rounded-2xl border border-cyan-400/20 bg-black/30 backdrop-blur-xl text-white font-semibold"
-        >
-
-          Public
-
-        </button>
-
-        <button
-          disabled={walletLoading}
-          onClick={() => {
-
-            const connector =
-              connectors?.[0];
-
-            if (!connector) return;
-
-            connect({
-              connector,
-            });
-
-            login();
-
-          }}
-          className="w-[220px] h-[88px] rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold"
-        >
-
-          {
-            walletLoading
-              ? "Connecting..."
-              : "Connect User"
-          }
-
-        </button>
-
-        <button
-          className="w-[220px] h-[88px] rounded-2xl border border-red-400/20 bg-red-500/10 text-red-300 font-semibold"
-        >
-
-          Admin
-
-        </button>
-
-      </div>
-
-    </main>
-
-  );
-}
-
-  return (
-
-  <InstitutionalLayout>
-
-  <PortfolioProvider
-    ethPrice={ethPrice}
-    totalPortfolio={totalPortfolio}
-  >
-
-<main className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
-
-  {/* BACKGROUND */}
-
-  <div
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-style={{
-  backgroundImage:
-    "url('/images/dashboard-bg.png')",
-}}
-
-  />
-
-  {/* DARK OVERLAY */}
-
-  <div className="absolute inset-0 bg-black/20" />
-
- <div className="relative z-10">
-
-
-  <div className="fixed top-5 right-5 z-[100] flex flex-col gap-3">
-
-  {notifications.map(
-    (notification) => {
-
-      const notificationStyles =
-
-        notification.type ===
-        "success"
-
-          ? "border-green-400/30 bg-green-500/15 text-green-300"
-
-        : notification.type ===
-          "error"
-
-          ? "border-red-400/30 bg-red-500/15 text-red-300"
-
-        : notification.type ===
-          "warning"
-
-          ? "border-yellow-400/30 bg-yellow-500/15 text-yellow-300"
-
-          : "border-cyan-400/30 bg-cyan-500/15 text-cyan-300";
-
-      return (
-
+    return (
+      <main className="relative flex h-screen w-screen items-center justify-center overflow-hidden bg-black">
         <div
+          className="absolute inset-0 bg-contain bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('/dashboard-access.png')",
+          }}
+        />
 
-          key={notification.id}
-
-          className={`min-w-[320px] rounded-2xl border backdrop-blur-2xl px-5 py-4 shadow-2xl transition-all duration-300 ${notificationStyles}`}
-
-        >
-
-          <div className="flex items-start justify-between gap-4">
-
-            <div className="flex-1">
-
-              <p className="font-semibold leading-relaxed">
-
-                {notification.message}
-
-              </p>
-
-              {
-
-                notification.txHash && (
-
-                  <a
-
-                    href={`https://sepolia.etherscan.io/tx/${notification.txHash}`}
-
-                    target="_blank"
-
-                    className="text-xs opacity-70 hover:opacity-100 transition mt-2 inline-block"
-
-                  >
-
-                    View Transaction
-
-                  </a>
-
-                )
-
-              }
-
-            </div>
-
-            <button
-
-              onClick={() => {
-
-                console.log(
-                  "Dismiss notification"
-                );
-
-              }}
-
-              className="text-sm opacity-60 hover:opacity-100 transition"
-
-            >
-
-              ✕
-
-            </button>
-
-          </div>
-
-        </div>
-      );
-    }
-  )}
-
-</div>
-
-      {/* MOBILE TOPBAR */}
-      <div className="sticky top-0 z-50 lg:hidden backdrop-blur-xl bg-[#020617]/90 border-b border-blue-500/10 px-4 py-4">
-
-        <div className="flex items-center justify-between">
-
-          <h1 className="text-xl font-bold">
-            SkodriNΩN
-          </h1>
+        <div className="absolute bottom-[7vh] left-1/2 z-30 flex -translate-x-1/2 scale-[0.42] flex-row items-center gap-2 sm:scale-[0.55] sm:gap-3 md:scale-[0.72] md:gap-4">
+          <button className="h-[88px] w-[220px] rounded-2xl border border-cyan-400/20 bg-black/30 font-semibold text-white backdrop-blur-xl">
+            Public
+          </button>
 
           <button
-  disabled={
-    walletLoading
-  }
-  onClick={() => {
+            disabled={walletLoading}
+            onClick={() => {
+              const connector = connectors?.[0];
 
-    if (
-      isConnected
-    ) {
+              if (!connector) return;
 
-      disconnect();
+              connect({
+                connector,
+              });
 
-    } else {
+              login();
+            }}
+            className="h-[88px] w-[220px] rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 font-semibold text-white"
+          >
+            {walletLoading
+              ? "Connecting..."
+              : "Connect User"}
+          </button>
 
-      const connector =
-  connectors?.[0];
-
-if (!connector) {
-  return;
-}
-
-connect({
-  connector,
-});
-    }
-  }}
-  className="px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition duration-300"
->
-
-  {walletLoading
-    ? "Connecting..."
-    : isConnected
-    ? `${address?.slice(
-        0,
-        6
-      )}...${address?.slice(-4)}`
-    : "Connect"}
-
-</button>
-
+          <button className="h-[88px] w-[220px] rounded-2xl border border-red-400/20 bg-red-500/10 font-semibold text-red-300">
+            Admin
+          </button>
         </div>
-
-      </div>
-
-      <div className="flex flex-col lg:flex-row">
-
-        {/* SIDEBAR */}
-        <Sidebar
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-
-        {/* MAIN CONTENT */}
-
-<section className="w-full flex-1 py-6">
-
-  {/* TOP SAFE SPACE */}
-
-  <div className="h-20" />
-
-  {/* CONTENT CONTAINER */}
-
-  <div className="max-w-[900px] ml-4 md:ml-10 lg:ml-16">
-
-    <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/45 backdrop-blur-md p-5 md:p-6 shadow-[0_0_40px_rgba(37,99,235,0.08)]">
-
-      {activeTab === "Portfolio" && (
-        <PortfolioContent />
-      )}
-
-      {activeTab === "Governance" && (
-        <GovernanceModule />
-      )}
-
-      {activeTab === "Analytics" && (
-        <AnalyticsModule
-          chartData={history}
-        />
-      )}
-
-      {activeTab === "Treasury" && (
-        <TreasuryModule
-          totalPortfolio={totalPortfolio}
-          ethBalance={ethBalance}
-          tokenBalance={tokenBalance}
-          ethPrice={ethPrice}
-          tokenPrice={tokenPrice}
-        />
-      )}
-
-      {activeTab === "DAO" && (
-        <DAOmodule />
-      )}
-
-      {activeTab === "Staking" && (
-
-        <StakingPanel
-
-  stakedTokens={
-    stakedTokens
+      </main>
+    );
   }
 
-  rewards={
-    rewards
-  }
+  return (
+    <InstitutionalLayout>
+      <PortfolioProvider
+        ethPrice={ethPrice}
+        totalPortfolio={totalPortfolio}
+      >
+        <main className="min-h-screen overflow-x-hidden bg-[#020617] text-white">
+          <div className="fixed right-4 top-4 z-[100] flex flex-col gap-2">
+            {notifications.map((notification) => {
+              const notificationStyles =
+                notification.type === "success"
+                  ? "border-green-400/30 bg-green-500/15 text-green-300"
+                  : notification.type === "error"
+                  ? "border-red-400/30 bg-red-500/15 text-red-300"
+                  : notification.type === "warning"
+                  ? "border-yellow-400/30 bg-yellow-500/15 text-yellow-300"
+                  : "border-cyan-400/30 bg-cyan-500/15 text-cyan-300";
 
-  apr={aprInput}
-
-  stakeAmount={
-    stakeAmount
-  }
-
-  setStakeAmount={
-    setStakeAmount
-  }
-
-  handleStake={
-    handleStake
-  }
-
-  handleUnstake={
-    handleUnstake
-  }
-
-  handleClaimRewards={
-    handleClaimRewards
-  }
-
-  handleCompoundRewards={
-    handleCompoundRewards
-  }
-
-  txLoading={
-    txLoading
-  }
-
-  txStatus={
-    txStatus
-  }
-
-/>
-
-      )}
-
-      {activeTab === "Admin" && (
-
-        <AdminControls
-          setDisplayApr={
-            setAprInput
-          }
-        />
-
-      )}
-
-      {activeTab === "Dashboard" && (
-
-        <>
-
-          <Topbar
-            isConnected={isConnected}
-            address={address}
-            connect={connect}
-            disconnect={disconnect}
-            connectors={connectors}
-            walletLoading={walletLoading}
-          />
-
-           <NetworkSwitcher />
-
-           <ProtocolStatus />
-
-           <AICommandCenter />
-
-           <AISystemStatus />
-
-           <SecurityCenter />
-
-           <TreasuryRadar />
-
-           <CrosschainCenter />
-
-           <QuantEngine />
-
-           <GovernanceTerminal />
-
-           <MarketTerminal />
-
-           <AIPredictions />
-
-           <EcosystemOverview />
-
-           <AgentNetwork />
-
-           <LiquidityMatrix />
-
-           <WarRoom />
-
-           <MetaverseGrid />
-
-           <SatelliteArray />
-
-           <NeuralCore />
-
-           <AIChat />
-
-          <div className="py-10 md:py-16">
-
-            <div className="max-w-2xl">
-
-              <h1 className="text-3xl md:text-5xl font-black mb-4 bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent leading-tight">
-
-                Welcome to
-                <br />
-                SkodriNON
-
-              </h1>
-
-              <p className="text-sm md:text-base text-gray-300 leading-relaxed mb-8">
-
-                Next Generation Decentralized Infrastructure
-                powering governance, staking,
-                treasury intelligence and
-                advanced Web3 coordination.
-
-              </p>
-
-              {/* ACTION BUTTONS */}
-
-              <div className="flex flex-wrap gap-3 mb-8">
-
-                <button
-                  onClick={() =>
-                    setActiveTab(
-                      "Governance"
-                    )
-                  }
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-sm font-medium hover:scale-[1.03] transition-all duration-300"
+              return (
+                <div
+                  key={notification.id}
+                  className={`min-w-[280px] rounded-lg border px-4 py-3 text-sm shadow-xl ${notificationStyles}`}
                 >
-
-                  Governance
-
-                </button>
-
-                <button
-                  onClick={() =>
-                    setActiveTab(
-                      "Staking"
-                    )
-                  }
-                  className="px-5 py-2.5 rounded-xl border border-blue-400/20 bg-[#07101f]/60 backdrop-blur-xl hover:bg-[#0f172a] transition-all duration-300 text-sm"
-                >
-
-                  Stake
-
-                </button>
-
-                <button
-                  onClick={() =>
-                    setActiveTab(
-                      "Treasury"
-                    )
-                  }
-                  className="px-5 py-2.5 rounded-xl border border-blue-400/20 bg-[#07101f]/60 backdrop-blur-xl hover:bg-[#0f172a] transition-all duration-300 text-sm"
-                >
-
-                  Treasury
-
-                </button>
-
-              </div>
-
-              {/* SMALL INFO CARDS */}
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-
-                <div className="rounded-2xl border border-blue-500/10 bg-[#07101f]/50 p-4">
-
-                  <p className="text-[11px] text-gray-400 mb-1">
-
-                    Treasury
-
+                  <p className="font-medium leading-relaxed">
+                    {notification.message}
                   </p>
-
-                  <h3 className="text-xl font-black mb-1">
-
-                    ${treasuryValue.toLocaleString()}
-
-                  </h3>
-
-                  <p className="text-green-400 text-xs">
-
-                    Active reserves
-
-                  </p>
-
                 </div>
-
-                <div className="rounded-2xl border border-blue-500/10 bg-[#07101f]/50 p-4">
-
-                  <p className="text-[11px] text-gray-400 mb-1">
-
-                    Governance
-
-                  </p>
-
-                  <h3 className="text-xl font-black mb-1">
-
-                    {proposals.length}
-
-                  </h3>
-
-                  <p className="text-blue-400 text-xs">
-
-                    DAO proposals
-
-                  </p>
-
-                </div>
-
-                <div className="rounded-2xl border border-blue-500/10 bg-[#07101f]/50 p-4">
-
-                  <p className="text-[11px] text-gray-400 mb-1">
-
-                    APR
-
-                  </p>
-
-                  <h3 className="text-xl font-black mb-1">
-
-                    {aprInput}%
-
-                  </h3>
-
-                  <p className="text-purple-400 text-xs">
-
-                    Rewards active
-
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
+              );
+            })}
           </div>
 
-         <div className="mt-10 space-y-8">
+          <div className="sticky top-0 z-50 border-b border-blue-500/10 bg-[#020617]/95 px-4 py-3 backdrop-blur-xl lg:hidden">
+            <div className="flex items-center justify-between">
+              <h1 className="text-lg font-bold">
+                SkodriNΩN
+              </h1>
 
-  {/* METRICS */}
+              <button
+                disabled={walletLoading}
+                onClick={() => {
+                  if (isConnected) {
+                    disconnect();
+                  } else {
+                    const connector = connectors?.[0];
 
-  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                    if (!connector) return;
 
-    <ProtocolMetricsBar
-      treasuryValue={treasuryValue}
-      proposals={proposals.length}
-      apr={Number(aprInput)}
-    />
+                    connect({
+                      connector,
+                    });
+                  }
+                }}
+                className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold disabled:opacity-50"
+              >
+                {walletLoading
+                  ? "Connecting..."
+                  : isConnected
+                  ? `${address?.slice(
+                      0,
+                      6
+                    )}...${address?.slice(-4)}`
+                  : "Connect"}
+              </button>
+            </div>
+          </div>
 
-    <TreasuryHealthCard
-      treasuryValue={treasuryValue}
-      liquidity={2500000}
-    />
+          <div className="flex flex-col lg:flex-row">
+            <Sidebar
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
 
-  </div>
+            <section className="w-full flex-1 px-4 py-4 md:px-5 lg:px-6">
+              <div className="mx-auto w-full max-w-[1280px]">
+                <div className="rounded-xl border border-blue-500/10 bg-[#07101f]/50 p-4 shadow-[0_0_28px_rgba(37,99,235,0.06)]">
+                  {activeTab === "Dashboard" && (
+                    <div className="space-y-4">
+                      <Topbar
+                        isConnected={isConnected}
+                        address={address}
+                        connect={connect}
+                        disconnect={disconnect}
+                        connectors={connectors}
+                        walletLoading={walletLoading}
+                      />
 
-  {/* TRADING */}
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                        <div className="rounded-lg border border-blue-500/10 bg-[#020617]/70 p-3">
+                          <p className="text-[11px] text-gray-400">
+                            Portfolio
+                          </p>
 
-  <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6">
+                          <h3 className="mt-1 text-lg font-semibold text-cyan-300">
+                            ${totalPortfolio.toLocaleString()}
+                          </h3>
 
-    <SwapCard />
+                          <p className="mt-1 text-xs text-gray-500">
+                            Total value
+                          </p>
+                        </div>
 
-    <LiquidityCard />
+                        <div className="rounded-lg border border-blue-500/10 bg-[#020617]/70 p-3">
+                          <p className="text-[11px] text-gray-400">
+                            Treasury
+                          </p>
 
-  </div>
+                          <h3 className="mt-1 text-lg font-semibold text-green-400">
+                            ${treasuryValue.toLocaleString()}
+                          </h3>
 
-  {/* ANALYTICS */}
+                          <p className="mt-1 text-xs text-gray-500">
+                            Active reserves
+                          </p>
+                        </div>
 
-  <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                        <div className="rounded-lg border border-blue-500/10 bg-[#020617]/70 p-3">
+                          <p className="text-[11px] text-gray-400">
+                            Governance
+                          </p>
 
-    <MarketDepthCard />
+                          <h3 className="mt-1 text-lg font-semibold text-blue-400">
+                            {proposals.length}
+                          </h3>
 
-    <LiquidityHeatmapCard />
+                          <p className="mt-1 text-xs text-gray-500">
+                            DAO proposals
+                          </p>
+                        </div>
 
-    <VolumeAnalyticsCard />
+                        <div className="rounded-lg border border-blue-500/10 bg-[#020617]/70 p-3">
+                          <p className="text-[11px] text-gray-400">
+                            APR
+                          </p>
 
-  </div>
+                          <h3 className="mt-1 text-lg font-semibold text-purple-400">
+                            {aprInput}%
+                          </h3>
 
-  {/* AI */}
+                          <p className="mt-1 text-xs text-gray-500">
+                            Rewards active
+                          </p>
+                        </div>
+                      </div>
 
-  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                        <ProtocolMetricsBar
+                          treasuryValue={treasuryValue}
+                          proposals={proposals.length}
+                          apr={Number(aprInput)}
+                        />
 
-    <AIInsightsCard />
+                        <TreasuryHealthCard
+                          treasuryValue={treasuryValue}
+                          liquidity={2500000}
+                        />
+                      </div>
 
-    <AIChatCard />
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
+                        <div className="rounded-xl border border-blue-500/10 bg-[#020617]/70 p-4">
+                          <div className="mb-4 flex items-center justify-between">
+                            <div>
+                              <p className="text-[10px] uppercase tracking-[0.22em] text-cyan-300">
+                                Actions
+                              </p>
 
-  </div>
+                              <h3 className="text-lg font-semibold">
+                                Quick Actions
+                              </h3>
+                            </div>
+                          </div>
 
-  {/* GOVERNANCE */}
+                          <div className="grid grid-cols-2 gap-2">
+                            {quickActions.map(
+                              ([tab, icon, label]) => (
+                                <button
+                                  key={tab}
+                                  onClick={() =>
+                                    setActiveTab(tab)
+                                  }
+                                  className="rounded-lg border border-blue-500/10 bg-[#081222] p-3 text-left transition hover:border-blue-500/30"
+                                >
+                                  <p className="text-base">
+                                    {icon}
+                                  </p>
 
-  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                                  <p className="mt-1 text-sm font-semibold">
+                                    {tab}
+                                  </p>
 
-    <GovernanceInsightCard
-      proposalCount={proposals.length}
-    />
+                                  <p className="mt-1 text-[11px] text-gray-500">
+                                    {label}
+                                  </p>
+                                </button>
+                              )
+                            )}
+                          </div>
+                        </div>
 
-    <TreasuryRiskCard
-      treasuryValue={treasuryValue}
-    />
+                        <div className="rounded-xl border border-blue-500/10 bg-[#020617]/70 p-4">
+                          <div className="mb-4 flex items-center justify-between">
+                            <div>
+                              <p className="text-[10px] uppercase tracking-[0.22em] text-cyan-300">
+                                Activity
+                              </p>
 
-  </div>
+                              <h3 className="text-lg font-semibold">
+                                Recent Activity
+                              </h3>
+                            </div>
+                          </div>
 
-    {/* PORTFOLIO */}
+                          <div className="space-y-2">
+                            {recentActivity.map(
+                              ([title, desc, time]) => (
+                                <div
+                                  key={title}
+                                  className="rounded-lg border border-blue-500/10 bg-[#081222] px-3 py-2"
+                                >
+                                  <div className="flex items-center justify-between gap-3">
+                                    <p className="text-sm font-semibold">
+                                      {title}
+                                    </p>
 
-  <div className="grid grid-cols-1 gap-6">
+                                    <p className="text-[11px] text-gray-500">
+                                      {time}
+                                    </p>
+                                  </div>
 
-    <PortfolioAnalyticsCard />
+                                  <p className="mt-1 text-xs text-gray-500">
+                                    {desc}
+                                  </p>
+                                </div>
+                              )
+                            )}
+                          </div>
+                        </div>
 
-  </div>
+                        <div className="rounded-xl border border-blue-500/10 bg-[#020617]/70 p-4">
+                          <div className="mb-4 flex items-center justify-between">
+                            <div>
+                              <p className="text-[10px] uppercase tracking-[0.22em] text-cyan-300">
+                                System
+                              </p>
 
-</div>
+                              <h3 className="text-lg font-semibold">
+                                Status Center
+                              </h3>
+                            </div>
+                          </div>
 
-        </>
+                          <div className="space-y-2">
+                            {systemNotes.map(
+                              ([label, value]) => (
+                                <div
+                                  key={label}
+                                  className="flex items-center justify-between rounded-lg border border-blue-500/10 bg-[#081222] px-3 py-2"
+                                >
+                                  <p className="text-sm text-gray-400">
+                                    {label}
+                                  </p>
 
-      )}
+                                  <p className="text-xs font-semibold text-cyan-300">
+                                    {value}
+                                  </p>
+                                </div>
+                              )
+                            )}
+                          </div>
 
-    </div>
+                          <button
+                            onClick={() =>
+                              setActiveTab("Bridge")
+                            }
+                            className="mt-3 h-10 w-full rounded-lg bg-blue-600 text-sm font-semibold hover:bg-blue-500"
+                          >
+                            Open Network Status
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
-  </div>
+                  {activeTab === "Portfolio" && (
+                    <div className="space-y-4">
+                      <PortfolioContent />
+                      <PortfolioAnalyticsCard />
+                    </div>
+                  )}
 
-</section>
+                  {activeTab === "Governance" && (
+                    <div className="space-y-4">
+                      <GovernanceModule />
 
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                        <GovernanceTerminal />
 
+                        <GovernanceInsightCard
+                          proposalCount={proposals.length}
+                        />
+                      </div>
+                    </div>
+                  )}
 
-      </div>
+                  {activeTab === "Staking" && (
+                    <StakingPanel
+                      stakedTokens={stakedTokens}
+                      rewards={rewards}
+                      apr={aprInput}
+                      stakeAmount={stakeAmount}
+                      setStakeAmount={setStakeAmount}
+                      handleStake={handleStake}
+                      handleUnstake={handleUnstake}
+                      handleClaimRewards={
+                        handleClaimRewards
+                      }
+                      handleCompoundRewards={
+                        handleCompoundRewards
+                      }
+                      txLoading={txLoading}
+                      txStatus={txStatus}
+                    />
+                  )}
 
-    </div>
-      
-    </main>
+                  {activeTab === "Treasury" && (
+                    <div className="space-y-4">
+                      <TreasuryModule
+                        totalPortfolio={totalPortfolio}
+                        ethBalance={ethBalance}
+                        tokenBalance={tokenBalance}
+                        ethPrice={ethPrice}
+                        tokenPrice={tokenPrice}
+                      />
 
-    </PortfolioProvider>
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                        <TreasuryRadar />
 
-</InstitutionalLayout>
+                        <TreasuryHealthCard
+                          treasuryValue={treasuryValue}
+                          liquidity={2500000}
+                        />
 
+                        <TreasuryRiskCard
+                          treasuryValue={treasuryValue}
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === "Analytics" && (
+                    <div className="space-y-4">
+                      <AnalyticsModule
+                        chartData={history}
+                      />
+
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                        <QuantEngine />
+                        <MarketTerminal />
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
+                        <MarketDepthCard />
+                        <LiquidityHeatmapCard />
+                        <VolumeAnalyticsCard />
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === "DAO" && (
+                    <div className="space-y-4">
+                      <DAOmodule />
+                      <EcosystemOverview />
+                    </div>
+                  )}
+
+                  {activeTab === "AI Insights" && (
+                    <div className="space-y-4">
+                      <AICommandCenter />
+
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                        <AISystemStatus />
+                        <AIPredictions />
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                        <AIInsightsCard />
+                        <AIChatCard />
+                      </div>
+
+                      <AIChat />
+                    </div>
+                  )}
+
+                  {activeTab === "Swap" && (
+                    <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                      <div className="space-y-4">
+                        <SwapCard />
+                        <SwapExecutionCard />
+                        <LiquidityCard />
+                      </div>
+
+                      <div className="space-y-4">
+                        <SwapHistoryCard />
+                        <LiquidityMatrix />
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === "Bridge" && (
+                    <div className="space-y-4">
+                      <CrosschainCenter />
+
+                      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                        <NetworkSwitcher />
+                        <ProtocolStatus />
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === "Settings" && (
+                    <div className="rounded-xl border border-blue-500/10 bg-[#020617]/60 p-4">
+                      <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-cyan-300">
+                        Settings
+                      </p>
+
+                      <h2 className="text-xl font-semibold">
+                        Protocol Settings
+                      </h2>
+
+                      <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-400">
+                        Wallet display, preferences,
+                        notification configuration and protocol
+                        controls.
+                      </p>
+                    </div>
+                  )}
+
+                  {activeTab === "Admin" && (
+                    <AdminControls
+                      setDisplayApr={setAprInput}
+                    />
+                  )}
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </PortfolioProvider>
+    </InstitutionalLayout>
   );
 }
 
 export default function Dashboard() {
-
   return (
     <AuthProvider>
-
       <NotificationProvider>
-
         <DashboardContent />
-
       </NotificationProvider>
-
     </AuthProvider>
   );
 }

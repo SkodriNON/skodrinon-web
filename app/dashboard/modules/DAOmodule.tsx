@@ -8,7 +8,7 @@ export default function DAOmodule() {
 
       <div>
 
-        <h2 className="text-3xl font-bold mb-2">
+        <h2 className="text-xlfont-bold mb-2">
           DAO
         </h2>
 
@@ -22,7 +22,7 @@ export default function DAOmodule() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/40 backdrop-blur-md p-6">
+        <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/40 backdrop-blur-md p-6">
 
           <h3 className="text-xl font-bold mb-5">
             DAO Activity
@@ -64,7 +64,7 @@ export default function DAOmodule() {
 
         </div>
 
-        <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/40 backdrop-blur-md p-6">
+        <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/40 backdrop-blur-md p-6">
 
           <h3 className="text-xl font-bold mb-5">
             Community Metrics

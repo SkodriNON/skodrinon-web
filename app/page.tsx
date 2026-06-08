@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 import {
   Shield,
@@ -12,390 +9,310 @@ import {
   Brain,
   ExternalLink,
   Send,
-  Globe,
   GitBranch,
   Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 
 const MODULES = [
   {
     title: "NexusNON.ID",
     label: "Sovereign Identity",
+    headline: "Sovereign Identity Capsule",
     description:
-      "Capsule-based sovereign digital identity infrastructure with PUP, recovery and public registration.",
+      "NexusNON.ID is the identity layer of the ecosystem. The Capsule is not a profile and not a normal account. It is a sovereign digital identity structure designed to connect login, ownership, recovery, session control and future constitutional access.",
     value: "Identity Layer",
     action: "Open Identity",
-    link:
-      process.env.NEXT_PUBLIC_IDENTITY_URL ||
-      "https://nonid.vercel.app",
+    link: process.env.NEXT_PUBLIC_IDENTITY_URL || "https://nonid.vercel.app",
     icon: Shield,
+    blocks: [
+      "Capsule = Identity, not database profile",
+      "PUP session layer for secure access",
+      "Recovery and anti-phishing protection",
+      "Designed for future wallet-independent identity",
+    ],
   },
   {
     title: "NON Board",
     label: "Constitutional Governance",
+    headline: "Live Constitutional Board",
     description:
-      "Live constitutional board layer connected to identity, governance authority and protocol coordination.",
+      "NON Board is the governance and coordination layer. It connects ecosystem decisions, constitutional authority, protocol modules and identity-based legitimacy into one visible control environment.",
     value: "Board Layer",
     action: "Open Board",
     link:
       process.env.NEXT_PUBLIC_BOARD_URL ||
       "https://nonid.vercel.app/non/genesis",
     icon: Landmark,
+    blocks: [
+      "Governance coordination layer",
+      "Connected to identity authority",
+      "Protocol legitimacy dashboard",
+      "Board-level constitutional structure",
+    ],
   },
   {
     title: "NON Economy",
     label: "Token Dashboard",
+    headline: "NON Economic Layer",
     description:
-      "Treasury, liquidity, staking, governance, analytics and economic coordination dashboard.",
+      "NON Economy is the treasury, liquidity, staking, governance and analytics layer. It is designed to coordinate the economic side of the ecosystem without mixing identity sovereignty with token mechanics.",
     value: "Economic Layer",
     action: "Open Dashboard",
     link: "/dashboard",
     icon: Coins,
+    blocks: [
+      "Treasury visibility",
+      "Liquidity and staking coordination",
+      "Governance analytics",
+      "Economic dashboard structure",
+    ],
   },
   {
     title: "AI Infrastructure",
     label: "Intelligence Layer",
+    headline: "AI Ecosystem Intelligence",
     description:
-      "AI-assisted ecosystem intelligence for governance, security, treasury and coordination systems.",
+      "AI Infrastructure is the guidance and intelligence layer for the ecosystem. It can assist users, explain modules, support governance decisions, monitor risks and help coordinate future protocol operations.",
     value: "AI Layer",
     action: "Explore AI",
     link: "/dashboard",
     icon: Brain,
+    blocks: [
+      "AI guidance for users",
+      "Governance assistance",
+      "Security and risk explanation",
+      "Future ecosystem intelligence agent",
+    ],
   },
 ];
 
 export default function Home() {
-  const [activePanel, setActivePanel] =
-    useState(0);
+  const [activePanel, setActivePanel] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActivePanel((prev) =>
-        prev === MODULES.length - 1
-          ? 0
-          : prev + 1
+        prev === MODULES.length - 1 ? 0 : prev + 1
       );
-    }, 5000);
+    }, 9000);
 
     return () => clearInterval(interval);
   }, []);
 
-  const ActiveIcon =
-    MODULES[activePanel].icon;
+  const activeModule = MODULES[activePanel];
+  const ActiveIcon = activeModule.icon;
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('/web.backhom.png')",
-        }}
-      />
+    <main className="relative min-h-screen overflow-x-hidden bg-[#020617] text-white">
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 py-4 sm:px-6 lg:px-8">
+        <header className="sticky top-4 z-50 rounded-[28px] border border-cyan-400/10 bg-[#07101f]/70 px-4 py-4 shadow-[0_0_45px_rgba(59,130,246,0.10)] backdrop-blur-2xl sm:px-6">
+  <div className="flex flex-row flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_45px_rgba(59,130,246,0.45)]">
+                <Sparkles className="h-5 w-5" />
+              </div>
 
-      <div className="absolute inset-0 bg-black/35" />
+              <div>
+                <h1 className="text-lg font-black sm:text-xl">
+                  SkodriNΩN
+                </h1>
 
-      <header className="fixed top-5 left-5 right-5 z-50 rounded-[32px] border border-cyan-400/10 bg-[#07101f]/50 px-8 py-5 shadow-[0_0_45px_rgba(59,130,246,0.10)] backdrop-blur-2xl">
-        <div className="flex items-center justify-between gap-6">
-          <div className="flex items-center gap-5">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_45px_rgba(59,130,246,0.45)]">
-              <Sparkles className="h-5 w-5" />
+                <p className="text-[9px] uppercase tracking-[0.25em] text-gray-500 sm:text-[10px]">
+                  Sovereign Ecosystem
+                </p>
+              </div>
             </div>
 
-            <div>
-              <h1 className="text-xl font-black">
-                SkodriNΩN
-              </h1>
+            <nav className="hidden items-center gap-6 text-sm md:flex">
+              <a
+                href={MODULES[0].link}
+                className="text-gray-300 transition hover:text-cyan-300"
+              >
+                Identity
+              </a>
 
-              <p className="text-[10px] uppercase tracking-[0.3em] text-gray-500">
-                Sovereign Ecosystem
-              </p>
+              <a
+                href={MODULES[1].link}
+                className="text-gray-300 transition hover:text-cyan-300"
+              >
+                Board
+              </a>
+
+              <a
+                href="/dashboard"
+                className="text-gray-300 transition hover:text-cyan-300"
+              >
+                Token Dashboard
+              </a>
+            </nav>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="/dashboard"
+                className="rounded-2xl border border-cyan-400/10 bg-cyan-500/10 px-5 py-3 text-sm transition hover:bg-cyan-500/20"
+              >
+                Dashboard
+              </a>
+
+              <a
+                href={MODULES[0].link}
+                className="rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-3 text-sm font-bold shadow-[0_0_35px_rgba(59,130,246,0.35)] transition hover:scale-[1.03]"
+              >
+                Nexus ID
+              </a>
             </div>
           </div>
+        </header>
 
-          <nav className="hidden items-center gap-8 xl:flex">
-            <a
-              href={
-                process.env.NEXT_PUBLIC_IDENTITY_URL ||
-                "https://nonid.vercel.app"
-              }
-              className="text-gray-300 transition hover:text-cyan-300"
-            >
-              Identity
-            </a>
+        <section className="mx-auto mt-6 w-full max-w-[1280px] pb-10">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-[230px_1fr]">
+            <aside className="rounded-[30px] border border-cyan-400/10 bg-[#07101f]/65 p-4 backdrop-blur-2xl">
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+                <div className="space-y-3">
+                  <p className="px-2 text-[10px] font-black uppercase tracking-[0.25em] text-cyan-300">
+                    Modules
+                  </p>
 
-            <a
-              href={
-                process.env.NEXT_PUBLIC_BOARD_URL ||
-                "https://nonid.vercel.app/non/genesis"
-              }
-              className="text-gray-300 transition hover:text-cyan-300"
-            >
-              Board
-            </a>
+                  {MODULES.map((module, index) => {
+                    const Icon = module.icon;
+                    const isActive = activePanel === index;
 
-            <a
-              href="/dashboard"
-              className="text-gray-300 transition hover:text-cyan-300"
-            >
-              Token Dashboard
-            </a>
+                    return (
+                      <button
+                        key={module.title}
+                        type="button"
+                        onClick={() => setActivePanel(index)}
+                        className={`flex w-full items-center gap-3 rounded-2xl border px-4 py-4 text-left transition ${
+                          isActive
+                            ? "border-cyan-400/30 bg-cyan-400/10 text-cyan-200"
+                            : "border-white/5 bg-white/[0.03] text-gray-300 hover:border-cyan-400/20 hover:text-cyan-300"
+                        }`}
+                      >
+                        <Icon className="h-4 w-4 shrink-0 text-cyan-300" />
 
-            <a
-              href="#ecosystem"
-              className="text-gray-300 transition hover:text-cyan-300"
-            >
-              Ecosystem
-            </a>
-          </nav>
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-black">
+                            {module.title}
+                          </p>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="/dashboard"
-              className="rounded-2xl border border-cyan-400/10 bg-cyan-500/10 px-6 py-3 transition hover:bg-cyan-500/20"
-            >
-              Dashboard
-            </a>
+                          <p className="truncate text-[10px] text-gray-500">
+                            {module.label}
+                          </p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
 
-            <a
-              href={
-                process.env.NEXT_PUBLIC_IDENTITY_URL ||
-                "https://nonid.vercel.app"
-              }
-              className="rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-3 font-bold shadow-[0_0_35px_rgba(59,130,246,0.35)] transition hover:scale-[1.03]"
-            >
-              Nexus ID
-            </a>
-          </div>
-        </div>
-      </header>
+                <div className="space-y-3">
+                  <p className="px-2 text-[10px] font-black uppercase tracking-[0.25em] text-cyan-300">
+                    Network
+                  </p>
 
-      <section className="relative z-10 flex min-h-screen items-center justify-center px-6 pb-[130px] pt-[130px] xl:pr-[410px]">
-        <div className="absolute left-[70px] top-[175px] max-w-[580px]">
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-5 py-2 text-[13px] text-cyan-200 backdrop-blur-xl">
-            <Sparkles className="h-4 w-4" />
-            Identity × Board × Token Economy × AI
-          </div>
-
-          <h2 className="mb-8 text-[4.6rem] font-black leading-[0.9] tracking-[-0.06em]">
-            <span className="text-white">
-              Sovereign
-            </span>
-            <br />
-            <span className="text-white">
-              Digital
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
-              Ecosystem
-            </span>
-          </h2>
-
-          <p className="max-w-[540px] text-lg leading-[1.8] text-gray-400">
-            SkodriNΩN is a sovereign Web3 ecosystem connecting
-            digital identity, constitutional governance, token
-            economy and AI infrastructure into one unified system.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href={
-                process.env.NEXT_PUBLIC_IDENTITY_URL ||
-                "https://nonid.vercel.app"
-              }
-              className="rounded-2xl bg-cyan-400 px-6 py-4 font-black text-black transition hover:scale-[1.03]"
-            >
-              Open Nexus Identity
-            </a>
-
-            <a
-              href="/dashboard"
-              className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-6 py-4 font-black text-cyan-200 transition hover:bg-cyan-400/20"
-            >
-              Open NON Dashboard
-            </a>
-          </div>
-        </div>
-
-        <div className="relative z-20 flex items-center justify-center">
-          <div className="absolute h-[700px] w-[700px] rounded-full bg-cyan-400/20 blur-[180px]" />
-
-          <img
-            src="/home.web.png"
-            alt="SkodriNΩN Ecosystem"
-            className="relative z-20 w-[520px] object-contain opacity-95 drop-shadow-[0_0_160px_rgba(59,130,246,1)] xl:w-[650px]"
-          />
-        </div>
-      </section>
-
-      <aside className="fixed bottom-[120px] right-5 top-24 z-50 w-[360px] overflow-hidden rounded-[34px] border border-cyan-400/10 bg-[#07101f]/50 p-6 backdrop-blur-2xl">
-        <div className="flex h-full flex-col justify-between">
-          <div>
-            <p className="mb-4 text-[11px] uppercase tracking-[0.3em] text-cyan-300">
-              LIVE ECOSYSTEM
-            </p>
-
-            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
-              <ActiveIcon className="h-6 w-6" />
-            </div>
-
-            <h2 className="mb-3 text-4xl font-black leading-tight">
-              {MODULES[activePanel].title}
-            </h2>
-
-            <p className="mb-6 text-sm font-black uppercase tracking-[0.22em] text-cyan-300">
-              {MODULES[activePanel].label}
-            </p>
-
-            <p className="text-[15px] leading-[1.9] text-gray-400">
-              {MODULES[activePanel].description}
-            </p>
-
-            <div className="my-6 rounded-3xl border border-cyan-400/10 bg-black/25 p-6">
-              <p className="mb-3 text-sm text-gray-400">
-                Current Module
-              </p>
-
-              <h3 className="text-3xl font-black text-cyan-300">
-                {MODULES[activePanel].value}
-              </h3>
-            </div>
-
-            <a
-              href={MODULES[activePanel].link}
-              className="flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-4 font-semibold shadow-[0_0_45px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
-            >
-              {MODULES[activePanel].action}
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold">
-              Ecosystem Modules
-            </h3>
-
-            {MODULES.slice(0, 3).map(
-              (module, index) => {
-                const Icon = module.icon;
-
-                return (
-                  <button
-                    key={module.title}
-                    onClick={() =>
-                      setActivePanel(index)
-                    }
-                    className="flex w-full items-center justify-between rounded-2xl border border-white/5 bg-white/[0.03] px-5 py-4 text-left transition hover:border-cyan-400/20"
+                  <a
+                    href="https://x.com/SkodriNON_AI"
+                    target="_blank"
+                    className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-4 transition hover:border-cyan-400/20 hover:text-cyan-300"
                   >
-                    <div className="flex items-center gap-3">
-                      <Icon className="h-4 w-4 text-cyan-300" />
+                    <span className="text-xl">𝕏</span>
+                    X
+                  </a>
 
-                      <div>
-                        <p className="font-semibold">
-                          {module.title}
-                        </p>
+                  <a
+                    href="https://t.me/SkodriNON_Official"
+                    target="_blank"
+                    className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-4 transition hover:border-cyan-400/20 hover:text-cyan-300"
+                  >
+                    <Send className="h-4 w-4" />
+                    Telegram
+                  </a>
 
-                        <p className="text-xs text-gray-500">
-                          {module.label}
-                        </p>
-                      </div>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-4 transition hover:border-cyan-400/20 hover:text-cyan-300"
+                  >
+                    <GitBranch className="h-4 w-4" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </aside>
+
+            <div className="rounded-[34px] border border-cyan-400/10 bg-[#07101f]/60 p-5 shadow-[0_0_90px_rgba(59,130,246,0.10)] backdrop-blur-2xl sm:p-7 lg:p-8">
+              <div className="mb-7 inline-flex max-w-full items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-[11px] text-cyan-200 sm:text-[13px]">
+                <Sparkles className="h-4 w-4 shrink-0" />
+
+                <span className="truncate">
+                  Identity × Board × Token Economy × AI
+                </span>
+              </div>
+
+              <div className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center">
+                <div className="flex h-18 w-18 items-center justify-center rounded-[26px] border border-cyan-400/20 bg-cyan-400/10 text-cyan-200 shadow-[0_0_60px_rgba(34,211,238,0.20)] sm:h-20 sm:w-20">
+                  <ActiveIcon className="h-8 w-8 sm:h-9 sm:w-9" />
+                </div>
+
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.28em] text-cyan-300 sm:tracking-[0.35em]">
+                    {activeModule.label}
+                  </p>
+
+                  <h2 className="mt-2 text-xlfont-black tracking-[-0.05em] sm:text-xl">
+                    {activeModule.title}
+                  </h2>
+                </div>
+              </div>
+
+              <h3 className="max-w-[760px] text-[clamp(2.2rem,7vw,5rem)] font-black leading-[0.92] tracking-[-0.07em]">
+                {activeModule.headline}
+              </h3>
+
+              <p className="mt-7 max-w-[760px] text-base leading-8 text-gray-300 sm:text-lg sm:leading-[1.85]">
+                {activeModule.description}
+              </p>
+
+              <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {activeModule.blocks.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-black/25 p-5"
+                  >
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-300">
+                      <CheckCircle2 className="h-5 w-5" />
                     </div>
 
-                    <ExternalLink className="h-4 w-4 text-cyan-300" />
-                  </button>
-                );
-              }
-            )}
+                    <p className="text-sm font-semibold leading-6 text-gray-300">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <a
+                  href={activeModule.link}
+                  className="flex items-center justify-center gap-3 rounded-2xl bg-cyan-400 px-7 py-4 font-black text-black transition hover:scale-[1.03]"
+                >
+                  {activeModule.action}
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActivePanel((prev) =>
+                      prev === MODULES.length - 1 ? 0 : prev + 1
+                    )
+                  }
+                  className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-7 py-4 font-black text-cyan-200 transition hover:bg-cyan-400/20"
+                >
+                  Next Module
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </aside>
-
-      <section
-        id="ecosystem"
-        className="relative z-20 mx-5 mb-[120px] rounded-[34px] border border-cyan-400/10 bg-[#07101f]/55 p-8 backdrop-blur-2xl xl:mr-[390px]"
-      >
-        <div className="mb-8">
-          <p className="text-xs font-black uppercase tracking-[0.3em] text-cyan-300">
-            Ecosystem Architecture
-          </p>
-
-          <h2 className="mt-3 text-4xl font-black">
-            One ecosystem. Separate sovereign modules.
-          </h2>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          {MODULES.slice(0, 3).map((module) => {
-            const Icon = module.icon;
-
-            return (
-              <a
-                key={module.title}
-                href={module.link}
-                className="group rounded-[28px] border border-white/10 bg-black/25 p-6 transition hover:border-cyan-400/30 hover:bg-cyan-400/[0.06]"
-              >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
-                  <Icon className="h-6 w-6" />
-                </div>
-
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-cyan-300">
-                  {module.label}
-                </p>
-
-                <h3 className="mt-3 text-2xl font-black">
-                  {module.title}
-                </h3>
-
-                <p className="mt-4 min-h-[96px] text-sm leading-7 text-gray-400">
-                  {module.description}
-                </p>
-
-                <div className="mt-5 flex items-center gap-2 text-sm font-black text-cyan-300">
-                  {module.action}
-                  <ExternalLink className="h-4 w-4 transition group-hover:translate-x-1" />
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </section>
-
-      <div className="fixed bottom-5 left-5 right-[390px] z-50">
-        <div className="flex items-center justify-center gap-10 rounded-[30px] border border-cyan-400/10 bg-[#07101f]/50 px-8 py-5 backdrop-blur-2xl">
-          <a
-            href="https://x.com/SkodriNON_AI"
-            target="_blank"
-            className="flex items-center gap-3 transition hover:text-cyan-300"
-          >
-            <span className="text-xl">𝕏</span>
-            X
-          </a>
-
-          <a
-            href="https://t.me/SkodriNON_Official"
-            target="_blank"
-            className="flex items-center gap-3 transition hover:text-cyan-300"
-          >
-            <Send className="h-4 w-4" />
-            Telegram
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 transition hover:text-cyan-300"
-          >
-            <GitBranch className="h-4 w-4" />
-            GitHub
-          </a>
-
-          <a
-            href="#ecosystem"
-            className="flex items-center gap-3 transition hover:text-cyan-300"
-          >
-            <Globe className="h-4 w-4" />
-            Ecosystem
-          </a>
-        </div>
+        </section>
       </div>
     </main>
   );

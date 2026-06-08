@@ -18,7 +18,7 @@ export default function Loading() {
 
           <div className="w-32 h-32 rounded-full border border-cyan-500/20 bg-[#07101f]/80 backdrop-blur-xl flex items-center justify-center shadow-[0_0_60px_rgba(59,130,246,0.25)] animate-pulse">
 
-            <span className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
 
               Ω
 
@@ -30,7 +30,7 @@ export default function Loading() {
 
         {/* TITLE */}
 
-        <h1 className="text-4xl md:text-6xl font-black mb-4 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+        <h1 className="text-xl md:text-6xl font-black mb-4 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
 
           SkodriNΩN
 

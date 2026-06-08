@@ -40,9 +40,9 @@ export default function AllocationCard({
       : "0";
 
   return (
-    <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-8">
+    <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-8">
 
-      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">
+      <h3 className="text-xl sm:text-2xl lg:text-xlfont-bold">
         Portfolio Allocation
       </h3>
 
@@ -54,7 +54,7 @@ export default function AllocationCard({
             Total
           </p>
 
-          <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold">
+          <h4 className="text-xl sm:text-2xl lg:text-xlfont-bold">
             ${total.toFixed(2)}
           </h4>
 

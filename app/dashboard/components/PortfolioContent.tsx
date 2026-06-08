@@ -72,7 +72,7 @@ export default function PortfolioContent() {
       {/* HEADER */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-3">
+          <h1 className="text-xl sm:text-5xl font-bold mb-3">
             Portfolio
           </h1>
 
@@ -98,12 +98,12 @@ export default function PortfolioContent() {
 
       {/* OVERVIEW */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-        <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6">
+        <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-6">
           <p className="text-gray-400 mb-3">
             Net Worth
           </p>
 
-          <h3 className="text-3xl font-bold mb-2">
+          <h3 className="text-xlfont-bold mb-2">
             $14,250
           </h3>
 
@@ -112,12 +112,12 @@ export default function PortfolioContent() {
           </span>
         </div>
 
-        <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6">
+        <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-6">
           <p className="text-gray-400 mb-3">
             Daily PNL
           </p>
 
-          <h3 className="text-3xl font-bold mb-2 text-green-400">
+          <h3 className="text-xlfont-bold mb-2 text-green-400">
             +$425
           </h3>
 
@@ -126,12 +126,12 @@ export default function PortfolioContent() {
           </span>
         </div>
 
-        <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6">
+        <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-6">
           <p className="text-gray-400 mb-3">
             Assets
           </p>
 
-          <h3 className="text-3xl font-bold mb-2">
+          <h3 className="text-xlfont-bold mb-2">
             12
           </h3>
 
@@ -140,12 +140,12 @@ export default function PortfolioContent() {
           </span>
         </div>
 
-        <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6">
+        <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-6">
           <p className="text-gray-400 mb-3">
             DeFi Positions
           </p>
 
-          <h3 className="text-3xl font-bold mb-2">
+          <h3 className="text-xlfont-bold mb-2">
             4
           </h3>
 
@@ -158,9 +158,9 @@ export default function PortfolioContent() {
       {/* CHART + AI */}
       <div className="grid grid-cols-1 2xl:grid-cols-3 gap-7">
         {/* PERFORMANCE CHART */}
-        <div className="2xl:col-span-2 rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7">
+        <div className="2xl:col-span-2 rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl sm:text-3xl font-bold">
+            <h3 className="text-2xl sm:text-xlfont-bold">
               Portfolio Performance
             </h3>
 
@@ -211,8 +211,8 @@ export default function PortfolioContent() {
         </div>
 
         {/* AI INSIGHTS */}
-        <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7">
-          <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-blue-400">
+        <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7">
+          <h3 className="text-2xl sm:text-xlfont-bold mb-8 text-blue-400">
             AI Insights
           </h3>
 
@@ -251,9 +251,9 @@ export default function PortfolioContent() {
       </div>
 
       {/* HOLDINGS */}
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7 overflow-hidden">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7 overflow-hidden">
         <div className="flex items-center justify-between mb-8">
-          <h3 className="text-2xl sm:text-3xl font-bold">
+          <h3 className="text-2xl sm:text-xlfont-bold">
             Holdings
           </h3>
 
@@ -307,9 +307,9 @@ export default function PortfolioContent() {
       </div>
 
       {/* TRANSACTIONS */}
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7">
         <div className="flex items-center justify-between mb-8">
-          <h3 className="text-2xl sm:text-3xl font-bold">
+          <h3 className="text-2xl sm:text-xlfont-bold">
             Recent Transactions
           </h3>
 

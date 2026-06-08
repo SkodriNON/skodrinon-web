@@ -71,13 +71,13 @@ export default function GovernanceCard({
 
   return (
 
-    <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7">
+    <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7">
 
       {/* HEADER */}
 
       <div className="mb-10">
 
-        <h3 className="text-2xl sm:text-3xl font-bold mb-3">
+        <h3 className="text-2xl sm:text-xlfont-bold mb-3">
 
           Governance Power
 
@@ -97,7 +97,7 @@ export default function GovernanceCard({
 
         <div className="text-center">
 
-          <h4 className="text-3xl sm:text-4xl font-bold mb-2">
+          <h4 className="text-xlsm:text-xl font-bold mb-2">
 
             {votingPower.toFixed(2)}
 

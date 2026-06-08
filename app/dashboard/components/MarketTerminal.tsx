@@ -1,8 +1,6 @@
-
 "use client";
 
 const markets = [
-
   {
     pair: "ETH / USD",
     price: "$3,842",
@@ -10,7 +8,6 @@ const markets = [
     volume: "$18.4B",
     positive: true,
   },
-
   {
     pair: "BTC / USD",
     price: "$112,400",
@@ -18,7 +15,6 @@ const markets = [
     volume: "$31.2B",
     positive: true,
   },
-
   {
     pair: "SKNON / ETH",
     price: "0.00042",
@@ -26,7 +22,6 @@ const markets = [
     volume: "$2.1M",
     positive: true,
   },
-
   {
     pair: "ARB / USD",
     price: "$1.84",
@@ -34,107 +29,97 @@ const markets = [
     volume: "$980M",
     positive: false,
   },
-
 ];
 
 export default function MarketTerminal() {
-
   return (
+    <div className="rounded-xl border border-orange-500/10 bg-[#07101f]/80 p-4">
 
-    <div className="rounded-[32px] border border-orange-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 mt-8 overflow-hidden relative">
-
-      {/* BACKGROUND */}
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.12),transparent_35%)]" />
-
-      {/* HEADER */}
-
-      <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
+      <div className="mb-4 flex items-center justify-between">
 
         <div>
-
-          <p className="text-xs uppercase tracking-[0.3em] text-orange-400 mb-3">
-
-            Institutional Market Intelligence
-
+          <p className="text-[10px] uppercase tracking-[0.22em] text-orange-400">
+            Markets
           </p>
 
-          <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-orange-200 to-yellow-300 bg-clip-text text-transparent">
-
+          <h3 className="text-lg font-semibold">
             Market Terminal
-
           </h3>
-
         </div>
 
-        <div className="flex items-center gap-3 rounded-full border border-orange-500/20 bg-orange-500/10 px-5 py-3">
-
-          <div className="w-3 h-3 rounded-full bg-orange-400 animate-pulse" />
-
-          <span className="text-sm font-semibold text-orange-300">
-
-            Markets Live
-
-          </span>
-
+        <div className="flex items-center gap-2 text-xs text-orange-300">
+          <span className="h-2 w-2 rounded-full bg-orange-400" />
+          Live
         </div>
 
       </div>
 
-      {/* MARKET GRID */}
+      <div className="overflow-hidden rounded-lg border border-orange-500/10">
 
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <table className="w-full text-sm">
 
-        {markets.map((market) => (
+          <thead>
 
-          <div
+            <tr className="border-b border-orange-500/10 bg-[#081222]">
 
-            key={market.pair}
+              <th className="px-3 py-2 text-left font-medium text-gray-400">
+                Pair
+              </th>
 
-            className="rounded-3xl border border-orange-500/10 bg-[#081222]/80 p-6 hover:border-orange-500/30 transition-all duration-300"
+              <th className="px-3 py-2 text-left font-medium text-gray-400">
+                Price
+              </th>
 
-          >
+              <th className="px-3 py-2 text-left font-medium text-gray-400">
+                24H Volume
+              </th>
 
-            <div className="flex items-center justify-between mb-6">
+              <th className="px-3 py-2 text-right font-medium text-gray-400">
+                Change
+              </th>
 
-              <h4 className="text-2xl font-black">
+            </tr>
 
-                {market.pair}
+          </thead>
 
-              </h4>
+          <tbody>
 
-              <div className={`text-sm font-semibold ${
-                market.positive
-                  ? "text-green-400"
-                  : "text-red-400"
-              }`}>
+            {markets.map((market) => (
 
-                {market.change}
+              <tr
+                key={market.pair}
+                className="border-b border-orange-500/5 hover:bg-[#081222]/60"
+              >
 
-              </div>
+                <td className="px-3 py-2 font-medium">
+                  {market.pair}
+                </td>
 
-            </div>
+                <td className="px-3 py-2">
+                  {market.price}
+                </td>
 
-            <h5 className="text-4xl font-black mb-5 text-white">
+                <td className="px-3 py-2">
+                  {market.volume}
+                </td>
 
-              {market.price}
+                <td
+                  className={`px-3 py-2 text-right font-semibold ${
+                    market.positive
+                      ? "text-green-400"
+                      : "text-red-400"
+                  }`}
+                >
+                  {market.change}
+                </td>
 
-            </h5>
+              </tr>
 
-            <div className="flex items-center justify-between text-sm text-gray-400">
+            ))}
 
-              <span>24H Volume</span>
+          </tbody>
 
-              <span className="text-white">
-
-                {market.volume}
-
-              </span>
-
-            </div>
-
-          </div>
-        ))}
+        </table>
 
       </div>
 

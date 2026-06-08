@@ -37,7 +37,7 @@ export default function SecurityCenter() {
 
   return (
 
-    <div className="rounded-[32px] border border-red-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 mt-8 overflow-hidden relative">
+    <div className="rounded-xl border border-red-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 mt-8 overflow-hidden relative">
 
       {/* BACKGROUND */}
 
@@ -55,7 +55,7 @@ export default function SecurityCenter() {
 
           </p>
 
-          <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-red-200 to-orange-300 bg-clip-text text-transparent">
+          <h3 className="text-xlsm:text-xl font-black bg-gradient-to-r from-white via-red-200 to-orange-300 bg-clip-text text-transparent">
 
             Security Center
 
@@ -87,7 +87,7 @@ export default function SecurityCenter() {
 
             key={item.title}
 
-            className="rounded-3xl border border-red-500/10 bg-[#081222]/80 p-6 hover:border-red-500/30 transition-all duration-300"
+            className="rounded-xlborder border-red-500/10 bg-[#081222]/80 p-6 hover:border-red-500/30 transition-all duration-300"
 
           >
 

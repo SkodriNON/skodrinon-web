@@ -61,7 +61,7 @@ export default function GovernanceModule() {
 
       <div>
 
-        <h2 className="text-4xl font-bold mb-3">
+        <h2 className="text-xl font-bold mb-3">
           Governance
         </h2>
 

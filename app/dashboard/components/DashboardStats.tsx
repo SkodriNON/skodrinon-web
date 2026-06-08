@@ -385,7 +385,7 @@ function DashboardStatsComponent({
 
             <div className="relative z-10">
 
-              <h3 className="text-3xl sm:text-4xl font-black tracking-tight text-white break-words leading-tight">
+              <h3 className="text-xlsm:text-xl font-black tracking-tight text-white break-words leading-tight">
 
                 {value}
 

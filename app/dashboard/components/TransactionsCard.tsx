@@ -122,7 +122,7 @@ function TransactionsCardComponent({
 
   return (
 
-    <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7 overflow-hidden">
+    <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-5 sm:p-7 overflow-hidden">
 
       {/* HEADER */}
 
@@ -136,7 +136,7 @@ function TransactionsCardComponent({
 
           </p>
 
-          <h3 className="text-2xl sm:text-3xl font-bold">
+          <h3 className="text-2xl sm:text-xlfont-bold">
 
             Activity Feed
 

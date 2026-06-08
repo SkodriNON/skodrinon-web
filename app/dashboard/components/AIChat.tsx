@@ -84,7 +84,7 @@ setResponse(
 
   return (
 
-    <div className="rounded-[32px] border border-cyan-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 mt-8">
+    <div className="rounded-xl border border-cyan-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 mt-8">
 
       {/* HEADER */}
 
@@ -96,7 +96,7 @@ setResponse(
 
         </p>
 
-        <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent">
+        <h3 className="text-xlsm:text-xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent">
 
           AI Command Interface
 
@@ -120,7 +120,7 @@ setResponse(
 
           placeholder="Ask SkodriNΩN AI about governance, treasury, DeFi, liquidity or protocol intelligence..."
 
-          className="w-full h-40 rounded-3xl border border-cyan-500/10 bg-[#081222] p-5 text-white outline-none resize-none"
+          className="w-full h-40 rounded-xlborder border-cyan-500/10 bg-[#081222] p-5 text-white outline-none resize-none"
 
         />
 
@@ -146,7 +146,7 @@ setResponse(
 
         {response && (
 
-          <div className="rounded-3xl border border-cyan-500/10 bg-[#081222] p-6 whitespace-pre-wrap leading-relaxed text-gray-300">
+          <div className="rounded-xlborder border-cyan-500/10 bg-[#081222] p-6 whitespace-pre-wrap leading-relaxed text-gray-300">
 
             {response}
 

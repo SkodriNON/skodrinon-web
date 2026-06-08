@@ -101,7 +101,7 @@ export default function StatsCards({
 
             key={String(label)}
 
-            className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-5 transition-all duration-300 hover:border-blue-500/30 relative overflow-hidden"
+            className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-5 transition-all duration-300 hover:border-blue-500/30 relative overflow-hidden"
 
           >
 

@@ -8,7 +8,7 @@ export default function AIExecutionOptimizerCard() {
 
   return (
 
-    <div className="rounded-3xl border border-cyan-500/10 bg-[#07101f]/80 p-6">
+    <div className="rounded-xlborder border-cyan-500/10 bg-[#07101f]/80 p-6">
 
       <div className="flex items-center justify-between mb-6">
 

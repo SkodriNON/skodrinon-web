@@ -1,168 +1,154 @@
-
 "use client";
 
 const pools = [
-
   {
     pair: "ETH / SKNON",
     tvl: "$4.8M",
     apr: "38%",
     volume: "$1.2M",
-    color: "from-cyan-500 to-blue-500",
   },
-
   {
     pair: "USDC / SKNON",
     tvl: "$2.9M",
     apr: "24%",
     volume: "$860K",
-    color: "from-emerald-500 to-green-400",
   },
-
   {
     pair: "ARB / SKNON",
     tvl: "$1.7M",
     apr: "31%",
     volume: "$640K",
-    color: "from-violet-500 to-fuchsia-400",
   },
-
   {
     pair: "BASE / SKNON",
     tvl: "$1.1M",
     apr: "29%",
     volume: "$410K",
-    color: "from-orange-500 to-yellow-400",
   },
-
 ];
 
 export default function LiquidityMatrix() {
-
   return (
+    <div className="rounded-xl border border-blue-500/10 bg-[#07101f]/80 p-4">
 
-    <div className="rounded-[32px] border border-cyan-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 mt-8 overflow-hidden relative">
-
-      {/* BACKGROUND */}
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.12),transparent_35%)]" />
-
-      {/* HEADER */}
-
-      <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
+      <div className="flex items-center justify-between mb-4">
 
         <div>
 
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400 mb-3">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-cyan-400">
 
-            Global Liquidity Infrastructure
+            Liquidity
 
           </p>
 
-          <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent">
+          <h3 className="text-lg font-semibold">
 
-            Liquidity Matrix
+            Liquidity Pools
 
           </h3>
 
         </div>
 
-        <div className="flex items-center gap-3 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-5 py-3">
+        <span className="text-xs text-green-400">
 
-          <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" />
+          Synced
 
-          <span className="text-sm font-semibold text-cyan-300">
-
-            Liquidity Synced
-
-          </span>
-
-        </div>
+        </span>
 
       </div>
 
-      {/* POOLS */}
+      <div className="overflow-hidden rounded-lg border border-blue-500/10">
 
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <table className="w-full text-sm">
 
-        {pools.map((pool) => (
+          <thead>
 
-          <div
+            <tr className="border-b border-blue-500/10 bg-[#081222]">
 
-            key={pool.pair}
+              <th className="px-3 py-2 text-left text-gray-400">
 
-            className="rounded-3xl border border-cyan-500/10 bg-[#081222]/80 p-6 hover:border-cyan-500/30 transition-all duration-300"
+                Pair
 
-          >
+              </th>
 
-            <div className="flex items-center justify-between mb-6">
+              <th className="px-3 py-2 text-left text-gray-400">
 
-              <div className={`w-16 h-16 rounded-3xl bg-gradient-to-br ${pool.color} flex items-center justify-center text-sm font-black shadow-[0_0_25px_rgba(6,182,212,0.25)]`}>
+                TVL
 
-                LP
+              </th>
 
-              </div>
+              <th className="px-3 py-2 text-left text-gray-400">
 
-              <div className="text-right">
+                APR
 
-                <p className="text-xs text-gray-500 mb-1">
+              </th>
 
-                  APR
+              <th className="px-3 py-2 text-left text-gray-400">
 
-                </p>
+                Volume
 
-                <h5 className="text-2xl font-black text-cyan-300">
+              </th>
 
-                  {pool.apr}
+              <th className="px-3 py-2 text-right text-gray-400">
 
-                </h5>
+                Action
 
-              </div>
+              </th>
 
-            </div>
+            </tr>
 
-            <h4 className="text-2xl font-black mb-5">
+          </thead>
 
-              {pool.pair}
+          <tbody>
 
-            </h4>
+            {pools.map((pool) => (
 
-            <div className="space-y-3 text-sm text-gray-400 mb-6">
+              <tr
+                key={pool.pair}
+                className="border-b border-blue-500/5 hover:bg-[#081222]/60"
+              >
 
-              <div className="flex items-center justify-between">
+                <td className="px-3 py-2 font-medium">
 
-                <span>TVL</span>
+                  {pool.pair}
 
-                <span className="text-white">
+                </td>
+
+                <td className="px-3 py-2">
 
                   {pool.tvl}
 
-                </span>
+                </td>
 
-              </div>
+                <td className="px-3 py-2 text-cyan-400 font-semibold">
 
-              <div className="flex items-center justify-between">
+                  {pool.apr}
 
-                <span>24H Volume</span>
+                </td>
 
-                <span className="text-white">
+                <td className="px-3 py-2">
 
                   {pool.volume}
 
-                </span>
+                </td>
 
-              </div>
+                <td className="px-3 py-2 text-right">
 
-            </div>
+                  <button className="rounded-md border border-cyan-500/20 px-3 py-1 text-xs text-cyan-300">
 
-            <button className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 px-5 py-3 text-sm font-semibold text-cyan-300 hover:border-cyan-500/40 transition-all duration-300">
+                    View
 
-              Open Pool Analytics
+                  </button>
 
-            </button>
+                </td>
 
-          </div>
-        ))}
+              </tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
 
       </div>
 

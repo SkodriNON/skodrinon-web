@@ -1,126 +1,99 @@
 "use client";
 
 const systems = [
-
   {
-    name:
-      "Treasury Engine",
-
-    status:
-      "Operational",
+    name: "Treasury Engine",
+    status: "Operational",
   },
-
   {
-    name:
-      "Governance Core",
-
-    status:
-      "Synced",
+    name: "Governance Core",
+    status: "Synced",
   },
-
   {
-    name:
-      "Liquidity Router",
-
-    status:
-      "Realtime",
+    name: "Liquidity Router",
+    status: "Realtime",
   },
-
   {
-    name:
-      "AI Oracle",
-
-    status:
-      "Learning",
+    name: "AI Oracle",
+    status: "Learning",
   },
-
   {
-    name:
-      "Security Shield",
-
-    status:
-      "Protected",
+    name: "Security Shield",
+    status: "Protected",
   },
-
   {
-    name:
-      "Whale Tracker",
-
-    status:
-      "Tracking",
+    name: "Whale Tracker",
+    status: "Tracking",
   },
 ];
 
 export default function AISystemStatus() {
-
   return (
+    <div className="rounded-xl border border-cyan-500/10 bg-[#07101f]/80 p-4">
 
-    <div className="rounded-[32px] border border-cyan-500/10 bg-[#07101f]/80 p-6 sm:p-7">
-
-      <div className="flex items-center justify-between mb-8">
+      <div className="mb-4 flex items-center justify-between">
 
         <div>
-
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400 mb-2">
-
-            Infrastructure Status
-
+          <p className="text-[10px] uppercase tracking-[0.22em] text-cyan-400">
+            AI Systems
           </p>
 
-          <h3 className="text-3xl font-black">
-
-            AI Systems Grid
-
+          <h3 className="text-lg font-semibold">
+            System Status
           </h3>
-
         </div>
 
-        <div className="flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2">
-
-          <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-
-          <span className="text-sm text-cyan-300">
-
-            Live
-
-          </span>
-
+        <div className="flex items-center gap-2 text-xs text-cyan-300">
+          <span className="h-2 w-2 rounded-full bg-cyan-400" />
+          Live
         </div>
 
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="overflow-hidden rounded-lg border border-cyan-500/10">
 
-        {systems.map((system) => (
+        <table className="w-full text-sm">
 
-          <div
+          <thead>
 
-            key={system.name}
+            <tr className="border-b border-cyan-500/10 bg-[#081222]">
 
-            className="rounded-3xl border border-cyan-500/10 bg-[#081222]/80 p-5"
+              <th className="px-3 py-2 text-left font-medium text-gray-400">
+                System
+              </th>
 
-          >
+              <th className="px-3 py-2 text-right font-medium text-gray-400">
+                Status
+              </th>
 
-            <div className="flex items-center justify-between mb-4">
+            </tr>
 
-              <p className="font-bold">
+          </thead>
 
-                {system.name}
+          <tbody>
 
-              </p>
+            {systems.map((system) => (
 
-              <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" />
+              <tr
+                key={system.name}
+                className="border-b border-cyan-500/5 hover:bg-[#081222]/60"
+              >
 
-            </div>
+                <td className="px-3 py-2 font-medium">
+                  {system.name}
+                </td>
 
-            <p className="text-sm text-cyan-300">
+                <td className="px-3 py-2 text-right text-cyan-300">
+                  {system.status}
+                </td>
 
-              {system.status}
+              </tr>
 
-            </p>
+            ))}
 
-          </div>
-        ))}
+          </tbody>
+
+        </table>
 
       </div>
 

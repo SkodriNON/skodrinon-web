@@ -98,7 +98,7 @@ export default function AdminControls({
 
     return (
 
-      <div className="rounded-3xl border border-red-500/20 bg-[#07101f]/80 p-8 text-center">
+      <div className="rounded-xlborder border-red-500/20 bg-[#07101f]/80 p-8 text-center">
 
         <h2 className="text-2xl font-bold text-red-400 mb-3">
           Admin Only
@@ -150,7 +150,7 @@ export default function AdminControls({
 
       {/* REWARD RATE */}
 
-      <div className="rounded-3xl border border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
+      <div className="rounded-xlborder border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
 
         <h2 className="text-2xl font-bold text-red-400">
           Reward Rate
@@ -201,7 +201,7 @@ export default function AdminControls({
         </button>
 
       </div>
-      <div className="rounded-3xl border border-blue-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
+      <div className="rounded-xlborder border-blue-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
 
   <h2 className="text-2xl font-bold text-blue-400">
     Display APR
@@ -245,7 +245,7 @@ export default function AdminControls({
 
       {/* MINIMUM STAKE */}
 
-      <div className="rounded-3xl border border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
+      <div className="rounded-xlborder border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
 
         <h2 className="text-2xl font-bold text-red-400">
           Minimum Stake
@@ -299,7 +299,7 @@ export default function AdminControls({
 
       {/* LOCK PERIOD */}
 
-      <div className="rounded-3xl border border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
+      <div className="rounded-xlborder border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
 
         <h2 className="text-2xl font-bold text-red-400">
           Lock Period
@@ -359,7 +359,7 @@ export default function AdminControls({
 
       {/* PAUSE CONTROLS */}
 
-      <div className="rounded-3xl border border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
+      <div className="rounded-xlborder border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
 
         <h2 className="text-2xl font-bold text-red-400">
           Protocol Controls
@@ -425,7 +425,7 @@ export default function AdminControls({
 
       {/* EMERGENCY */}
 
-      <div className="rounded-3xl border border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
+      <div className="rounded-xlborder border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
 
         <h2 className="text-2xl font-bold text-red-400">
           Emergency Withdraw
@@ -495,7 +495,7 @@ export default function AdminControls({
 
       {/* DEPOSIT REWARDS */}
 
-      <div className="rounded-3xl border border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
+      <div className="rounded-xlborder border-red-500/20 bg-[#07101f]/80 p-6 flex flex-col gap-4">
 
         <h2 className="text-2xl font-bold text-red-400">
           Deposit Rewards
@@ -551,7 +551,7 @@ export default function AdminControls({
 
       {/* STATUS */}
 
-      <div className="rounded-3xl border border-blue-500/20 bg-[#07101f]/80 p-6 flex items-center justify-center text-center">
+      <div className="rounded-xlborder border-blue-500/20 bg-[#07101f]/80 p-6 flex items-center justify-center text-center">
 
         <div>
 

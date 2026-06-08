@@ -28,7 +28,7 @@ export default function VolumeAnalyticsCard() {
 
   return (
 
-    <div className="rounded-3xl border border-green-500/10 bg-[#07101f]/80 p-6">
+    <div className="rounded-xlborder border-green-500/10 bg-[#07101f]/80 p-6">
 
       <h3 className="text-2xl font-bold mb-6">
 
@@ -46,7 +46,7 @@ export default function VolumeAnalyticsCard() {
 
           </p>
 
-          <p className="text-3xl font-black text-green-400">
+          <p className="text-xlfont-black text-green-400">
 
             {Number(
               formatEther(

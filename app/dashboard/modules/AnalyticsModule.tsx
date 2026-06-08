@@ -18,7 +18,7 @@ const AnalyticsCard = dynamic(
 
     loading: () => (
 
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8 text-gray-400">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-8 text-gray-400">
 
         Loading analytics...
 
@@ -39,7 +39,7 @@ const PortfolioChart = dynamic(
 
     loading: () => (
 
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 h-[400px] flex items-center justify-center text-gray-400">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 h-[400px] flex items-center justify-center text-gray-400">
 
         Loading chart...
 
@@ -78,7 +78,7 @@ export default function AnalyticsModule({
 
       <div>
 
-        <h2 className="text-4xl font-bold mb-3">
+        <h2 className="text-xl font-bold mb-3">
           Analytics
         </h2>
 

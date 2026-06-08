@@ -22,7 +22,7 @@ const TreasuryCard = dynamic(
 
     loading: () => (
 
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8 text-gray-400">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-8 text-gray-400">
 
         Loading treasury...
 
@@ -43,7 +43,7 @@ const HoldingsCard = dynamic(
 
     loading: () => (
 
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-8 text-gray-400">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-8 text-gray-400">
 
         Loading holdings...
 
@@ -105,7 +105,7 @@ export default function TreasuryModule({
 
       <div>
 
-        <h2 className="text-4xl font-bold mb-3">
+        <h2 className="text-xl font-bold mb-3">
           Treasury
         </h2>
 

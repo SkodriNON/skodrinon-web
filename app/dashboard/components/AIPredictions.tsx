@@ -1,122 +1,103 @@
-
 "use client";
 
 const predictions = [
-
   {
     title: "ETH Momentum",
     prediction: "Bullish breakout expected within 48h.",
     confidence: "94%",
-    color: "from-green-500 to-emerald-400",
   },
-
   {
     title: "Treasury Growth",
     prediction: "Treasury reserves projected to expand +18%.",
     confidence: "91%",
-    color: "from-cyan-500 to-blue-400",
   },
-
   {
     title: "Governance Activity",
     prediction: "DAO participation trend accelerating.",
     confidence: "88%",
-    color: "from-violet-500 to-fuchsia-400",
   },
-
   {
     title: "Liquidity Forecast",
     prediction: "Crosschain liquidity inflow detected.",
     confidence: "96%",
-    color: "from-orange-500 to-yellow-400",
   },
-
 ];
 
 export default function AIPredictions() {
-
   return (
+    <div className="rounded-xl border border-fuchsia-500/10 bg-[#07101f]/80 p-4">
 
-    <div className="rounded-[32px] border border-fuchsia-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 mt-8 overflow-hidden relative">
-
-      {/* BACKGROUND */}
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(217,70,239,0.12),transparent_35%)]" />
-
-      {/* HEADER */}
-
-      <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
+      <div className="mb-4 flex items-center justify-between">
 
         <div>
-
-          <p className="text-xs uppercase tracking-[0.3em] text-fuchsia-400 mb-3">
-
-            Predictive Intelligence Layer
-
+          <p className="text-[10px] uppercase tracking-[0.22em] text-fuchsia-400">
+            AI Predictions
           </p>
 
-          <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-fuchsia-200 to-pink-300 bg-clip-text text-transparent">
-
-            AI Prediction Engine
-
+          <h3 className="text-lg font-semibold">
+            Prediction Engine
           </h3>
-
         </div>
 
-        <div className="flex items-center gap-3 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-5 py-3">
-
-          <div className="w-3 h-3 rounded-full bg-fuchsia-400 animate-pulse" />
-
-          <span className="text-sm font-semibold text-fuchsia-300">
-
-            Forecasting Active
-
-          </span>
-
+        <div className="flex items-center gap-2 text-xs text-fuchsia-300">
+          <span className="h-2 w-2 rounded-full bg-fuchsia-400" />
+          Active
         </div>
 
       </div>
 
-      {/* PREDICTIONS */}
+      <div className="overflow-hidden rounded-lg border border-fuchsia-500/10">
 
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <table className="w-full text-sm">
 
-        {predictions.map((prediction) => (
+          <thead>
 
-          <div
+            <tr className="border-b border-fuchsia-500/10 bg-[#081222]">
 
-            key={prediction.title}
+              <th className="px-3 py-2 text-left font-medium text-gray-400">
+                Prediction
+              </th>
 
-            className="rounded-3xl border border-fuchsia-500/10 bg-[#081222]/80 p-6 hover:border-fuchsia-500/30 transition-all duration-300"
+              <th className="px-3 py-2 text-left font-medium text-gray-400">
+                Analysis
+              </th>
 
-          >
+              <th className="px-3 py-2 text-right font-medium text-gray-400">
+                Confidence
+              </th>
 
-            <div className={`w-full h-1 rounded-full bg-gradient-to-r ${prediction.color} mb-6`} />
+            </tr>
 
-            <div className="flex items-center justify-between mb-5">
+          </thead>
 
-              <h4 className="text-2xl font-black">
+          <tbody>
 
-                {prediction.title}
+            {predictions.map((prediction) => (
 
-              </h4>
+              <tr
+                key={prediction.title}
+                className="border-b border-fuchsia-500/5 hover:bg-[#081222]/60"
+              >
 
-              <span className="text-sm text-fuchsia-300 font-semibold">
+                <td className="px-3 py-2 font-medium">
+                  {prediction.title}
+                </td>
 
-                {prediction.confidence}
+                <td className="px-3 py-2 text-gray-300">
+                  {prediction.prediction}
+                </td>
 
-              </span>
+                <td className="px-3 py-2 text-right font-semibold text-fuchsia-300">
+                  {prediction.confidence}
+                </td>
 
-            </div>
+              </tr>
 
-            <p className="text-gray-400 leading-relaxed">
+            ))}
 
-              {prediction.prediction}
+          </tbody>
 
-            </p>
-
-          </div>
-        ))}
+        </table>
 
       </div>
 

@@ -2,7 +2,7 @@ export default function DAOCard() {
 
   return (
 
-    <div className="rounded-[32px] border border-blue-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 overflow-hidden relative">
+    <div className="rounded-xl border border-blue-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 overflow-hidden relative">
 
       {/* BACKGROUND */}
 
@@ -24,7 +24,7 @@ export default function DAOCard() {
 
             </p>
 
-            <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent">
+            <h3 className="text-xlsm:text-xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent">
 
               DAO Intelligence
 
@@ -38,7 +38,7 @@ export default function DAOCard() {
 
         {/* MAIN SCORE */}
 
-        <div className="rounded-3xl border border-cyan-500/10 bg-[#081222] p-6 mb-8">
+        <div className="rounded-xlborder border-cyan-500/10 bg-[#081222] p-6 mb-8">
 
           <div className="flex items-center justify-between mb-5">
 
@@ -106,7 +106,7 @@ export default function DAOCard() {
 
             </p>
 
-            <h4 className="text-3xl font-black text-green-400">
+            <h4 className="text-xlfont-black text-green-400">
 
               98%
 
@@ -122,7 +122,7 @@ export default function DAOCard() {
 
             </p>
 
-            <h4 className="text-3xl font-black text-cyan-300">
+            <h4 className="text-xlfont-black text-cyan-300">
 
               91%
 
@@ -138,7 +138,7 @@ export default function DAOCard() {
 
             </p>
 
-            <h4 className="text-3xl font-black text-purple-300">
+            <h4 className="text-xlfont-black text-purple-300">
 
               87%
 

@@ -104,13 +104,13 @@ export default function StakingPanel({
 
       {/* STAKED */}
 
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-blue-500/30">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-blue-500/30">
 
         <p className="text-gray-400 mb-3">
           Staked NON
         </p>
 
-        <h2 className="text-4xl font-bold transition-all duration-300">
+        <h2 className="text-xl font-bold transition-all duration-300">
 
           {
             txLoading
@@ -126,13 +126,13 @@ export default function StakingPanel({
 
       {/* REWARDS */}
 
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-blue-500/30">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-blue-500/30">
 
         <p className="text-gray-400 mb-3">
           Earned Rewards
         </p>
 
-        <h2 className="text-4xl font-bold text-green-400 transition-all duration-300">
+        <h2 className="text-xl font-bold text-green-400 transition-all duration-300">
 
           {
             txLoading
@@ -148,13 +148,13 @@ export default function StakingPanel({
 
       {/* APR */}
 
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-blue-500/30">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-blue-500/30">
 
         <p className="text-gray-400 mb-3">
           APR
         </p>
 
-        <h2 className="text-4xl font-bold text-blue-400 transition-all duration-300">
+        <h2 className="text-xl font-bold text-blue-400 transition-all duration-300">
 
           {
             txLoading
@@ -170,7 +170,7 @@ export default function StakingPanel({
 
       {/* UNLOCK TIMER */}
 
-      <div className="rounded-3xl border border-cyan-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-cyan-500/30">
+      <div className="rounded-xlborder border-cyan-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-cyan-500/30">
 
         <p className="text-gray-400 mb-3">
           Unlock Status
@@ -205,7 +205,7 @@ export default function StakingPanel({
 
       {/* POSITION ANALYTICS */}
 
-<div className="rounded-3xl border border-purple-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-purple-500/30 md:col-span-2">
+<div className="rounded-xlborder border-purple-500/10 bg-[#07101f]/80 p-6 transition-all duration-300 hover:border-purple-500/30 md:col-span-2">
 
   <div className="flex items-center justify-between mb-6">
 
@@ -361,7 +361,7 @@ export default function StakingPanel({
 
       {/* ACTION PANEL */}
 
-      <div className="rounded-3xl border border-blue-500/10 bg-[#07101f]/80 p-6 flex flex-col gap-4 transition-all duration-300 hover:border-blue-500/30 md:col-span-2">
+      <div className="rounded-xlborder border-blue-500/10 bg-[#07101f]/80 p-6 flex flex-col gap-4 transition-all duration-300 hover:border-blue-500/30 md:col-span-2">
 
         <p className="text-gray-400 text-sm">
           Enter amount

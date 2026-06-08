@@ -37,7 +37,7 @@ function PortfolioChartComponent({
 
   return (
 
-    <div className="2xl:col-span-2 rounded-[32px] border border-blue-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 overflow-hidden relative">
+    <div className="2xl:col-span-2 rounded-xl border border-blue-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 overflow-hidden relative">
 
       {/* BG */}
 
@@ -59,7 +59,7 @@ function PortfolioChartComponent({
 
             </p>
 
-            <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent">
+            <h3 className="text-xlsm:text-xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent">
 
               Portfolio Command Center
 
@@ -263,7 +263,7 @@ function PortfolioChartComponent({
 
             </p>
 
-            <h4 className="text-3xl font-black text-green-400">
+            <h4 className="text-xlfont-black text-green-400">
 
               +24%
 
@@ -279,7 +279,7 @@ function PortfolioChartComponent({
 
             </p>
 
-            <h4 className="text-3xl font-black text-cyan-300">
+            <h4 className="text-xlfont-black text-cyan-300">
 
               Stable
 
@@ -295,7 +295,7 @@ function PortfolioChartComponent({
 
             </p>
 
-            <h4 className="text-3xl font-black text-purple-300">
+            <h4 className="text-xlfont-black text-purple-300">
 
               High
 

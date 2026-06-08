@@ -125,7 +125,7 @@ export default function WalletCard({
 
   return (
 
-    <div className="rounded-[32px] border border-blue-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 overflow-hidden relative">
+    <div className="rounded-xl border border-blue-500/10 bg-[#07101f]/80 backdrop-blur-xl p-5 sm:p-7 overflow-hidden relative">
 
       {/* BACKGROUND */}
 
@@ -147,7 +147,7 @@ export default function WalletCard({
 
             </p>
 
-            <h3 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent">
+            <h3 className="text-xlsm:text-xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent">
 
               Wallet Security
 
@@ -161,7 +161,7 @@ export default function WalletCard({
 
         {/* WALLET SCORE */}
 
-        <div className="rounded-3xl border border-blue-500/10 bg-[#081222] p-6 mb-8">
+        <div className="rounded-xlborder border-blue-500/10 bg-[#081222] p-6 mb-8">
 
           <div className="flex items-center justify-between mb-5">
 
@@ -222,7 +222,7 @@ export default function WalletCard({
 
             </p>
 
-            <h4 className="text-3xl font-black mb-2">
+            <h4 className="text-xlfont-black mb-2">
 
               {ethValue}
 
@@ -246,7 +246,7 @@ export default function WalletCard({
 
             </p>
 
-            <h4 className="text-3xl font-black text-blue-400 mb-2 break-words">
+            <h4 className="text-xlfont-black text-blue-400 mb-2 break-words">
 
               {sknonValue}
 
