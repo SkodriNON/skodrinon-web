@@ -1,273 +1,556 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
+import Link from "next/link"
+
+import NexusHeader from "@/components/layout/NexusHeader"
 
 import {
-  Sparkles,
-  ExternalLink,
   Send,
   Globe,
   ShoppingBag,
   GitBranch,
-  Shield,
-  Landmark,
-  Coins,
-  Brain,
-} from "lucide-react";
+} from "lucide-react"
 
-const modules = [
-  {
-    id: "identity",
-    title: "NexusNON.ID",
-    subtitle: "Sovereign Identity",
-    description:
-      "Capsule identity, PUP approval, recovery and public registration infrastructure.",
-    link: "https://nonid.vercel.app",
-    action: "Open Identity",
-    icon: Shield,
-  },
-  {
-    id: "board",
-    title: "NON Board",
-    subtitle: "Constitutional Governance",
-    description:
-      "Governance authority, board status and constitutional protocol coordination.",
-    link: "https://nonid.vercel.app/non/genesis",
-    action: "Open Board",
-    icon: Landmark,
-  },
-  {
-    id: "economy",
-    title: "NON Economy",
-    subtitle: "Token Dashboard",
-    description:
-      "Treasury, liquidity, staking, analytics and token ecosystem dashboard.",
-    link: "/dashboard",
-    action: "Open Dashboard",
-    icon: Coins,
-  },
-  {
-    id: "ai",
-    title: "AI Infrastructure",
-    subtitle: "Intelligence Layer",
-    description:
-      "AI-assisted governance, treasury intelligence and ecosystem coordination.",
-    link: "/dashboard",
-    action: "Explore AI",
-    icon: Brain,
-  },
-  {
-    id: "community",
-    title: "Community",
-    subtitle: "Official Channels",
-    description:
-      "SkodriNΩN social, Telegram, GitHub and ecosystem communication links.",
-    link: "https://t.me/SkodriNON_Official",
-    action: "Open Community",
-    icon: Send,
-  },
-];
+import {
+  useLanguage
+} from "@/components/LanguageSystem"
 
-export default function Home() {
+type Panel =
+  | "vision"
+  | "architecture"
+  | "security"
+  | "roadmap"
+
+export default function Page() {
+  const { t } =
+    useLanguage()
+
   const [active, setActive] =
-    useState(modules[0]);
+    useState<Panel>("vision")
 
-  const ActiveIcon = active.icon;
+  const panels = {
+    vision: {
+      menu: t("home.menu.vision"),
+      title: t("home.vision.title"),
+      subtitle: t("home.vision.subtitle"),
+      text: t("home.vision.text"),
+      points: [
+        t("home.point.ownership"),
+        t("home.point.capsule"),
+        t("home.point.contract")
+      ]
+    },
+
+    architecture: {
+      menu: t("home.menu.architecture"),
+      title: t("home.architecture.title"),
+      subtitle: t("home.architecture.subtitle"),
+      text: t("home.architecture.text"),
+      points: [
+        t("home.point.oneWallet"),
+        t("home.point.verification"),
+        t("home.point.dashboard")
+      ]
+    },
+
+    security: {
+      menu: t("home.menu.security"),
+      title: t("home.security.title"),
+      subtitle: t("home.security.subtitle"),
+      text: t("home.security.text"),
+      points: [
+        t("home.point.noLocal"),
+        t("home.point.noDatabase"),
+        t("home.point.noFake")
+      ]
+    },
+
+    roadmap: {
+      menu: t("home.menu.roadmap"),
+      title: t("home.roadmap.title"),
+      subtitle: t("home.roadmap.subtitle"),
+      text: t("home.roadmap.text"),
+      points: [
+        t("home.point.phase1"),
+        t("home.point.phase2"),
+        t("home.point.phase3")
+      ]
+    }
+  }
+
+  const current =
+    panels[active]
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#020617] text-white">
-      <div
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('/web.backhom.png')",
-        }}
-      />
+    <>
+      <NexusHeader />
 
-      <div className="fixed inset-0 bg-black/60" />
+      <main className="
+        nexus-page
+        min-h-screen
+        overflow-x-hidden
+        text-white
+      ">
+        <div className="
+          pointer-events-none
+          fixed
+          inset-0
+          bg-[radial-gradient(circle_at_top,rgba(0,255,255,0.15),transparent_42%)]
+        " />
 
-      <div className="relative z-10 grid min-h-screen grid-cols-1 gap-5 p-4 lg:grid-cols-[250px_1fr] lg:p-6">
-        <aside className="rounded-[32px] border border-cyan-400/10 bg-[#07101f]/75 p-4 backdrop-blur-2xl lg:sticky lg:top-6 lg:h-[calc(100vh-48px)]">
-          <div className="mb-6 flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_35px_rgba(59,130,246,0.45)]">
-              <Sparkles className="h-5 w-5" />
-            </div>
+        <section className="
+          nexus-container
+          relative
+          z-10
+          min-h-screen
+          px-4
+          pt-28
+          pb-8
+          sm:px-6
+          sm:pt-32
+          lg:px-8
+          lg:pt-40
+        ">
+          <div className="
+            flex
+            w-full
+            flex-col
+            gap-4
+            sm:gap-6
+            lg:flex-row
+            lg:items-stretch
+          ">
+            <aside className="
+              w-full
+              shrink-0
+              rounded-[28px]
+              border
+              border-white/10
+              bg-white/[0.035]
+              p-3
+              backdrop-blur-3xl
+              sm:p-4
+              lg:w-[260px]
+              xl:w-[280px]
+            ">
+              <div className="
+                rounded-[24px]
+                border
+                border-cyan-400/20
+                bg-cyan-400/10
+                p-4
+                sm:p-5
+              ">
+                <img
+                  src="/logo.png"
+                  alt="SkodriNΩN"
+                  className="
+                    mx-auto
+                    h-24
+                    w-24
+                    object-contain
+                    drop-shadow-[0_0_90px_rgba(0,255,255,0.75)]
+                    sm:h-28
+                    sm:w-28
+                    lg:h-32
+                    lg:w-32
+                    lg:scale-125
+                  "
+                />
 
-            <div>
-              <h1 className="text-xl font-black">
-                SkodriNΩN
-              </h1>
+                <h3 className="
+                  mt-4
+                  text-center
+                  text-base
+                  font-black
+                  tracking-[-0.04em]
+                  text-white
+                  sm:text-lg
+                ">
+                  {t("home.menu.layers")}
+                </h3>
+              </div>
 
-              <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-                Ecosystem
-              </p>
-            </div>
-          </div>
+              <div className="
+                mt-4
+                grid
+                grid-cols-2
+                gap-2
+                lg:grid-cols-1
+              ">
+                {(Object.keys(panels) as Panel[]).map(
+                  (key) => {
+                    const isActive =
+                      active === key
 
-          <div className="grid gap-3">
-            {modules.map((item) => {
-              const Icon = item.icon;
-              const selected =
-                active.id === item.id;
+                    return (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() =>
+                          setActive(key)
+                        }
+                        className={`
+                          min-h-[54px]
+                          rounded-[18px]
+                          border
+                          px-3
+                          text-center
+                          transition
+                          active:scale-[0.98]
+                          lg:text-left
 
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() =>
-                    setActive(item)
+                          ${
+                            isActive
+                              ? "border-cyan-400/30 bg-cyan-400/10 text-cyan-300"
+                              : "border-white/10 bg-black/20 text-white hover:bg-white/[0.05]"
+                          }
+                        `}
+                      >
+                        <span className="
+                          block
+                          text-[10px]
+                          font-black
+                          uppercase
+                          leading-tight
+                          sm:text-xs
+                          lg:text-sm
+                        ">
+                          {panels[key].menu}
+                        </span>
+                      </button>
+                    )
                   }
-                  className={`flex items-center gap-3 rounded-2xl border px-4 py-4 text-left transition ${
-                    selected
-                      ? "border-cyan-400/30 bg-cyan-400/10 text-cyan-200"
-                      : "border-white/10 bg-black/20 text-zinc-300 hover:border-cyan-400/20 hover:bg-white/[0.04]"
-                  }`}
+                )}
+              </div>
+
+              <div className="
+                mt-4
+                grid
+                grid-cols-1
+                gap-3
+                sm:grid-cols-2
+                lg:grid-cols-1
+              ">
+                <Link
+                  href="/connect"
+                  className="
+                    nexus-primary
+                    w-full
+                    px-4
+                    text-center
+                  "
                 >
-                  <Icon className="h-5 w-5 shrink-0" />
+                  {t("nav.enter")}
+                </Link>
 
-                  <div>
-                    <p className="text-sm font-black">
-                      {item.title}
-                    </p>
-
-                    <p className="text-[11px] text-zinc-500">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="mt-6 grid gap-3 border-t border-white/10 pt-5">
-            <a
-              href="https://x.com/SkodriNON_AI"
-              target="_blank"
-              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-zinc-300 hover:text-cyan-300"
-            >
-              <span className="text-lg">𝕏</span>
-              X
-            </a>
-
-            <a
-              href="https://t.me/SkodriNON_Official"
-              target="_blank"
-              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-zinc-300 hover:text-cyan-300"
-            >
-              <Send className="h-4 w-4" />
-              Telegram
-            </a>
-
-            <a
-              href="#"
-              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-zinc-300 hover:text-cyan-300"
-            >
-              <GitBranch className="h-4 w-4" />
-              GitHub
-            </a>
-
-            <a
-              href="#"
-              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-zinc-300 hover:text-cyan-300"
-            >
-              <ShoppingBag className="h-4 w-4" />
-              Buy NON
-            </a>
-          </div>
-        </aside>
-
-        <section className="flex min-h-[calc(100vh-32px)] items-center justify-center rounded-[36px] border border-cyan-400/10 bg-[#07101f]/55 p-5 backdrop-blur-2xl sm:p-8 lg:min-h-[calc(100vh-48px)]">
-          <div className="grid w-full max-w-6xl gap-8 xl:grid-cols-[1.1fr_0.9fr] xl:items-center">
-            <div>
-              <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-5 py-2 text-xs font-bold text-cyan-200">
-                <Sparkles className="h-4 w-4" />
-                Identity × Board × Economy × AI
+                <Link
+                  href="/dashboard"
+                  className="
+                    nexus-secondary
+                    w-full
+                    px-4
+                    text-center
+                  "
+                >
+                  {t("nav.dashboard")}
+                </Link>
               </div>
 
-              <h2 className="text-[clamp(2.6rem,7vw,5.6rem)] font-black leading-[0.9] tracking-[-0.06em]">
-                Sovereign
-                <br />
-                Digital
-                <br />
-                <span className="bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+              <div className="
+                mt-5
+                grid
+                grid-cols-2
+                gap-2
+                border-t
+                border-white/10
+                pt-5
+                lg:grid-cols-1
+              ">
+                <a
+                  href="https://x.com/SkodriNON_AI"
+                  target="_blank"
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                    rounded-[18px]
+                    border
+                    border-white/10
+                    bg-black/20
+                    px-3
+                    py-3
+                    text-sm
+                    text-zinc-300
+                    hover:text-cyan-300
+                  "
+                >
+                  <span className="text-lg">𝕏</span>
+                  X
+                </a>
+
+                <a
+                  href="https://t.me/SkodriNON_Official"
+                  target="_blank"
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                    rounded-[18px]
+                    border
+                    border-white/10
+                    bg-black/20
+                    px-3
+                    py-3
+                    text-sm
+                    text-zinc-300
+                    hover:text-cyan-300
+                  "
+                >
+                  <Send className="h-4 w-4" />
+                  Telegram
+                </a>
+
+                <a
+                  href="#"
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                    rounded-[18px]
+                    border
+                    border-white/10
+                    bg-black/20
+                    px-3
+                    py-3
+                    text-sm
+                    text-zinc-300
+                    hover:text-cyan-300
+                  "
+                >
+                  <GitBranch className="h-4 w-4" />
+                  GitHub
+                </a>
+
+                <a
+                  href="#ecosystem"
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                    rounded-[18px]
+                    border
+                    border-white/10
+                    bg-black/20
+                    px-3
+                    py-3
+                    text-sm
+                    text-zinc-300
+                    hover:text-cyan-300
+                  "
+                >
+                  <Globe className="h-4 w-4" />
                   Ecosystem
-                </span>
-              </h2>
+                </a>
 
-              <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg">
-                SkodriNΩN connects sovereign identity,
-                constitutional governance, token economy and
-                AI infrastructure into one organized ecosystem.
-              </p>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-3xl border border-white/10 bg-black/25 p-5">
-                  <p className="text-xs text-zinc-500">
-                    Identity
-                  </p>
-                  <h3 className="mt-2 text-xl font-black text-cyan-300">
-                    NexusNON.ID
-                  </h3>
-                </div>
-
-                <div className="rounded-3xl border border-white/10 bg-black/25 p-5">
-                  <p className="text-xs text-zinc-500">
-                    Governance
-                  </p>
-                  <h3 className="mt-2 text-xl font-black text-cyan-300">
-                    NON Board
-                  </h3>
-                </div>
-
-                <div className="rounded-3xl border border-white/10 bg-black/25 p-5">
-                  <p className="text-xs text-zinc-500">
-                    Economy
-                  </p>
-                  <h3 className="mt-2 text-xl font-black text-cyan-300">
-                    NON Token
-                  </h3>
-                </div>
+                <a
+                  href="#"
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                    rounded-[18px]
+                    border
+                    border-white/10
+                    bg-black/20
+                    px-3
+                    py-3
+                    text-sm
+                    text-zinc-300
+                    hover:text-cyan-300
+                    lg:col-span-1
+                  "
+                >
+                  <ShoppingBag className="h-4 w-4" />
+                  Buy NON
+                </a>
               </div>
-            </div>
+            </aside>
 
-            <div className="rounded-[34px] border border-cyan-400/20 bg-black/35 p-6 shadow-[0_0_90px_rgba(34,211,238,0.10)] sm:p-8">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
-                <ActiveIcon className="h-8 w-8" />
-              </div>
+            <section className="
+              relative
+              w-full
+              min-w-0
+              flex-1
+              overflow-hidden
+              rounded-[28px]
+              border
+              border-white/10
+              bg-white/[0.035]
+              p-5
+              backdrop-blur-3xl
+              sm:rounded-[36px]
+              sm:p-8
+              lg:rounded-[44px]
+              lg:p-14
+            ">
+              <div className="
+                absolute
+                right-[-180px]
+                top-[-180px]
+                h-[420px]
+                w-[420px]
+                rounded-full
+                bg-cyan-400/10
+                blur-[170px]
+              " />
 
-              <p className="mt-6 text-xs font-black uppercase tracking-[0.28em] text-cyan-300">
-                {active.subtitle}
-              </p>
-
-              <h3 className="mt-3 text-4xl font-black">
-                {active.title}
-              </h3>
-
-              <p className="mt-5 text-base leading-8 text-zinc-400">
-                {active.description}
-              </p>
-
-              <a
-                href={active.link}
-                className="mt-8 flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-4 font-black text-white transition hover:scale-[1.02]"
-              >
-                {active.action}
-                <ExternalLink className="h-4 w-4" />
-              </a>
-
-              <div className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-                <p className="text-sm text-zinc-500">
-                  Active Module
+              <div className="
+                relative
+                z-10
+              ">
+                <p className="
+                  text-[10px]
+                  font-black
+                  uppercase
+                  tracking-[0.22em]
+                  text-cyan-300
+                  sm:text-xs
+                  sm:tracking-[0.35em]
+                ">
+                  {t("home.badge")}
                 </p>
 
-                <h4 className="mt-2 text-2xl font-black text-cyan-300">
-                  {active.title}
-                </h4>
+                <h1 className="
+                  mt-5
+                  text-[clamp(2.3rem,11vw,7rem)]
+                  font-black
+                  leading-[0.9]
+                  tracking-[-0.08em]
+                ">
+                  {t("home.title")}
+                </h1>
+
+                <h2 className="
+                  mt-7
+                  max-w-[840px]
+                  text-[clamp(1.7rem,7vw,4.5rem)]
+                  font-black
+                  leading-[0.98]
+                  tracking-[-0.06em]
+                  text-cyan-100
+                ">
+                  {current.title}
+                </h2>
+
+                <p className="
+                  mt-4
+                  max-w-[820px]
+                  text-sm
+                  font-semibold
+                  leading-7
+                  text-white/75
+                  sm:text-lg
+                ">
+                  {current.subtitle}
+                </p>
+
+                <p className="
+                  mt-6
+                  max-w-[820px]
+                  text-sm
+                  leading-7
+                  text-zinc-400
+                  sm:text-lg
+                  sm:leading-8
+                ">
+                  {current.text}
+                </p>
+
+                <div className="
+                  mt-8
+                  grid
+                  grid-cols-1
+                  gap-4
+                  md:grid-cols-3
+                ">
+                  {current.points.map(
+                    (point, index) => (
+                      <div
+                        key={point}
+                        className="
+                          rounded-[24px]
+                          border
+                          border-white/10
+                          bg-black/20
+                          p-4
+                          backdrop-blur-xl
+                          sm:rounded-[28px]
+                          sm:p-5
+                        "
+                      >
+                        <p className="
+                          text-sm
+                          font-black
+                          text-cyan-300
+                        ">
+                          0{index + 1}
+                        </p>
+
+                        <p className="
+                          mt-3
+                          text-sm
+                          leading-6
+                          text-zinc-300
+                          sm:mt-4
+                          sm:leading-7
+                        ">
+                          {point}
+                        </p>
+                      </div>
+                    )
+                  )}
+                </div>
+
+                <div className="
+                  mt-8
+                  flex
+                  flex-col
+                  gap-3
+                  sm:flex-row
+                ">
+                  <Link
+                    href="/connect"
+                    className="
+                      nexus-primary
+                      w-full
+                      px-8
+                      text-center
+                      sm:w-auto
+                    "
+                  >
+                    {t("home.cta.enter")}
+                  </Link>
+
+                  <Link
+                    href="/gateway"
+                    className="
+                      nexus-secondary
+                      w-full
+                      px-8
+                      text-center
+                      sm:w-auto
+                    "
+                  >
+                    {t("home.cta.create")}
+                  </Link>
+                </div>
               </div>
-            </div>
+            </section>
           </div>
         </section>
-      </div>
-    </main>
-  );
+      </main>
+    </>
+  )
 }
