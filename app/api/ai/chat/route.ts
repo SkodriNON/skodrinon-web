@@ -1,70 +1,66 @@
-import OpenAI
-from "openai";
+import OpenAI from "openai";
 
-const openai =
-  new OpenAI({
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
-    apiKey:
-      process.env.OPENAI_API_KEY,
-  });
-
-export async function POST(
-  req: Request
-) {
-
+export async function POST(req: Request) {
   try {
+    const apiKey =
+      process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+      return Response.json(
+        {
+          response:
+            "AI module is not configured. OPENAI_API_KEY is missing.",
+        },
+        {
+          status: 200,
+        }
+      );
+    }
 
     const {
       prompt,
     } = await req.json();
 
+    const openai =
+      new OpenAI({
+        apiKey,
+      });
+
     const completion =
       await openai.chat.completions.create({
-
-        model:
-          "gpt-4.1-mini",
-
+        model: "gpt-4.1-mini",
         messages: [
-
           {
             role: "system",
-
             content:
               "You are SkodriNΩN AI, an institutional crypto governance and treasury intelligence assistant.",
           },
-
           {
             role: "user",
-
             content:
-              prompt,
+              prompt || "Analyze protocol status.",
           },
         ],
       });
 
     return Response.json({
-
       response:
-
-        completion
-          .choices?.[0]
-          ?.message
-          ?.content || "",
+        completion.choices?.[0]?.message?.content ||
+        "AI response unavailable.",
     });
-
   } catch (error) {
-
-    console.error(error);
+    console.error("AI route error:", error);
 
     return Response.json(
-
       {
-        error:
-          "AI request failed",
+        response:
+          "AI request failed temporarily. Please try again later.",
       },
-
       {
-        status: 500,
+        status: 200,
       }
     );
   }
