@@ -43,14 +43,13 @@ const geistMono = Geist_Mono({
 // METADATA
 // =====================================================
 
-export const metadata:
-  Metadata = {
-
-  title:
-    "SkodriNΩN",
-
+export const metadata: Metadata = {
+  title: "SkodriNΩN Ecosystem",
   description:
-    "Governance-first AI & Web3 ecosystem",
+    "Sovereign Web3 ecosystem connecting NexusNON.ID identity, NON Board governance and NON token economy.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 // =====================================================
