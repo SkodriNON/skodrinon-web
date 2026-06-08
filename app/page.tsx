@@ -1,462 +1,443 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
+import { useState } from "react"
+import Link from "next/link"
+
+import NexusHeader from "@/components/layout/NexusHeader"
 
 import {
-  Sparkles,
-  ExternalLink,
-  Send,
-  Globe,
-  ShoppingBag,
-  GitBranch,
-} from "lucide-react";
+  useLanguage
+} from "@/components/LanguageSystem"
 
-const infoPanels = [
+type Panel =
+  | "vision"
+  | "architecture"
+  | "security"
+  | "roadmap"
 
-  {
-    title: "Treasury Infrastructure",
+export default function Page() {
 
-    description:
-      "SkodriNΩN treasury architecture secures long-term protocol sustainability, reserve balancing and ecosystem growth.",
+  const { t } =
+    useLanguage()
 
-    value: "$78.7K",
+  const [active, setActive] =
+    useState<Panel>("vision")
 
-    action: "View Treasury",
+  const panels = {
+    vision: {
+      menu: t("home.menu.vision"),
+      title: t("home.vision.title"),
+      subtitle: t("home.vision.subtitle"),
+      text: t("home.vision.text"),
+      points: [
+        t("home.point.ownership"),
+        t("home.point.capsule"),
+        t("home.point.contract")
+      ]
+    },
 
-    link: "/dashboard",
-  },
+    architecture: {
+      menu: t("home.menu.architecture"),
+      title: t("home.architecture.title"),
+      subtitle: t("home.architecture.subtitle"),
+      text: t("home.architecture.text"),
+      points: [
+        t("home.point.oneWallet"),
+        t("home.point.verification"),
+        t("home.point.dashboard")
+      ]
+    },
 
-  {
-    title: "Governance System",
+    security: {
+      menu: t("home.menu.security"),
+      title: t("home.security.title"),
+      subtitle: t("home.security.subtitle"),
+      text: t("home.security.text"),
+      points: [
+        t("home.point.noLocal"),
+        t("home.point.noDatabase"),
+        t("home.point.noFake")
+      ]
+    },
 
-    description:
-      "Advanced DAO governance powering proposal execution, treasury control and decentralized coordination.",
+    roadmap: {
+      menu: t("home.menu.roadmap"),
+      title: t("home.roadmap.title"),
+      subtitle: t("home.roadmap.subtitle"),
+      text: t("home.roadmap.text"),
+      points: [
+        t("home.point.phase1"),
+        t("home.point.phase2"),
+        t("home.point.phase3")
+      ]
+    }
+  }
 
-    value: "12 Active",
-
-    action: "Open Governance",
-
-    link: "/dashboard",
-  },
-
-  {
-    title: "AI Coordination",
-
-    description:
-      "Autonomous AI infrastructure connected with decentralized ecosystem intelligence and analytics.",
-
-    value: "101 Agents",
-
-    action: "Explore AI",
-
-    link: "/dashboard",
-  },
-
-  {
-    title: "Protocol Staking",
-
-    description:
-      "Enterprise-grade staking infrastructure with reward automation and treasury-backed sustainability.",
-
-    value: "9% APR",
-
-    action: "Start Staking",
-
-    link: "/dashboard",
-  },
-
-];
-
-export default function Home() {
-
-  const [activePanel, setActivePanel] =
-    useState(0);
-
-  useEffect(() => {
-
-    const interval =
-      setInterval(() => {
-
-        setActivePanel((prev) =>
-          prev ===
-          infoPanels.length - 1
-            ? 0
-            : prev + 1
-        );
-
-      }, 5000);
-
-    return () =>
-      clearInterval(interval);
-
-  }, []);
+  const current =
+    panels[active]
 
   return (
-
-    <main className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
-
-      {/* BACKGROUND */}
-
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('/web.backhom.png')",
-        }}
-      />
-
-      <div className="absolute inset-0 bg-black/25" />
-
-      {/* NAVBAR */}
-
-      <header className="fixed top-5 left-5 right-5 z-50 rounded-[32px] border border-cyan-400/10 bg-[#07101f]/45 backdrop-blur-2xl px-8 py-5 flex items-center justify-between shadow-[0_0_45px_rgba(59,130,246,0.08)]">
-
-        {/* LEFT */}
-
-        <div className="flex items-center gap-5">
-
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-[0_0_45px_rgba(59,130,246,0.45)]">
-
-            <Sparkles className="w-5 h-5" />
-
-          </div>
-
-          <div>
-
-            <h1 className="text-xl font-black">
-
-              SkodriNΩN
-
-            </h1>
-
-            <p className="text-[10px] uppercase tracking-[0.3em] text-gray-500">
-
-              AI GOVERNANCE SYSTEM
-
-            </p>
-
-          </div>
-
-        </div>
-
-        {/* CENTER */}
-
-        <nav className="hidden xl:flex items-center gap-8">
-
-          <button className="text-gray-300 hover:text-cyan-300 transition-all duration-300">
-
-            Governance
-
-          </button>
-
-          <button className="text-gray-300 hover:text-cyan-300 transition-all duration-300">
-
-            DAO
-
-          </button>
-
-          <button className="text-gray-300 hover:text-cyan-300 transition-all duration-300">
-
-            AI Suite
-
-          </button>
-
-          <button className="text-gray-300 hover:text-cyan-300 transition-all duration-300">
-
-            Analytics
-
-          </button>
-
-          <button className="text-gray-300 hover:text-cyan-300 transition-all duration-300">
-
-            Bridge
-
-          </button>
-
-        </nav>
-
-        {/* RIGHT */}
-
-        <div className="flex items-center gap-4">
-
-  <a
-    href="/dashboard"
-    className="px-6 py-3 rounded-2xl border border-cyan-400/10 bg-cyan-500/10 hover:bg-cyan-500/20 transition-all duration-300"
-  >
-
-    Dashboard
-
-  </a>
-
-  <button className="px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 shadow-[0_0_35px_rgba(59,130,246,0.35)] hover:scale-[1.03] transition-all duration-300">
-
-    Wallet
-
-  </button>
-
-</div>
-
-</header>
-
-      {/* CENTER */}
-
-      <section className="relative z-10 pr-[390px] pt-[120px] pb-[120px] min-h-screen flex items-center justify-center">
-
-        {/* HERO TEXT */}
-
-        <div className="absolute left-[70px] top-[180px] max-w-[520px]">
-
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 backdrop-blur-xl mb-8 text-[13px] text-cyan-200">
-
-            <Sparkles className="w-4 h-4" />
-
-            AI × Governance × Treasury × Web3
-
-          </div>
-
-          <h2 className="text-[5rem] leading-[0.9] font-black tracking-[-0.06em] mb-8">
-
-            <span className="text-white">
-
-              Intelligent
-
-            </span>
-
-            <br />
-
-            <span className="text-white">
-
-              Governance
-
-            </span>
-
-            <br />
-
-            <span className="bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
-
-              Infrastructure
-
-            </span>
-
-          </h2>
-
-          <p className="text-gray-400 text-lg leading-[1.8] max-w-[520px]">
-
-            Advanced decentralized operating system
-            powering treasury intelligence,
-            governance, AI coordination and
-            scalable blockchain infrastructure.
-
-          </p>
-
-        </div>
-
-        {/* CENTER IMAGE */}
-
-        <div className="relative z-20 flex items-center justify-center">
-
-          <div className="absolute w-[700px] h-[700px] rounded-full bg-cyan-400/20 blur-[180px]" />
-
-          <img
-            src="/favicon.ico"
-            alt="SkodriNΩN"
-            className="relative z-20 w-[520px] xl:w-[650px] object-contain opacity-95 drop-shadow-[0_0_160px_rgba(59,130,246,1)]"
-          />
-
-        </div>
-
-      </section>
-
-      {/* RIGHT PANEL */}
-
-      <aside className="fixed right-5 top-24 bottom-[120px] z-50 w-[360px] rounded-[34px] border border-cyan-400/10 bg-[#07101f]/45 backdrop-blur-2xl p-6 overflow-hidden">
-
-        <div className="h-full flex flex-col justify-between">
-
-          <div>
-
-            <div className="mb-10">
-
-              <p className="text-cyan-300 uppercase tracking-[0.3em] text-[11px] mb-4">
-
-                LIVE SYSTEM
-
-              </p>
-
-              <h2 className="text-4xl font-black leading-tight mb-6">
-
-                {
-                  infoPanels[
-                    activePanel
-                  ].title
-                }
-
-              </h2>
-
-              <p className="text-gray-400 leading-[1.9] text-[15px]">
-
-                {
-                  infoPanels[
-                    activePanel
-                  ].description
-                }
-
-              </p>
-
-            </div>
-
-            <div className="rounded-3xl border border-cyan-400/10 bg-black/20 p-6 mb-6">
-
-              <p className="text-sm text-gray-400 mb-3">
-
-                Current Status
-
-              </p>
-
-              <h3 className="text-5xl font-black text-cyan-300">
-
-                {
-                  infoPanels[
-                    activePanel
-                  ].value
-                }
-
-              </h3>
-
-            </div>
-
-            <a
-              href={
-                infoPanels[
-                  activePanel
-                ].link
-              }
-              className="flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-4 font-semibold shadow-[0_0_45px_rgba(59,130,246,0.35)] hover:scale-[1.02] transition-all duration-300"
-            >
-
-              {
-                infoPanels[
-                  activePanel
-                ].action
-              }
-
-              <ExternalLink className="w-4 h-4" />
-
-            </a>
-
-          </div>
-
-          {/* CONTRACTS */}
-
-          <div className="space-y-4">
-
-            <h3 className="text-lg font-bold">
-
-              Live Contracts
-
-            </h3>
-
-            <a
-              href="https://etherscan.io"
-              target="_blank"
-              className="flex items-center justify-between rounded-2xl border border-white/5 bg-white/[0.03] px-5 py-4 hover:border-cyan-400/20 transition-all duration-300"
-            >
-
-              <div>
-
-                <p className="font-semibold">
-
-                  Token Contract
-
-                </p>
-
-                <p className="text-xs text-gray-500">
-
-                  View on Etherscan
-
-                </p>
+    <>
+      <NexusHeader />
+
+      <main className="
+        nexus-page
+        min-h-screen
+        overflow-hidden
+        text-white
+      ">
+
+        <div className="
+          pointer-events-none
+          fixed
+          inset-0
+          bg-[radial-gradient(circle_at_top,rgba(0,255,255,0.15),transparent_42%)]
+        " />
+
+        <section className="
+          nexus-container
+          relative
+          z-10
+          min-h-screen
+          pt-32
+          pb-10
+          sm:pt-36
+          lg:pt-40
+        ">
+
+          <div className="
+            flex
+            w-full
+            items-stretch
+            gap-4
+            sm:gap-6
+          ">
+
+            <aside className="
+              w-[92px]
+              shrink-0
+              rounded-[28px]
+              border
+              border-white/10
+              bg-white/[0.035]
+              p-3
+              backdrop-blur-3xl
+              sm:w-[180px]
+              lg:w-[240px]
+              xl:w-[260px]
+            ">
+
+              <div className="
+                hidden
+                overflow-visible
+                rounded-[24px]
+                border
+                border-cyan-400/20
+                bg-cyan-400/10
+                p-5
+                sm:block
+              ">
+
+                <img
+                  src="/logo.png"
+                  alt="NexusNON.ID"
+                  className="
+                    mx-auto
+                    h-32
+                    w-32
+                    scale-150
+                    object-contain
+                    drop-shadow-[0_0_120px_rgba(0,255,255,0.9)]
+                  "
+                />
+
+                <h3 className="
+                  mt-5
+                  text-center
+                  text-lg
+                  font-black
+                  tracking-[-0.04em]
+                  text-white
+                ">
+                  {t("home.menu.layers")}
+                </h3>
 
               </div>
 
-              <ExternalLink className="w-4 h-4 text-cyan-300" />
+              <div className="
+                grid
+                gap-2
+                sm:mt-4
+              ">
 
-            </a>
+                {(Object.keys(panels) as Panel[]).map(
+                  (key) => {
+
+                    const isActive =
+                      active === key
+
+                    return (
+
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() =>
+                          setActive(key)
+                        }
+                        className={`
+                          min-h-[56px]
+                          rounded-[20px]
+                          border
+                          px-2
+                          text-center
+                          transition
+                          active:scale-[0.98]
+                          sm:px-4
+                          sm:text-left
+
+                          ${
+                            isActive
+                              ? "border-cyan-400/30 bg-cyan-400/10 text-cyan-300"
+                              : "border-white/10 bg-black/20 text-white hover:bg-white/[0.05]"
+                          }
+                        `}
+                      >
+
+                        <span className="
+                          block
+                          text-[10px]
+                          font-black
+                          uppercase
+                          leading-tight
+                          sm:text-sm
+                        ">
+                          {panels[key].menu}
+                        </span>
+
+                      </button>
+                    )
+                  }
+                )}
+
+              </div>
+
+              <div className="
+                mt-4
+                hidden
+                gap-3
+                sm:grid
+              ">
+
+                <Link
+                  href="/connect"
+                  className="
+                    nexus-primary
+                    w-full
+                    px-4
+                    text-center
+                  "
+                >
+                  {t("nav.enter")}
+                </Link>
+
+                <Link
+                  href="/dashboard"
+                  className="
+                    nexus-secondary
+                    w-full
+                    px-4
+                    text-center
+                  "
+                >
+                  {t("nav.dashboard")}
+                </Link>
+
+              </div>
+
+            </aside>
+
+            <section className="
+              relative
+              min-w-0
+              flex-1
+              overflow-hidden
+              rounded-[34px]
+              border
+              border-white/10
+              bg-white/[0.035]
+              p-5
+              backdrop-blur-3xl
+              sm:rounded-[44px]
+              sm:p-8
+              lg:p-14
+            ">
+
+              <div className="
+                absolute
+                right-[-180px]
+                top-[-180px]
+                h-[420px]
+                w-[420px]
+                rounded-full
+                bg-cyan-400/10
+                blur-[170px]
+              " />
+
+              <div className="
+                relative
+                z-10
+              ">
+
+                <p className="
+                  text-[10px]
+                  font-black
+                  uppercase
+                  tracking-[0.25em]
+                  text-cyan-300
+                  sm:text-xs
+                  sm:tracking-[0.35em]
+                ">
+                  {t("home.badge")}
+                </p>
+
+                <h1 className="
+                  mt-5
+                  text-[clamp(2.4rem,8vw,7rem)]
+                  font-black
+                  leading-[0.88]
+                  tracking-[-0.08em]
+                ">
+                  {t("home.title")}
+                </h1>
+
+                <h2 className="
+                  mt-7
+                  max-w-[840px]
+                  text-[clamp(1.8rem,5vw,4.5rem)]
+                  font-black
+                  leading-[0.95]
+                  tracking-[-0.06em]
+                  text-cyan-100
+                ">
+                  {current.title}
+                </h2>
+
+                <p className="
+                  mt-4
+                  max-w-[820px]
+                  text-base
+                  font-semibold
+                  text-white/75
+                  sm:text-lg
+                ">
+                  {current.subtitle}
+                </p>
+
+                <p className="
+                  mt-6
+                  max-w-[820px]
+                  text-sm
+                  leading-7
+                  text-zinc-400
+                  sm:text-lg
+                  sm:leading-8
+                ">
+                  {current.text}
+                </p>
+
+                <div className="
+                  mt-8
+                  grid
+                  grid-cols-1
+                  gap-4
+                  lg:grid-cols-3
+                ">
+
+                  {current.points.map(
+                    (point, index) => (
+
+                      <div
+                        key={point}
+                        className="
+                          rounded-[24px]
+                          border
+                          border-white/10
+                          bg-black/20
+                          p-4
+                          backdrop-blur-xl
+                          sm:rounded-[28px]
+                          sm:p-5
+                        "
+                      >
+
+                        <p className="
+                          text-sm
+                          font-black
+                          text-cyan-300
+                        ">
+                          0{index + 1}
+                        </p>
+
+                        <p className="
+                          mt-3
+                          text-sm
+                          leading-6
+                          text-zinc-300
+                          sm:mt-4
+                          sm:leading-7
+                        ">
+                          {point}
+                        </p>
+
+                      </div>
+                    )
+                  )}
+
+                </div>
+
+                <div className="
+                  mt-8
+                  flex
+                  flex-col
+                  gap-3
+                  sm:flex-row
+                ">
+
+                  <Link
+                    href="/connect"
+                    className="
+                      nexus-primary
+                      w-full
+                      px-8
+                      sm:w-auto
+                    "
+                  >
+                    {t("home.cta.enter")}
+                  </Link>
+
+                  <Link
+                    href="/gateway"
+                    className="
+                      nexus-secondary
+                      w-full
+                      px-8
+                      sm:w-auto
+                    "
+                  >
+                    {t("home.cta.create")}
+                  </Link>
+
+                </div>
+
+              </div>
+
+            </section>
 
           </div>
 
-        </div>
+        </section>
 
-      </aside>
-
-            {/* BOTTOM DOCK */}
-
-      <div className="fixed bottom-5 left-5 right-[390px] z-50">
-
-        <div className="rounded-[30px] border border-cyan-400/10 bg-[#07101f]/45 backdrop-blur-2xl px-8 py-5 flex items-center justify-center gap-10">
-
-          <a
-            href="https://x.com/SkodriNON_AI"
-            target="_blank"
-            className="flex items-center gap-3 hover:text-cyan-300 transition duration-300"
-          >
-
-            <span className="text-xl">
-              𝕏
-            </span>
-
-            X
-
-          </a>
-
-          <a
-            href="https://t.me/SkodriNON_Official"
-            target="_blank"
-            className="flex items-center gap-3 hover:text-cyan-300 transition duration-300"
-          >
-
-            <Send className="w-4 h-4" />
-
-            Telegram
-
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 hover:text-cyan-300 transition duration-300"
-          >
-
-            <GitBranch className="w-4 h-4" />
-
-            GitHub
-
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 hover:text-cyan-300 transition duration-300"
-          >
-
-            <Globe className="w-4 h-4" />
-
-            Hub
-
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center gap-3 hover:text-cyan-300 transition duration-300"
-          >
-
-            <ShoppingBag className="w-4 h-4" />
-
-            Buy NON
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </main>
-  );
+      </main>
+    </>
+  )
 }
