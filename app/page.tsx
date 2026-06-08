@@ -178,11 +178,6 @@ export default function Home() {
           <div className="mt-10 flex items-center justify-center xl:mt-0 xl:absolute xl:left-[420px] xl:top-[150px]">
             <div className="absolute h-[520px] w-[520px] rounded-full bg-cyan-400/20 blur-[160px]" />
 
-            <img
-              src="/home.web.png"
-              alt="SkodriNΩN"
-              className="relative z-20 w-full max-w-[620px] object-contain opacity-95 drop-shadow-[0_0_120px_rgba(59,130,246,0.8)]"
-            />
           </div>
         </div>
       </section>
