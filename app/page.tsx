@@ -85,6 +85,23 @@ const MODULES = [
       "Future ecosystem intelligence agent",
     ],
   },
+  {
+    title: "Developer Portal",
+    label: "Builder Layer",
+    headline: "Developer Infrastructure",
+    description:
+      "Developer Portal is the technical access point for builders, auditors and contributors. It will organize contracts, architecture, documentation, future API access and SDK integrations as the ecosystem evolves from testnet toward mainnet.",
+    value: "Developer Layer",
+    action: "Open Developers",
+    link: "/developers",
+    icon: GitBranch,
+    blocks: [
+      "Contracts and deployments",
+      "Architecture documentation",
+      "Future API access",
+      "Future SDK integrations",
+    ],
+  },
 ];
 
 export default function Home() {
@@ -107,7 +124,7 @@ export default function Home() {
     <main className="relative min-h-screen overflow-x-hidden bg-[#020617] text-white">
       <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 py-4 sm:px-6 lg:px-8">
         <header className="sticky top-4 z-50 rounded-[28px] border border-cyan-400/10 bg-[#07101f]/70 px-4 py-4 shadow-[0_0_45px_rgba(59,130,246,0.10)] backdrop-blur-2xl sm:px-6">
-  <div className="flex flex-row flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-row flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_45px_rgba(59,130,246,0.45)]">
                 <Sparkles className="h-5 w-5" />
@@ -144,6 +161,13 @@ export default function Home() {
                 className="text-gray-300 transition hover:text-cyan-300"
               >
                 Token Dashboard
+              </a>
+
+              <a
+                href="/developers"
+                className="text-gray-300 transition hover:text-cyan-300"
+              >
+                Developers
               </a>
             </nav>
 
@@ -244,7 +268,7 @@ export default function Home() {
                 <Sparkles className="h-4 w-4 shrink-0" />
 
                 <span className="truncate">
-                  Identity × Board × Token Economy × AI
+                  Identity × Board × Token Economy × AI × Developers
                 </span>
               </div>
 
@@ -258,7 +282,7 @@ export default function Home() {
                     {activeModule.label}
                   </p>
 
-                  <h2 className="mt-2 text-xlfont-black tracking-[-0.05em] sm:text-xl">
+                  <h2 className="mt-2 text-xl font-black tracking-[-0.05em] sm:text-xl">
                     {activeModule.title}
                   </h2>
                 </div>
