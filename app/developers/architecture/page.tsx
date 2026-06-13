@@ -6,6 +6,7 @@ import {
   Brain,
   Layers3,
   ExternalLink,
+  Fingerprint,
 } from "lucide-react";
 
 const MODULES = [
@@ -15,6 +16,14 @@ const MODULES = [
     icon: Shield,
     link: "/developers/architecture/identity",
     description: "Sovereign identity, Capsule, Passport, PUP and recovery.",
+  },
+  {
+    title: "non.ID",
+    layer: "Approval Layer",
+    icon: Fingerprint,
+    link: "/developers/architecture/approval",
+    description:
+      "Approval network, QR login, verification, recovery and authorization layer.",
   },
   {
     title: "NON Board",
@@ -64,8 +73,9 @@ export default function ArchitecturePage() {
 
           <p className="mt-6 max-w-4xl text-base leading-8 text-gray-300 sm:text-lg">
             SkodriNΩN is designed as a sovereign ecosystem where Identity,
-            Governance, Economy and Intelligence operate as independent modules
-            connected through one constitutional architecture.
+            Approval, Governance, Economy and Intelligence operate as
+            independent modules connected through one constitutional
+            architecture.
           </p>
 
           <div className="relative mt-14 min-h-[720px] rounded-[36px] border border-cyan-400/10 bg-black/25 p-6 sm:min-h-[640px]">
@@ -93,8 +103,8 @@ export default function ArchitecturePage() {
               <div className="hidden lg:block" />
               <ModuleCard module={MODULES[2]} />
 
-              <div />
               <ModuleCard module={MODULES[3]} />
+              <ModuleCard module={MODULES[4]} />
               <div />
             </div>
           </div>
