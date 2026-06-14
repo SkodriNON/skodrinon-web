@@ -3,7 +3,6 @@ import {
   Mail,
   ShieldCheck,
   ExternalLink,
-  AlertTriangle,
   LucideIcon,
 } from "lucide-react";
 
@@ -79,14 +78,7 @@ export default function ApprovalDocPage({
             </p>
           </div>
 
-          <div className="mt-8 rounded-[28px] border border-amber-400/20 bg-amber-400/10 p-5">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="mt-1 h-5 w-5 shrink-0 text-amber-300" />
-              <p className="text-sm leading-7 text-amber-100/90">
-                This document is prepared for operational, compliance and publication readiness for the SkodriNΩN ecosystem. It is drafted to align with the current NexusNON.ID and non.ID architecture. Final deployment should be reviewed by qualified legal counsel where required by Swedish, European, Kosovo or other applicable law.
-              </p>
-            </div>
-          </div>
+          
 
           {relatedLinks.length > 0 && (
             <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
