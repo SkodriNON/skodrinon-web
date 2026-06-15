@@ -23,7 +23,7 @@ const MODULES = [
       "NexusNON.ID is the identity layer of the ecosystem. The Capsule is not a profile and not a normal account. It is a sovereign digital identity structure designed to connect login, ownership, recovery, session control and future constitutional access.",
     value: "Identity Layer",
     action: "Open Identity",
-    link: process.env.NEXT_PUBLIC_IDENTITY_URL || "https://nonid.vercel.app",
+    link: process.env.NEXT_PUBLIC_IDENTITY_URL || "https://nonid.vercel.app/connect",
     icon: Shield,
     blocks: [
       "Capsule = Identity, not database profile",

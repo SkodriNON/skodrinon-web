@@ -82,7 +82,10 @@ export default function IdentityArchitecturePage() {
 
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href={process.env.NEXT_PUBLIC_IDENTITY_URL || "https://nonid.vercel.app"}
+              href={
+  process.env.NEXT_PUBLIC_IDENTITY_URL ||
+  "https://nonid.vercel.app/connect"
+}
               target="_blank"
               className="inline-flex items-center gap-2 rounded-2xl bg-cyan-400 px-6 py-4 font-black text-black transition hover:scale-[1.03]"
             >
